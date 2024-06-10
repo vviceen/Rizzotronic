@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="/public/output.css" rel="stylesheet" />
+  </head>
+
+  <!-- https://tailwindcomponents.com/component/navbar-21 -->
+
+  <body>
+    <nav class="w-full bg-slate-400 h-fit overflow-hidden">
+      <div
+        class="py-4 lg:px-8 px-4 max-w-[1280px] h-16 m-auto text-white flex items-center justify-between"
+      >
+        <div>
+          <h1
+            class="text-base uppercase tracking-wider cursor-pointer font-bold"
+          >
+            Rizzotronic
+          </h1>
+        </div>
+        <div
+          class="flex lg:gap-8 gap-6 uppercase tracking-wider cursor-pointer text-sm items-center"
+          id="navItems"
+        >
+          <span class="group">
+            Services
+            <div
+              class="w-0 group-hover:w-full h-0.5 bg-white ease-in-out duration-500"
+            ></div>
+          </span>
+          <span class="group">
+            About
+            <div
+              class="w-0 group-hover:w-full h-0.5 bg-white ease-in-out duration-500"
+            ></div>
+          </span>
+          <span class="group">
+            Contact
+            <div
+              class="w-0 group-hover:w-full h-0.5 bg-white ease-in-out duration-500"
+            ></div>
+          </span>
+          
+            <a href="/ProyectoEcommerce/sessions/session.php">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                color="#ffffff"
+                fill="none"
+              >
+                <path
+                  d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </a>
+            
+
+        </div>
+        <div
+          id="hamburger"
+          class="fa fa-bars flex items-center text-xl"
+          style="display: none"
+        ></div>
+        <div
+          id="mobileNav"
+          class="fixed flex flex-col gap-8 pt-16 px-4 text-xl uppercase bg-teal-500 h-full inset-0 top-16 w-[70%] left-[-70%] ease-in-out duration-500 cursor-pointer"
+        >
+          <span>Services</span>
+          <span>About</span>
+          <span>Contact</span>
+        </div>
+      </div>
+    </nav>
+
+    <script>
+      var navItems = document.getElementById("navItems");
+      var mobileNav = document.getElementById("mobileNav");
+      var hamburger = document.getElementById("hamburger");
+
+      function adjustNavbar() {
+        screenWidth = parseInt(window.innerWidth);
+
+        if (screenWidth < 541) {
+          navItems.style.display = "none";
+          hamburger.style.display = "flex";
+        } else {
+          navItems.style.display = "flex";
+          hamburger.style.display = "none";
+        }
+      }
+
+      adjustNavbar();
+
+      window.addEventListener("resize", adjustNavbar);
+
+      hamburger.addEventListener("click", function () {
+        mobileNav.classList.toggle("left-[-70%]");
+        hamburger.classList.toggle("fa-bars");
+        hamburger.classList.toggle("fa-close");
+      });
+    </script>
+  </body>
+</html>

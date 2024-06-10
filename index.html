@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="/ProyectoEcommerce/public/output.css" rel="stylesheet">
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+  </style>
+
+  <body>
+    
+    <div class="navbar"></div>
+    <div class="carrousel"></div>
+
+    <style>
+      input[type="range"]::-webkit-slider-thumb {
+        pointer-events: all;
+        width: 24px;
+        height: 24px;
+        -webkit-appearance: none;
+        appearance: none;
+        cursor: pointer;
+      }
+    </style>
+
+
+    <!-- Header - Filtros y Cards -->  
+    <div class="min-h-screen flex">
+      <!-- Sidebar -->
+      <div class="w-64 bg-white p-4 shadow-lg">
+        <h2 class="text-xl font-semibold mb-4">Filtros</h2>
+
+        <!-- Filtro por Marca -->
+        <div class="mb-6">
+          <h3 class="font-semibold mb-2">Marca</h3>
+          <div>
+            <label class="inline-flex items-center mb-1">
+              <input
+                type="checkbox"
+                class="form-checkbox h-4 w-4 text-blue-600"
+              />
+              <span class="ml-2 text-gray-700">Acer</span>
+            </label>
+          </div>
+          <div>
+            <label class="inline-flex items-center mb-1">
+              <input
+                type="checkbox"
+                class="form-checkbox h-4 w-4 text-blue-600"
+              />
+              <span class="ml-2 text-gray-700">Asus</span>
+            </label>
+          </div>
+          <div>
+            <label class="inline-flex items-center mb-1">
+              <input
+                type="checkbox"
+                class="form-checkbox h-4 w-4 text-blue-600"
+              />
+              <span class="ml-2 text-gray-700">Dell</span>
+            </label>
+          </div>
+          <div>
+            <label class="inline-flex items-center mb-1">
+              <input
+                type="checkbox"
+                class="form-checkbox h-4 w-4 text-blue-600"
+              />
+              <span class="ml-2 text-gray-700">HP</span>
+            </label>
+          </div>
+          <div>
+            <label class="inline-flex items-center mb-1">
+              <input
+                type="checkbox"
+                class="form-checkbox h-4 w-4 text-blue-600"
+              />
+              <span class="ml-2 text-gray-700">Lenovo</span>
+            </label>
+          </div>
+          <div>
+            <label class="inline-flex items-center mb-1">
+              <input
+                type="checkbox"
+                class="form-checkbox h-4 w-4 text-blue-600"
+              />
+              <span class="ml-2 text-gray-700">MSI</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Filtro por Rango de Precio -->
+        <div class="mb-6">
+          <h3 class="font-semibold mb-2">Rango de Precio</h3>
+          <div class="relative">
+            <input
+              id="min-price"
+              type="range"
+              step="100"
+              min="100"
+              max="10000"
+              value="1000"
+              class="absolute z-20 w-full h-2 opacity-0 cursor-pointer"
+            />
+            <input
+              id="max-price"
+              type="range"
+              step="100"
+              min="100"
+              max="10000"
+              value="7000"
+              class="absolute z-20 w-full h-2 opacity-0 cursor-pointer"
+            />
+
+            <div class="relative z-10 h-2 bg-gray-200 rounded">
+              <div
+                id="range"
+                class="absolute z-20 top-0 bottom-0 bg-green-300 rounded"
+              ></div>
+              <div
+                id="min-thumb"
+                class="absolute z-30 w-6 h-6 bg-green-300 rounded-full -mt-2"
+              ></div>
+              <div
+                id="max-thumb"
+                class="absolute z-30 w-6 h-6 bg-green-300 rounded-full -mt-2"
+              ></div>
+            </div>
+          </div>
+          <div class="flex justify-between items-center py-5">
+            <input
+              type="text"
+              id="min-price-input"
+              maxlength="5"
+              class="px-3 py-2 border border-gray-200 rounded w-24 text-center"
+            />
+            <input
+              type="text"
+              id="max-price-input"
+              maxlength="5"
+              class="px-3 py-2 border border-gray-200 rounded w-24 text-center"
+            />
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Contenido principal -->
+      <div class="p-10">
+        <!-- Aquí iría el contenido principal de la tienda -->
+        <h1 class="text-2xl font-bold">Tienda de Hardware</h1>
+
+        <div class="grid grid-rows-3 grid-flow-col gap-5 p-5 min-h-screen bg-gray-400">
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Script del range slider -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const minPriceInput = document.getElementById("min-price-input");
+        const maxPriceInput = document.getElementById("max-price-input");
+        const minPriceSlider = document.getElementById("min-price");
+        const maxPriceSlider = document.getElementById("max-price");
+        const range = document.getElementById("range");
+        const minThumb = document.getElementById("min-thumb");
+        const maxThumb = document.getElementById("max-thumb");
+
+        function updateSlider() {
+          const minValue = parseInt(minPriceSlider.value);
+          const maxValue = parseInt(maxPriceSlider.value);
+
+          if (maxValue - minValue < 500) {
+            if (this === minPriceSlider) {
+              minPriceSlider.value = maxValue - 500;
+            } else {
+              maxPriceSlider.value = minValue + 500;
+            }
+          }
+
+          const minPercent =
+            ((minPriceSlider.value - minPriceSlider.min) /
+              (minPriceSlider.max - minPriceSlider.min)) *
+            100;
+          const maxPercent =
+            ((maxPriceSlider.value - maxPriceSlider.min) /
+              (maxPriceSlider.max - maxPriceSlider.min)) *
+            100;
+
+          minThumb.style.left = minPercent + "%";
+          maxThumb.style.left = maxPercent + "%";
+          range.style.left = minPercent + "%";
+          range.style.right = 100 - maxPercent + "%";
+
+          minPriceInput.value = minPriceSlider.value;
+          maxPriceInput.value = maxPriceSlider.value;
+        }
+
+        minPriceSlider.addEventListener("input", updateSlider);
+        maxPriceSlider.addEventListener("input", updateSlider);
+        minPriceInput.addEventListener("input", function () {
+          minPriceSlider.value = this.value;
+          updateSlider();
+        });
+        maxPriceInput.addEventListener("input", function () {
+          maxPriceSlider.value = this.value;
+          updateSlider();
+        });
+
+        updateSlider();
+      });
+    </script>
+
+    <div class="footer"></div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
