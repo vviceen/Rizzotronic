@@ -16,215 +16,285 @@
 
   <body>
     
-    <div class="navbar"></div>
-    <div class="carrousel"></div>
-
-    <style>
-      input[type="range"]::-webkit-slider-thumb {
-        pointer-events: all;
-        width: 24px;
-        height: 24px;
-        -webkit-appearance: none;
-        appearance: none;
-        cursor: pointer;
-      }
-    </style>
-
-
-    <!-- Header - Filtros y Cards -->  
-    <div class="min-h-screen flex">
-      <!-- Sidebar -->
-      <div class="w-64 bg-white p-4 shadow-lg">
-        <h2 class="text-xl font-semibold mb-4">Filtros</h2>
-
-        <!-- Filtro por Marca -->
-        <div class="mb-6">
-          <h3 class="font-semibold mb-2">Marca</h3>
-          <div>
-            <label class="inline-flex items-center mb-1">
-              <input
-                type="checkbox"
-                class="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span class="ml-2 text-gray-700">Acer</span>
+    <div class="drawer">
+      <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+      <div class="drawer-content flex flex-col">
+        <!-- Navbar -->
+        <div class="navbar bg-base-300 w-full">
+          <div class="flex-none lg:hidden">
+            <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="inline-block h-6 w-6 stroke-current">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
             </label>
           </div>
-          <div>
-            <label class="inline-flex items-center mb-1">
-              <input
-                type="checkbox"
-                class="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span class="ml-2 text-gray-700">Asus</span>
-            </label>
-          </div>
-          <div>
-            <label class="inline-flex items-center mb-1">
-              <input
-                type="checkbox"
-                class="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span class="ml-2 text-gray-700">Dell</span>
-            </label>
-          </div>
-          <div>
-            <label class="inline-flex items-center mb-1">
-              <input
-                type="checkbox"
-                class="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span class="ml-2 text-gray-700">HP</span>
-            </label>
-          </div>
-          <div>
-            <label class="inline-flex items-center mb-1">
-              <input
-                type="checkbox"
-                class="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span class="ml-2 text-gray-700">Lenovo</span>
-            </label>
-          </div>
-          <div>
-            <label class="inline-flex items-center mb-1">
-              <input
-                type="checkbox"
-                class="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span class="ml-2 text-gray-700">MSI</span>
-            </label>
+          <div class="mx-2 flex-1 px-2">Rizzotronic</div>
+          <div class="hidden flex-none lg:block">
+            <ul class="menu menu-horizontal">
+              <!-- Navbar menu content here -->
+              <li><a>Navbar Item 1</a></li>
+              <li><a>Navbar Item 2</a></li>
+            </ul>
           </div>
         </div>
-
-        <!-- Filtro por Rango de Precio -->
-        <div class="mb-6">
-          <h3 class="font-semibold mb-2">Rango de Precio</h3>
-          <div class="relative">
-            <input
-              id="min-price"
-              type="range"
-              step="100"
-              min="100"
-              max="10000"
-              value="1000"
-              class="absolute z-20 w-full h-2 opacity-0 cursor-pointer"
-            />
-            <input
-              id="max-price"
-              type="range"
-              step="100"
-              min="100"
-              max="10000"
-              value="7000"
-              class="absolute z-20 w-full h-2 opacity-0 cursor-pointer"
-            />
-
-            <div class="relative z-10 h-2 bg-gray-200 rounded">
-              <div
-                id="range"
-                class="absolute z-20 top-0 bottom-0 bg-green-300 rounded"
-              ></div>
-              <div
-                id="min-thumb"
-                class="absolute z-30 w-6 h-6 bg-green-300 rounded-full -mt-2"
-              ></div>
-              <div
-                id="max-thumb"
-                class="absolute z-30 w-6 h-6 bg-green-300 rounded-full -mt-2"
-              ></div>
+        <!-- Page content here -->
+        <div class="hero min-h-screen" style="background-image: url(https://thotcomputacion.com.uy/wp-content/uploads/2024/05/GygabyteG5_BannerWeb-1.png);">
+          <div class="hero-overlay bg-opacity-60"></div>
+            <div class="hero-content text-neutral-content text-center">
+            <div class="max-w-md">
+              <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+              <p class="mb-5">
+                Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                quasi. In deleniti eaque aut repudiandae et a id nisi.
+              </p>
+              <button class="btn btn-primary">Get Started</button>
             </div>
           </div>
-          <div class="flex justify-between items-center py-5">
-            <input
-              type="text"
-              id="min-price-input"
-              maxlength="5"
-              class="px-3 py-2 border border-gray-200 rounded w-24 text-center"
-            />
-            <input
-              type="text"
-              id="max-price-input"
-              maxlength="5"
-              class="px-3 py-2 border border-gray-200 rounded w-24 text-center"
-            />
+        </div>
+
+          <style>
+            input[type="range"]::-webkit-slider-thumb {
+              pointer-events: all;
+              width: 24px;
+              height: 24px;
+              -webkit-appearance: none;
+              appearance: none;
+              cursor: pointer;
+            }
+          </style>
+
+
+          <!-- Header - Filtros y Cards -->  
+          <div class="min-h-screen flex">
+            <!-- Sidebar -->
+            <div class="w-64 bg-white p-4 shadow-lg">
+              <h2 class="text-xl font-semibold mb-4">Filtros</h2>
+
+              <!-- Filtro por Marca -->
+              <div class="mb-6">
+                <h3 class="font-semibold mb-2">Marca</h3>
+                <div>
+                  <label class="inline-flex items-center mb-1">
+                    <input
+                      type="checkbox"
+                      class="form-checkbox h-4 w-4 text-blue-600"
+                    />
+                    <span class="ml-2 text-gray-700">Acer</span>
+                  </label>
+                </div>
+                <div>
+                  <label class="inline-flex items-center mb-1">
+                    <input
+                      type="checkbox"
+                      class="form-checkbox h-4 w-4 text-blue-600"
+                    />
+                    <span class="ml-2 text-gray-700">Asus</span>
+                  </label>
+                </div>
+                <div>
+                  <label class="inline-flex items-center mb-1">
+                    <input
+                      type="checkbox"
+                      class="form-checkbox h-4 w-4 text-blue-600"
+                    />
+                    <span class="ml-2 text-gray-700">Dell</span>
+                  </label>
+                </div>
+                <div>
+                  <label class="inline-flex items-center mb-1">
+                    <input
+                      type="checkbox"
+                      class="form-checkbox h-4 w-4 text-blue-600"
+                    />
+                    <span class="ml-2 text-gray-700">HP</span>
+                  </label>
+                </div>
+                <div>
+                  <label class="inline-flex items-center mb-1">
+                    <input
+                      type="checkbox"
+                      class="form-checkbox h-4 w-4 text-blue-600"
+                    />
+                    <span class="ml-2 text-gray-700">Lenovo</span>
+                  </label>
+                </div>
+                <div>
+                  <label class="inline-flex items-center mb-1">
+                    <input
+                      type="checkbox"
+                      class="form-checkbox h-4 w-4 text-blue-600"
+                    />
+                    <span class="ml-2 text-gray-700">MSI</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Filtro por Rango de Precio -->
+              <!-- <div class="mb-6">
+                <h3 class="font-semibold mb-2">Rango de Precio</h3>
+                <div class="range-input">
+                   <input type="range" 
+                          class="min-range" 
+                          min="0" 
+                          max="10000" 
+                          value="2500" 
+                          step="1"> 
+                    <input type="range" 
+                          class="max-range" 
+                          min="0" 
+                          max="10000" 
+                          value="8500" 
+                          step="1"> 
+                </div>
+                <div class="flex justify-between items-center py-5">
+                  <input
+                    type="text"
+                    id="min-price-input"
+                    maxlength="5"
+                    class="px-3 py-2 border border-gray-200 rounded w-24 text-center"
+                  />
+                  <input
+                    type="text"
+                    id="max-price-input"
+                    maxlength="5"
+                    class="px-3 py-2 border border-gray-200 rounded w-24 text-center"
+                  />
+                </div>
+              </div> -->
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="p-10">
+              <!-- Aquí iría el contenido principal de la tienda -->
+              <h1 class="text-2xl font-bold">Tienda de Hardware</h1>
+              <div class="grid grid-rows-3 grid-flow-col gap-5 p-5 min-h-screen bg-gray-400">
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+              </div>
+
+            </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Contenido principal -->
-      <div class="p-10">
-        <!-- Aquí iría el contenido principal de la tienda -->
-        <h1 class="text-2xl font-bold">Tienda de Hardware</h1>
-        <button class="btn">asd</button>
-        <div class="grid grid-rows-3 grid-flow-col gap-5 p-5 min-h-screen bg-gray-400">
-          <div class="card"></div>
-          <div class="card"></div>
-          <div class="card"></div>
-          <div class="card"></div>
-          <div class="card"></div>
-        </div>
+          <!-- Script del range slider -->
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const minPriceInput = document.getElementById("min-price-input");
+              const maxPriceInput = document.getElementById("max-price-input");
+              const minPriceSlider = document.getElementById("min-price");
+              const maxPriceSlider = document.getElementById("max-price");
+              const range = document.getElementById("range");
+              const minThumb = document.getElementById("min-thumb");
+              const maxThumb = document.getElementById("max-thumb");
 
+              function updateSlider() {
+                const minValue = parseInt(minPriceSlider.value);
+                const maxValue = parseInt(maxPriceSlider.value);
+
+                if (maxValue - minValue < 500) {
+                  if (this === minPriceSlider) {
+                    minPriceSlider.value = maxValue - 500;
+                  } else {
+                    maxPriceSlider.value = minValue + 500;
+                  }
+                }
+
+                const minPercent =
+                  ((minPriceSlider.value - minPriceSlider.min) /
+                    (minPriceSlider.max - minPriceSlider.min)) *
+                  100;
+                const maxPercent =
+                  ((maxPriceSlider.value - maxPriceSlider.min) /
+                    (maxPriceSlider.max - maxPriceSlider.min)) *
+                  100;
+
+                minThumb.style.left = minPercent + "%";
+                maxThumb.style.left = maxPercent + "%";
+                range.style.left = minPercent + "%";
+                range.style.right = 100 - maxPercent + "%";
+
+                minPriceInput.value = minPriceSlider.value;
+                maxPriceInput.value = maxPriceSlider.value;
+              }
+
+              minPriceSlider.addEventListener("input", updateSlider);
+              maxPriceSlider.addEventListener("input", updateSlider);
+              minPriceInput.addEventListener("input", function () {
+                minPriceSlider.value = this.value;
+                updateSlider();
+              });
+              maxPriceInput.addEventListener("input", function () {
+                maxPriceSlider.value = this.value;
+                updateSlider();
+              });
+
+              updateSlider();
+            });
+          </script>
+
+          <footer class="footer bg-base-200 text-base-content p-10">
+            <aside>
+              <svg
+                width="50"
+                height="50"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                class="fill-current">
+                <path
+                  d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path>
+              </svg>
+              <p>
+                ACME Industries Ltd.
+                <br />
+                Providing reliable tech since 1992
+              </p>
+            </aside>
+            <nav>
+              <h6 class="footer-title">Services</h6>
+              <a class="link link-hover">Branding</a>
+              <a class="link link-hover">Design</a>
+              <a class="link link-hover">Marketing</a>
+              <a class="link link-hover">Advertisement</a>
+            </nav>
+            <nav>
+              <h6 class="footer-title">Company</h6>
+              <a class="link link-hover">About us</a>
+              <a class="link link-hover">Contact</a>
+              <a class="link link-hover">Jobs</a>
+              <a class="link link-hover">Press kit</a>
+            </nav>
+            <nav>
+              <h6 class="footer-title">Legal</h6>
+              <a class="link link-hover">Terms of use</a>
+              <a class="link link-hover">Privacy policy</a>
+              <a class="link link-hover">Cookie policy</a>
+            </nav>
+          </footer>
+        </div>
+      <div class="drawer-side">
+        <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
+        <ul class="menu bg-base-200 min-h-full w-80 p-4">
+          <!-- Sidebar content here -->
+          <li><a>Sidebar Item 1</a></li>
+          <li><a>Sidebar Item 2</a></li>
+        </ul>
       </div>
     </div>
 
-    <!-- Script del range slider -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const minPriceInput = document.getElementById("min-price-input");
-        const maxPriceInput = document.getElementById("max-price-input");
-        const minPriceSlider = document.getElementById("min-price");
-        const maxPriceSlider = document.getElementById("max-price");
-        const range = document.getElementById("range");
-        const minThumb = document.getElementById("min-thumb");
-        const maxThumb = document.getElementById("max-thumb");
+    
 
-        function updateSlider() {
-          const minValue = parseInt(minPriceSlider.value);
-          const maxValue = parseInt(maxPriceSlider.value);
-
-          if (maxValue - minValue < 500) {
-            if (this === minPriceSlider) {
-              minPriceSlider.value = maxValue - 500;
-            } else {
-              maxPriceSlider.value = minValue + 500;
-            }
-          }
-
-          const minPercent =
-            ((minPriceSlider.value - minPriceSlider.min) /
-              (minPriceSlider.max - minPriceSlider.min)) *
-            100;
-          const maxPercent =
-            ((maxPriceSlider.value - maxPriceSlider.min) /
-              (maxPriceSlider.max - maxPriceSlider.min)) *
-            100;
-
-          minThumb.style.left = minPercent + "%";
-          maxThumb.style.left = maxPercent + "%";
-          range.style.left = minPercent + "%";
-          range.style.right = 100 - maxPercent + "%";
-
-          minPriceInput.value = minPriceSlider.value;
-          maxPriceInput.value = maxPriceSlider.value;
-        }
-
-        minPriceSlider.addEventListener("input", updateSlider);
-        maxPriceSlider.addEventListener("input", updateSlider);
-        minPriceInput.addEventListener("input", function () {
-          minPriceSlider.value = this.value;
-          updateSlider();
-        });
-        maxPriceInput.addEventListener("input", function () {
-          maxPriceSlider.value = this.value;
-          updateSlider();
-        });
-
-        updateSlider();
-      });
-    </script>
-
-    <div class="footer"></div>
-
-    <script src="main.js"></script>
+    <!-- <script src="main.js"></script> -->
   </body>
 </html>
