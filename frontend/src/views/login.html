@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/css/output.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="h-screen flex justify-center items-center">
+        <div class="lg:w-2/5 md:w-1/2 w-2/3">
+            <form id="loginForm" class="bg-black space-y-6 p-10 rounded-lg shadow-lg min-w-full">
+                <h1 class="text-center text-2xl mb-6 font-bold font-sans">Login</h1>
+                <div>
+                    <label class="text-gray-400 font-semibold block my-1 text-md" for="username">Username</label>
+                    <input id="username" class="w-full border border-indigo-950 placeholder:text-gray-700 px-4 py-2 rounded-md" type="text" name="username" placeholder="username" />
+                </div>
+                <div>
+                    <label class="text-gray-400 font-semibold block my-1 text-md" for="password">Password</label>
+                    <input id="password" class="w-full border border-indigo-950 placeholder:text-gray-700 px-4 py-2 rounded-md" type="password" name="password" placeholder="password" />
+                </div>
+                <button id="loginButton" class="bg-indigo-800 w-full px-4 py-2 rounded-md" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../../backend/app/controllers/sessions/fieldsLogin.js"></script>
+</body>
+
+</html>
