@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('password', password);
 
         // Enviar los datos a PHP usando fetch
-        fetch('/Rizzotronic/backend/app/login.php', {
+        fetch('/Rizzotronic/backend/app/services/login.php', {
             method: 'POST',
             body: formData
         })  

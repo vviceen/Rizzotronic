@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './connection/connection.php';
+include '../connection/connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validar que los campos no estén vacíos
@@ -13,14 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Preparar y ejecutar la consulta SQL
-    $stmt = $conn->prepare("SELECT username, password, rol FROM usuario WHERE username = ?");
+    $stmt = $conn->prepare("SELECT nombre, email, password, nacionalidad, nacimiento, rol FROM usuario WHERE nombre = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->store_result();
 
     // Verificar si el usuario existe y validar la contraseña
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($db_username, $db_password, $db_rol);
+        $stmt->bind_result($db_username, $db_email, $db_password, $db_nationality, $db_birth, $db_rol);
         $stmt->fetch();
 
         if ($password == $db_password) {
