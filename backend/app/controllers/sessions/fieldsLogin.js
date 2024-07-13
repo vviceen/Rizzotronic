@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(data);
             // Puedes manejar la respuesta del servidor aquí
             alert(data); // Muestra la respuesta del servidor en una alerta (puedes cambiar esto según tus necesidades)
+            window.location.href = '/Rizzotronic/frontend/public/index.html';
         })
         .catch(error => console.error('Error:', error));
     });

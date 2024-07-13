@@ -1,15 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const nombreUser = document.getElementById('nombreUser');
+    const infoUser = document.getElementById('infoUser');
     const closeSessionButton = document.getElementById('closeSession');
 
     // Solicitar los datos de la sesión al archivo PHP
-    fetch('/Rizzotronic/backend/app/services/sessionData.php')
+    fetch('/Rizzotronic/backend/app/services/sessionData.php')  
         .then(response => response.json())
         .then(data => {
             if (data.username) {
                 nombreUser.textContent = `Bienvenido, ${data.username}`;
+                infoUser.textContent = `Tu eres un ${data.rol}. Tu email es: ${data.email}`;
             } else {
-                nombreUser.textContent = 'No se pudo cargar la información de la sesión';
+                nombreUser.textContent = 'No se pudo cargar la información de la sesión o debes iniciar sesion';
             }
         })
         .catch(error => {

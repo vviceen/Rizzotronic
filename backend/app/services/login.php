@@ -27,6 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Almacenar datos de usuario en sesión
             $_SESSION['username'] = $db_username;
             $_SESSION['rol'] = $db_rol;
+            $_SESSION['email'] = $db_email;
+            $_SESSION['nationality'] = $db_nationality;
+            $_SESSION['birth'] = $db_birth;
 
             echo "Login exitoso. Bienvenido, " . $db_rol . " " . $db_username;
         } else {
