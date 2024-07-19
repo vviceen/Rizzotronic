@@ -1,49 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../public/css/output.css" rel="stylesheet">
-    <title>Document</title>
-</head>
-<body>
-        <div class="h-screen flex justify-center items-center">
-            <div class="lg:w-2/5 md:w-1/2 w-2/3">
-                <form id="registerForm" class="bg-black space-y-4 p-10 rounded-lg shadow-lg min-w-full">
-                    <h1 class="text-center text-2xl mb-6 font-bold font-sans">Register</h1>
-    
-                    <div>
-                        <label class="text-gray-400 font-semibold block my-1 text-md" for="nombre">Nombre</label>
-                        <input class="w-full border border-indigo-950 placeholder:text-gray-700 px-4 py-2 rounded-md" type="text" id="nombre" name="nombre" placeholder="Nombre" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../public/css/output.css" rel="stylesheet">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="hero bg-base-200 min-h-screen">
+            <div class="hero-content flex-col lg:flex-row-reverse">
+            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                <h1 class="text-5xl font-bold m-11 mb-0 w-30">Registro de usuarios!</h1>
+                <form id="registerForm" class="card-body">
+                    <div class="form-control">
+                        <label class="label">
+                        <span class="label-text">Nombre</span>
+                        </label>
+                        <input id="nombre" type="text" placeholder="Nombre" class="input input-bordered" required />
                     </div>
-    
-                    <div>
-                        <label class="text-gray-400 font-semibold block my-1 text-md" for="email">Email</label>
-                        <input class="w-full border border-indigo-950 placeholder:text-gray-700 px-4 py-2 rounded-md" type="text" id="email" name="email" placeholder="Email" />
+                    <div class="form-control">
+                        <label class="label">
+                        <span class="label-text">Email</span>
+                        </label>
+                        <input id="email" type="text" placeholder="ejemplo@mail.com" class="input input-bordered" required />
                     </div>
-    
-                    <div>
-                        <label class="text-gray-400 font-semibold block my-1 text-md" for="password">Contraseña</label>
-                        <input class="w-full border border-indigo-950 placeholder:text-gray-700 px-4 py-2 rounded-md" type="password" id="password" name="password" placeholder="Contraseña" />
+                    <div class="form-control">
+                        <label class="label">
+                        <span class="label-text">Contraseña</span>
+                        </label>
+                        <input id="password" type="password" placeholder="Contraseña" class="input input-bordered" required />
                     </div>
-    
-                    <div>
-                        <label class="text-gray-400 font-semibold block my-1 text-md" for="nacionalidad">Nacionalidad</label>
-                        <input class="w-full border border-indigo-950 placeholder:text-gray-700 px-4 py-2 rounded-md" type="text" id="nacionalidad" name="nacionalidad" placeholder="Nacionalidad" />
+                    <div class="form-control">
+                        <label class="label">
+                        <span class="label-text">Nacionalidad</span>
+                        </label>
+                        <input id="nacionalidad" type="text" placeholder="Tu país" class="input input-bordered" required />
                     </div>
-                    
-                    <div>
-                        <label class="text-gray-400 font-semibold block my-1 text-md" for="nacimiento">Fecha de nacimiento</label>
-                        <input class="w-full border border-indigo-950 placeholder:text-gray-700 px-4 py-2 rounded-md" type="text" id="nacimiento" name="nacimiento" placeholder="Nacimiento" />
+                    <div class="form-control">
+                        <label class="label">
+                        <span class="label-text">Fecha de nacimiento</span>
+                        </label>
+                        <input id="nacimiento" type="date" class="input input-bordered" required />
                     </div>
-    
-                    <button class="bg-indigo-800 w-full px-4 py-2 rounded-md" type="submit">Register</button>
+                    <div class="form-control mt-6">
+                        <button id="loginButton" class="btn btn-primary" type="submit">Registrarse</button>
+                        <label class="label justify-between">
+                            <a href="http://localhost/Rizzotronic/frontend/src/views/login.html" class="label-text-alt link link-hover">Ya tienes una cuenta?</a>
+                            <a href="http://localhost/Rizzotronic/frontend/public" class="label-text-alt link link-hover">Volver al inicio</a>
+                        </label>
+                    </div>
                 </form>
             </div>
+            </div>
         </div>
-    
         <script src="../../../backend/app/controllers/sessions/registerValidation.js"></script>
 
     </body>
-    </html>
-    
+</html>
