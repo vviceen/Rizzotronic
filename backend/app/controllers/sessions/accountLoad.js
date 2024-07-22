@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const nombreUser = document.getElementById("nombreUser");
   const infoUser = document.getElementById("infoUser");
-
+  console.log("script accountLoad.js");
   // Solicitar los datos de la sesión al archivo PHP
   fetch("/Rizzotronic/backend/app/services/sessionData.php")
     .then((response) => response.json())
@@ -12,16 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         switch (data.rol) {
           case "cliente":
-            RenderView("/Rizzotronic/frontend/src/views/customer.html");
+            window.location.href = "/Rizzotronic/frontend/src/views/customer.html";
             break;
           case "vendedor":
-            RenderView("/Rizzotronic/frontend/src/views/sellerView.html");
+            window.location.href = "/Rizzotronic/frontend/src/views/sellerView.html";
             break;
           case "admin":
-            RenderView("/Rizzotronic/frontend/src/views/adminView.html");
+            window.location.href ="/Rizzotronic/frontend/src/views/adminView.html";
             break;
           default:
-            RenderView("default.html");
+            window.location.href ="default.html";
             break;
         }
       } else {
@@ -34,14 +34,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
-function RenderView(url) {
-    fetch(url)
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('main-content').innerHTML = html;
-      })
-      .catch(error => {
-        console.error('Error loading HTML:', error);
-      });
-  }
