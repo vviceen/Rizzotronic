@@ -1,5 +1,8 @@
 <?php
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 include '../../app/connection/connection.php';
 
 $sql = "SELECT * FROM producto";
@@ -12,8 +15,9 @@ if ($result->num_rows > 0) {
     }
 }
 
+$rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : 'cliente';
 
-
-echo json_encode(['products' => $products, 'rol' => $_SESSION['rol']]);
+header('Content-Type: application/json');
+echo json_encode(['products' => $products, 'rol' => $rol]);
 
 $conn->close();

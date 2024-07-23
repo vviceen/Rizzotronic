@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const nombreUser = document.getElementById("nombreUser");
   const infoUser = document.getElementById("infoUser");
-  console.log("script accountLoad.js");
   // Solicitar los datos de la sesión al archivo PHP
   fetch("/Rizzotronic/backend/app/services/sessionData.php")
     .then((response) => response.json())

@@ -3,13 +3,25 @@ export function editProduct(productId) {
   // Obtener la tarjeta del producto por ID
   const productCard = document.querySelector(`.card[data-product-id='${productId}']`);
   
+  if (!productCard) {
+    console.error(`Product card with ID ${productId} not found.`);
+    return;
+  }
+
   // Obtener los valores actuales de la tarjeta
-  const nombre = productCard.querySelector('.card-title').textContent;
-  const descripcion = productCard.querySelector('.card-text-description').textContent;
-  const precio_real = productCard.querySelector('.card-text-precio').textContent.replace('Precio: $', '');
-  const categoria = productCard.querySelector('.card-text-categoria').textContent.replace('Categoría: ', '');
-  const precio_promocionado = productCard.querySelector('.card-text-promocion') ? productCard.querySelector('.card-text-promocion').textContent.replace('Promoción: $', '') : '';
-  const vigencia_promocion = productCard.querySelector('.card-text-vigencia') ? productCard.querySelector('.card-text-vigencia').textContent.replace('Vigencia: ', '') : '';
+  const nombreElement = productCard.querySelector('.card-title');
+  const descripcionElement = productCard.querySelector('.text-gray-700');
+  const precioRealElement = productCard.querySelector('.text-gray-900');
+  const categoriaElement = productCard.querySelector('.text-gray-600');
+  const precioPromocionadoElement = productCard.querySelector('.text-red-500');
+  const vigenciaPromocionElement = productCard.querySelector('.text-gray-500');
+
+  const nombre = nombreElement ? nombreElement.textContent : '';
+  const descripcion = descripcionElement ? descripcionElement.textContent : '';
+  const precio_real = precioRealElement ? precioRealElement.textContent.replace('Precio: $', '') : '';
+  const categoria = categoriaElement ? categoriaElement.textContent.replace('Categoría: ', '') : '';
+  const precio_promocionado = precioPromocionadoElement ? precioPromocionadoElement.textContent.replace('Promoción: $', '') : '';
+  const vigencia_promocion = vigenciaPromocionElement ? vigenciaPromocionElement.textContent.replace('Vigencia: ', '') : '';
 
   // Reemplazar el contenido de la tarjeta con inputs
   productCard.innerHTML = `
