@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../../app/connection/connection.php';
 
 $sql = "SELECT * FROM producto";
@@ -11,6 +12,8 @@ if ($result->num_rows > 0) {
     }
 }
 
-echo json_encode(['products' => $products]);
+
+
+echo json_encode(['products' => $products, 'rol' => $_SESSION['rol']]);
 
 $conn->close();
