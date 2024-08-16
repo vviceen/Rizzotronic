@@ -39,15 +39,17 @@ if (!move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file)) {
 $relative_path = "../../../frontend/src/imgProduct/" . basename($_FILES["imagen"]["name"]);
 
 // Insertar el producto en la base de datos
-$stmt = $conn->prepare("INSERT INTO producto (nombre, imagen, precio_real, categoria, precio_promocionado, vigencia_promocion, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssdsdss", $nombre, $relative_path, $precio_real, $categoria, $precio_promocionado, $vigencia_promocion, $descripcion);
+$stmt = $conn->prepare("INSERT INTO producto (nombre, imagen, precio_real, categoria, precio_promocionado, vigencia_promocion, descripcion) VALUES (:nombre, :imagen, :precio_real, :categoria, :precio_promocionado, :vigencia_promocion, :descripcion)");
+$stmt->bindParam(':nombre', $nombre);
+$stmt->bindParam(':imagen', $relative_path);
+$stmt->bindParam(':precio_real', $precio_real);
+$stmt->bindParam(':categoria', $categoria);
+$stmt->bindParam(':precio_promocionado', $precio_promocionado);
+$stmt->bindParam(':vigencia_promocion', $vigencia_promocion);
+$stmt->bindParam(':descripcion', $descripcion);
 
 if ($stmt->execute()) {
     echo json_encode(['success' => true]);
 } else {
-    echo json_encode(['success' => false, 'message' => 'Error al insertar el producto: ' . $stmt->error]);
+    echo json_encode(['success' => false, 'message' => 'Error al insertar el producto: ' . $stmt->errorInfo()[2]]);
 }
-
-$stmt->close();
-$conn->close();
-?>

@@ -1,13 +1,15 @@
 <?php
-$servername = "localhost";  // El nombre del servidor
-$username = "root";         // El nombre de usuario para acceder a la base de datos
-$password = "";             // La contraseña para acceder a la base de datos
-$dbname = "proyecto3ro";    // El nombre de la base de datos
+try {
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "rizzotronic";
 
-// Crear la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("La conexión falló: " . $conn->connect_error);
+    // No imprimir ningún mensaje aquí
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+    exit();
 }

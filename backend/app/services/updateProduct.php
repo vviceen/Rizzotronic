@@ -18,14 +18,17 @@ $vigencia_promocion = $_POST['vigencia_promocion'];
 $descripcion = $_POST['descripcion'];
 
 // Actualizar el producto en la base de datos
-$stmt = $conn->prepare("UPDATE producto SET nombre = ?, precio_real = ?, categoria = ?, precio_promocionado = ?, vigencia_promocion = ?, descripcion = ? WHERE id = ?");
-$stmt->bind_param("sdsdssi", $nombre, $precio_real, $categoria, $precio_promocionado, $vigencia_promocion, $descripcion, $id);
+$stmt = $conn->prepare("UPDATE producto SET nombre = :nombre, precio_real = :precio_real, categoria = :categoria, precio_promocionado = :precio_promocionado, vigencia_promocion = :vigencia_promocion, descripcion = :descripcion WHERE id = :id");
+$stmt->bindParam(':nombre', $nombre);
+$stmt->bindParam(':precio_real', $precio_real);
+$stmt->bindParam(':categoria', $categoria);
+$stmt->bindParam(':precio_promocionado', $precio_promocionado);
+$stmt->bindParam(':vigencia_promocion', $vigencia_promocion);
+$stmt->bindParam(':descripcion', $descripcion);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
 if ($stmt->execute()) {
     echo json_encode(['success' => true]);
 } else {
-    echo json_encode(['success' => false, 'message' => 'Error al actualizar el producto: ' . $stmt->error]);
+    echo json_encode(['success' => false, 'message' => 'Error al actualizar el producto: ' . $stmt->errorInfo()[2]]);
 }
-
-$stmt->close();
-$conn->close();

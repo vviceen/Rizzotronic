@@ -12,33 +12,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Preparar y ejecutar la consulta SQL
-    $stmt = $conn->prepare("SELECT nombre, email, password, nacionalidad, nacimiento, rol FROM usuario WHERE nombre = ?");
-    $stmt->bind_param("s", $username);
+    // Preparar y ejecutar la consulta SQL con PDO
+    $stmt = $conn->prepare("SELECT nombre, email, password, nacionalidad, nacimiento, rol FROM usuario WHERE nombre = :username");
+    $stmt->bindParam(':username', $username);
     $stmt->execute();
-    $stmt->store_result();
 
     // Verificar si el usuario existe y validar la contraseña
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($db_username, $db_email, $db_password, $db_nationality, $db_birth, $db_rol);
-        $stmt->fetch();
+    if ($stmt->rowCount() > 0) {
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($password == $db_password) {
+        if ($password == $user['password']) {
             // Almacenar datos de usuario en sesión
-            $_SESSION['username'] = $db_username;
-            $_SESSION['rol'] = $db_rol;
-            $_SESSION['email'] = $db_email;
-            $_SESSION['nationality'] = $db_nationality;
-            $_SESSION['birth'] = $db_birth;
+            $_SESSION['username'] = $user['nombre'];
+            $_SESSION['rol'] = $user['rol'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['nationality'] = $user['nacionalidad'];
+            $_SESSION['birth'] = $user['nacimiento'];
 
-            echo "Login exitoso. Bienvenido, " . $db_rol . " " . $db_username;
+            echo "Login exitoso. Bienvenido, " . $user['rol'] . " " . $user['nombre'];
         } else {
             echo "Contraseña incorrecta.";
         }
     } else {
         echo "El usuario no existe.";
     }
-
-    $stmt->close();
-    $conn->close();
 }

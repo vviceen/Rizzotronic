@@ -5,19 +5,26 @@ ini_set('display_errors', 1);
 
 include '../../app/connection/connection.php';
 
-$sql = "SELECT * FROM producto";
-$result = $conn->query($sql);
+try {
+    $sql = "SELECT * FROM productos";
+    $result = $conn->query($sql);
 
-$products = [];
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $products[] = $row;
+    $products = [];
+    if ($result) {
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $products[] = $row;
+        }
     }
+
+    $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : 'cliente';
+
+    header('Content-Type: application/json');
+    echo json_encode(['products' => $products, 'rol' => $rol]);
+
+} catch (PDOException $e) {
+    // Enviar el error como JSON
+    header('Content-Type: application/json');
+    echo json_encode(['error' => $e->getMessage()]);
+} finally {
+    $conn = null;
 }
-
-$rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : 'cliente';
-
-header('Content-Type: application/json');
-echo json_encode(['products' => $products, 'rol' => $rol]);
-
-$conn->close();

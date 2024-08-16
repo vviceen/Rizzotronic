@@ -16,14 +16,11 @@ $data = json_decode(file_get_contents("php://input"), true);
 $productId = $data['id'];
 
 // Eliminar el producto de la base de datos
-$stmt = $conn->prepare("DELETE FROM producto WHERE id = ?");
-$stmt->bind_param("i", $productId);
+$stmt = $conn->prepare("DELETE FROM producto WHERE id = :id");
+$stmt->bindParam(':id', $productId, PDO::PARAM_INT);
 
 if ($stmt->execute()) {
     echo json_encode(['success' => true]);
 } else {
-    echo json_encode(['success' => false, 'message' => 'Error al eliminar el producto: ' . $stmt->error]);
+    echo json_encode(['success' => false, 'message' => 'Error al eliminar el producto: ' . $stmt->errorInfo()[2]]);
 }
-
-$stmt->close();
-$conn->close();
