@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 include '../../app/connection/connection.php';
 
 // Verificar si el usuario es vendedor
-if ($_SESSION['rol'] != 'vendedor') {
+if ($_SESSION['rol'] != '3') {
     echo json_encode(['success' => false, 'message' => 'No tienes permiso para realizar esta acción.']);
     exit;
 }
@@ -14,10 +14,11 @@ if ($_SESSION['rol'] != 'vendedor') {
 // Procesar el formulario
 $nombre = $_POST['nombre'];
 $precio_real = $_POST['precio_real'];
-$categoria = $_POST['categoria'];
-$precio_promocionado = $_POST['precio_promocionado'];
-$vigencia_promocion = $_POST['vigencia_promocion'];
+$precio_promocionado = $_POST['precio_promocionado'] ?? null;
+$vigencia_promocion = $_POST['vigencia_promocion'] ?? null;
 $descripcion = $_POST['descripcion'];
+$marca = $_POST['marca'] ?? null;
+$usuario_id = $_SESSION['username']; // Asumimos que el ID del usuario está en la sesión
 
 // Manejar la subida de la imagen
 $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/Rizzotronic/frontend/src/imgProduct/";
@@ -39,17 +40,19 @@ if (!move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file)) {
 $relative_path = "../../../frontend/src/imgProduct/" . basename($_FILES["imagen"]["name"]);
 
 // Insertar el producto en la base de datos
-$stmt = $conn->prepare("INSERT INTO producto (nombre, imagen, precio_real, categoria, precio_promocionado, vigencia_promocion, descripcion) VALUES (:nombre, :imagen, :precio_real, :categoria, :precio_promocionado, :vigencia_promocion, :descripcion)");
+$stmt = $conn->prepare("INSERT INTO productos (nombre, imagen, precio_real, precio_promocionado, vigencia_promocion, descripcion, marca, usuario_id) VALUES (:nombre, :imagen, :precio_real, :precio_promocionado, :vigencia_promocion, :descripcion, :marca, :usuario_id)");
 $stmt->bindParam(':nombre', $nombre);
 $stmt->bindParam(':imagen', $relative_path);
 $stmt->bindParam(':precio_real', $precio_real);
-$stmt->bindParam(':categoria', $categoria);
 $stmt->bindParam(':precio_promocionado', $precio_promocionado);
 $stmt->bindParam(':vigencia_promocion', $vigencia_promocion);
 $stmt->bindParam(':descripcion', $descripcion);
+$stmt->bindParam(':marca', $marca);
+$stmt->bindParam(':usuario_id', $usuario_id);
 
 if ($stmt->execute()) {
     echo json_encode(['success' => true]);
 } else {
     echo json_encode(['success' => false, 'message' => 'Error al insertar el producto: ' . $stmt->errorInfo()[2]]);
 }
+?>

@@ -1,35 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const nombreUser = document.getElementById("nombreUser");
-  const infoUser = document.getElementById("infoUser");
+const btnMyAccount = document.getElementById("btnMyAccount");
+
+btnMyAccount.addEventListener("click", () => {
+
   // Solicitar los datos de la sesión al archivo PHP
   fetch("/Rizzotronic/backend/app/services/sessionData.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.username) {
-        nombreUser.textContent = `Bienvenido, ${data.username}`;
-        infoUser.textContent = `Tu eres un ${data.rol}. Tu email es: ${data.email}`;
-
+        alert(data.rol);
         switch (data.rol) {
-          case "cliente":
+          case '2':
             window.location.href = "/Rizzotronic/frontend/src/views/customer.html";
             break;
-          case "vendedor":
+          case '3':
             window.location.href = "/Rizzotronic/frontend/src/views/sellerView.html";
             break;
-          case "admin":
+          case '4':
             window.location.href ="/Rizzotronic/frontend/src/views/adminView.html";
             break;
           default:
-            window.location.href ="default.html";
+            window.location.href ="/Rizzotronic/frontend/src/views/default.html";
             break;
         }
-      } else {
-        nombreUser.textContent = "debes iniciar sesion";
-      }
+      } 
     })
     .catch((error) => {
       console.error("Error:", error);
-      nombreUser.textContent = "Error al cargar la información de la sesión";
     });
 });
 

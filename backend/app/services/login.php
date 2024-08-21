@@ -13,8 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Preparar y ejecutar la consulta SQL con PDO
-    $stmt = $conn->prepare("SELECT nombre, email, password, nacionalidad, nacimiento, rol FROM usuario WHERE nombre = :username");
+    $stmt = $conn->prepare("SELECT nombre, email, password, rol_id FROM usuarios WHERE nombre = :username and password = :password");
     $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':password', $password);
     $stmt->execute();
 
     // Verificar si el usuario existe y validar la contraseña
@@ -24,12 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($password == $user['password']) {
             // Almacenar datos de usuario en sesión
             $_SESSION['username'] = $user['nombre'];
-            $_SESSION['rol'] = $user['rol'];
+            $_SESSION['rol'] = $user['rol_id'];
             $_SESSION['email'] = $user['email'];
-            $_SESSION['nationality'] = $user['nacionalidad'];
-            $_SESSION['birth'] = $user['nacimiento'];
 
-            echo "Login exitoso. Bienvenido, " . $user['rol'] . " " . $user['nombre'];
+            echo "Login exitoso. Bienvenido, " . $user['rol_id'] . " " . $user['nombre'];
         } else {
             echo "Contraseña incorrecta.";
         }
