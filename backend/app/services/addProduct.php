@@ -13,6 +13,8 @@ if ($_SESSION['rol'] != '3') {
 
 // Procesar el formulario
 $nombre = $_POST['nombre'];
+$informacion = $_POST['informacion'];
+$modelo = $_POST['modelo'];
 $precio_real = $_POST['precio_real'];
 $precio_promocionado = $_POST['precio_promocionado'] ?? null;
 $vigencia_promocion = $_POST['vigencia_promocion'] ?? null;
@@ -40,9 +42,11 @@ if (!move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file)) {
 $relative_path = "../../../frontend/src/imgProduct/" . basename($_FILES["imagen"]["name"]);
 
 // Insertar el producto en la base de datos
-$stmt = $conn->prepare("INSERT INTO productos (nombre, imagen, precio_real, precio_promocionado, vigencia_promocion, descripcion, marca, usuario_id) VALUES (:nombre, :imagen, :precio_real, :precio_promocionado, :vigencia_promocion, :descripcion, :marca, :usuario_id)");
+$stmt = $conn->prepare("INSERT INTO productos (nombre, imagen, informacion, modelo, precio_real, precio_promocionado, vigencia_promocion, descripcion, marca, usuario_id) VALUES (:nombre, :imagen, :informacion, :modelo, :precio_real, :precio_promocionado, :vigencia_promocion, :descripcion, :marca, :usuario_id)");
 $stmt->bindParam(':nombre', $nombre);
 $stmt->bindParam(':imagen', $relative_path);
+$stmt->bindParam(':informacion', $informacion);
+$stmt->bindParam(':modelo', $modelo);
 $stmt->bindParam(':precio_real', $precio_real);
 $stmt->bindParam(':precio_promocionado', $precio_promocionado);
 $stmt->bindParam(':vigencia_promocion', $vigencia_promocion);
@@ -55,4 +59,3 @@ if ($stmt->execute()) {
 } else {
     echo json_encode(['success' => false, 'message' => 'Error al insertar el producto: ' . $stmt->errorInfo()[2]]);
 }
-?>

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("formData: " + formData);
       console.log("evento submit js");
       const imagen = document.getElementById("imagen").files[0];
-      const allowedFormats = ["image/jpeg", "image/png", "image/gif"];
+      const allowedFormats = ["image/jpeg", "image/png", "image/jpg", "image/gif"];
 
       // Validaciones del lado del cliente
       if (!allowedFormats.includes(imagen.type)) {
