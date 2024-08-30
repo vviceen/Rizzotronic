@@ -11,8 +11,8 @@ export function editProduct(productId) {
   // Obtener los valores actuales de la tarjeta
   const nombreElement = productCard.querySelector('.card-title');
   const precioRealElement = productCard.querySelector('.card-text-precio');
-  const precioPromocionadoElement = productCard.querySelector('.text-red-500');
-  const vigenciaPromocionElement = productCard.querySelector('.text-gray-500');
+  const precioPromocionadoElement = productCard.querySelector('.card-text-promocion');
+  const vigenciaPromocionElement = productCard.querySelector('.card-text-vigencia');
 
   const nombre = nombreElement ? nombreElement.textContent : '';
   const precio_real = precioRealElement ? precioRealElement.textContent.replace('Precio: $', '') : '';
@@ -56,8 +56,9 @@ export function saveProduct(productId) {
     .then(data => {
       if (data.success) {
         location.reload(); // Recargar la página para mostrar los cambios actualizados
+        console.log("producto actualizado");  
       } else {
-        alert('Error al actualizar el producto: ' + data.message);
+        alert('Error al actualizar el producto: ' + data.debug);
       }
     })
     .catch(error => {
@@ -68,4 +69,9 @@ export function saveProduct(productId) {
 export function cancelEdit(productId) {
   // Recargar la página para cancelar la edición
   location.reload();
+}
+
+
+export function proximo(id){
+  alert("proximamente");
 }

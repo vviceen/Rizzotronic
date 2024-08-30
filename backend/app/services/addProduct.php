@@ -42,7 +42,7 @@ if (!move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file)) {
 $relative_path = "../../../frontend/src/imgProduct/" . basename($_FILES["imagen"]["name"]);
 
 // Insertar el producto en la base de datos
-$stmt = $conn->prepare("INSERT INTO productos (nombre, imagen, informacion, modelo, precio_real, precio_promocionado, vigencia_promocion, descripcion, marca, usuario_id) VALUES (:nombre, :imagen, :informacion, :modelo, :precio_real, :precio_promocionado, :vigencia_promocion, :descripcion, :marca, :usuario_id)");
+$stmt = $conn->prepare("INSERT INTO productos (nombre, imagen, informacion, modelo, precio_real, precio_promocionado, vigencia_promocion, descripcion, marca) VALUES (:nombre, :imagen, :informacion, :modelo, :precio_real, :precio_promocionado, :vigencia_promocion, :descripcion, :marca)");
 $stmt->bindParam(':nombre', $nombre);
 $stmt->bindParam(':imagen', $relative_path);
 $stmt->bindParam(':informacion', $informacion);
@@ -52,7 +52,6 @@ $stmt->bindParam(':precio_promocionado', $precio_promocionado);
 $stmt->bindParam(':vigencia_promocion', $vigencia_promocion);
 $stmt->bindParam(':descripcion', $descripcion);
 $stmt->bindParam(':marca', $marca);
-$stmt->bindParam(':usuario_id', $usuario_id);
 
 if ($stmt->execute()) {
     echo json_encode(['success' => true]);

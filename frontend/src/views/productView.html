@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product View</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <div class="drawer">
+        <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col">
+          <!-- Navbar -->
+          <div class="navbar bg-base-300 w-full flex items-center justify-between">
+            <div class="flex-none lg:hidden">
+              <label
+                for="my-drawer-3"
+                aria-label="open sidebar"
+                class="btn btn-square btn-ghost"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  class="inline-block h-6 w-6 stroke-current"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  ></path>
+                </svg>
+              </label>
+            </div>
+            <img src="../assets/rizzotronic.svg" class="object-contain h-11">
+            <div class="hidden flex-none lg:block">
+              <ul class="menu menu-horizontal">
+                <!-- Navbar menu content here -->
+                <li><a href="../../public/index.html">Home</a></li>
+                <li><a href="../views/login.html">Iniciar Sesión</a></li>
+                <li><a href="../views/register.html">Crear Cuenta</a></li>
+                <li><a href="../src/views/myAccount.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
+                    <path d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z" stroke="currentColor" stroke-width="1.5" />
+                </svg> 
+            </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container mx-auto mt-10">
+        <div class="flex flex-wrap -mx-4">
+            <!-- Imagen del Producto -->
+            <div class="w-full md:w-1/2 px-4">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img id="product-image" class="w-full object-cover" src="" alt="Imagen del Producto">
+                </div>
+            </div>
+
+            <!-- Información del Producto -->
+            <div class="w-full md:w-1/2 px-4">
+                <div class="bg-white shadow-lg rounded-lg p-6">
+                    <h2 class="text-3xl font-bold mb-2" id="product-name"></h2>
+                    <p class="text-gray-700 mb-4" id="product-description"></p>
+                    <p class="text-gray-900 text-2xl font-bold mb-4" id="product-price"></p>
+                    <p class="text-red-500 text-xl mb-4" id="product-promotion"></p>
+                    <p class="text-gray-500 text-sm mb-4" id="product-promotion-end"></p>
+                    <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">Agregar al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../backend/app/controllers/products/productView.js"></script>
+</body>
+</html>

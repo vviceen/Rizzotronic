@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (data.success) {
             alert("Producto agregado exitosamente");
             // Limpiar el formulario
-            // document.getElementById('addProductForm').reset();
+            document.getElementById('addProductForm').reset();
           } else {
             alert("Error al agregar el producto: " + data.message);
           }
