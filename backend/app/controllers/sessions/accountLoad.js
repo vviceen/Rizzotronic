@@ -1,7 +1,6 @@
 const btnMyAccount = document.getElementById("btnMyAccount");
 
 btnMyAccount.addEventListener("click", () => {
-
   // Solicitar los datos de la sesión al archivo PHP
   fetch("/Rizzotronic/backend/app/services/sessionData.php")
     .then((response) => response.json())
@@ -9,23 +8,29 @@ btnMyAccount.addEventListener("click", () => {
       if (data.username) {
         alert(data.rol);
         switch (data.rol) {
-          case '2':
-            window.location.href = "/Rizzotronic/frontend/src/views/customer.html";
+
+          /*
+          1- admin
+          2- vendedor
+          3- cliente
+          */
+
+          case "1":
+            window.location.href =
+              "/Rizzotronic/frontend/src/views/adminView.html";
             break;
-          case '3':
-            window.location.href = "/Rizzotronic/frontend/src/views/sellerView.html";
-            break;
-          case '4':
-            window.location.href ="/Rizzotronic/frontend/src/views/adminView.html";
+          case "2":
+            window.location.href =
+              "/Rizzotronic/frontend/src/views/sellerView.html";
             break;
           default:
-            window.location.href ="/Rizzotronic/frontend/src/views/default.html";
+            window.location.href =
+              "/Rizzotronic/frontend/src/views/customer.html";
             break;
         }
-      } 
+      }
     })
     .catch((error) => {
       console.error("Error:", error);
     });
 });
-

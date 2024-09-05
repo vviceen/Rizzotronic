@@ -2,8 +2,7 @@
 module.exports = {
   content: [
     "./public/**/*.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./src/**/*.{html,js}",
+    "./src/**/*.{js,ts,jsx,tsx,html}",
     "../backend/app/**/*.{html,js}"
   ],
   daisyui: {
