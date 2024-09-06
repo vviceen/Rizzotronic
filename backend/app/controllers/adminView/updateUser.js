@@ -21,18 +21,24 @@ export function saveUser(userId) {
       method: 'POST',
       body: formData,
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          location.reload(); // Recargar la página para mostrar los cambios actualizados
-          console.log("Usuario actualizado");  
-        } else {
-          alert('Error al actualizar el usuario: ' + data.debug);
+      .then(response => response.text()) // Cambia .json() por .text() temporalmente
+      .then(text => {
+        console.log('Respuesta del servidor:', text); // Imprime la respuesta
+        try {
+          const data = JSON.parse(text); // Intenta parsear la respuesta
+          if (data.success) {
+            location.reload(); // Recargar la página si el usuario fue actualizado
+          } else {
+            alert('Error al actualizar el usuario: ' + data.debug);
+          }
+        } catch (error) {
+          console.error('Error al parsear JSON:', error, text); // Mostrar el error y el texto recibido
         }
       })
       .catch(error => {
-        console.error('Error:', error);
+        console.error('Error en la solicitud:', error);
       });
+    
   }
   
   export function cancelEdit(userId) {

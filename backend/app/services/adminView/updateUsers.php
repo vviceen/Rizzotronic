@@ -1,4 +1,8 @@
-<?php
+<?php 
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // Conexión a la base de datos
 include '../../../app/connection/connection.php';
@@ -16,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!empty($userId) && !empty($nombre) && !empty($email) && !empty($rol_id)) {
             // Preparar la consulta SQL con PDO para actualizar al usuario
             $sql = "UPDATE usuarios SET nombre = :nombre, email = :email, rol_id = :rol_id WHERE id = :id";
-            $stmt = $pdo->prepare($sql);
+            $stmt = $conn->prepare($sql);
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':rol_id', $rol_id);
@@ -38,15 +42,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-    // Capturar toda la salida no deseada
-    $output = ob_get_clean();
-    $response = ['success' => true];
-
-    // Si hay alguna salida inesperada, añádela al JSON de respuesta para depurar
-    if (!empty($output)) {
-        $response['debug'] = $output;
-        $response['success'] = false;
-    }
-
-    header('Content-Type: application/json');
-    echo json_encode($response);
+header('Content-Type: application/json');
+echo json_encode($response);
