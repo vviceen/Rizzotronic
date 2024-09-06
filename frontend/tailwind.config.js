@@ -18,10 +18,11 @@ module.exports = {
           "success": "#00d573",
           "warning": "#d64c00",       
           "error": "#da003d",
-          },
+          "red":"#fa0000"
         },
-      ],
-    },
+      },
+    ],
+  },
   theme: {
     colors: {
       "primary": "#FAA916",
