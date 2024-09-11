@@ -14,14 +14,29 @@
     }
   </style>
 
+  <style>
+    .sidebar {
+      width: 250px;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+      padding: 1rem;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .checkbox-label input {
+      margin-right: 0.5rem;
+    }
+  </style>
+
   <body>
     <div class="drawer">
       <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content flex flex-col">
         <!-- Navbar -->
-        <div
-          class="navbar bg-primary w-full flex items-center justify-between"
-        >
+        <div class="navbar bg-primary w-full flex items-center justify-between">
           <div class="flex-none lg:hidden">
             <label
               for="my-drawer-3"
@@ -80,235 +95,281 @@
             </ul>
           </div>
         </div>
-        <!-- Page content here -->
-        <div
-          class="hero min-h-screen"
-          style="
-            background-image: url(https://thotcomputacion.com.uy/wp-content/uploads/2024/05/GygabyteG5_BannerWeb-1.png);
-          "
-        >
-          <div class="hero-overlay bg-opacity-60"></div>
-          <div class="hero-content text-neutral-content text-center">
-            <div class="max-w-md">
-              <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
-              <p class="mb-5">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
-              </p>
-              <button class="btn btn-primary">Get Started</button>
+      </div>
+    </div>
+
+    <!-- Page content here -->
+    <div
+      class="hero min-h-screen"
+      style="
+        background-image: url(https://thotcomputacion.com.uy/wp-content/uploads/2024/05/GygabyteG5_BannerWeb-1.png);
+      "
+    >
+      <div class="hero-overlay bg-opacity-60"></div>
+      <div class="hero-content text-neutral-content text-center">
+        <div class="max-w-md">
+          <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+          <p class="mb-5">
+            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
+            a id nisi.
+          </p>
+          <button class="btn btn-primary">Get Started</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mx-auto p-4">
+      <div class="flex">
+        <!-- Sidebar -->
+        <div class="sidebar w-1/4">
+          <h2 class="text-lg font-semibold mb-4">Filtros</h2>
+
+          <!-- Search Input -->
+          <div class="mb-6">
+            <label for="search" class="block text-sm font-medium mb-2"
+              >Buscar:</label
+            >
+            <input
+              type="text"
+              id="search"
+              placeholder="Buscar productos..."
+              class="w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+
+          <!-- Checkbox Filters -->
+          <div>
+            <h3 class="text-md font-semibold mb-3">Categorías</h3>
+            <div class="checkbox-label">
+              <input type="checkbox" id="cat1" />
+              <label for="cat1">Electrónica</label>
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" id="cat2" />
+              <label for="cat2">Ropa</label>
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" id="cat3" />
+              <label for="cat3">Hogar</label>
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" id="cat4" />
+              <label for="cat4">Juguetes</label>
             </div>
           </div>
         </div>
 
-        <div class="container mx-auto p-4">
+        <!-- Product List -->
+        <div class="flex-1 p-4 w-3/4">
           <div
             id="product-list"
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4"
           >
-            <!-- Aquí se insertarán las cards de los productos -->
+            <!-- Aquí se cargaran las cards de los productos -->
           </div>
         </div>
+      </div>
+    </div>
 
-        <footer class="footer bg-base-200 text-base-content p-10">
-          <aside>
-            <svg
-              width="85"
-              height="85"
-              viewBox="0 0 168 168"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+    <footer class="footer bg-base-200 text-base-content p-10">
+      <aside>
+        <svg
+          width="85"
+          height="85"
+          viewBox="0 0 168 168"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g filter="url(#filter0_i_10_4)">
+            <rect
+              x="22"
+              y="22"
+              width="124"
+              height="124"
+              rx="17"
+              stroke="#201600"
+              stroke-width="6"
+              stroke-linejoin="round"
+            />
+            <mask id="path-2-inside-1_10_4" fill="white">
+              <rect x="38" y="37" width="92" height="92" rx="4" />
+            </mask>
+            <rect
+              x="38"
+              y="37"
+              width="92"
+              height="92"
+              rx="4"
+              stroke="#201600"
+              stroke-width="12"
+              stroke-linejoin="round"
+              mask="url(#path-2-inside-1_10_4)"
+            />
+            <path
+              d="M87 3C87 1.34315 85.6569 -2.38419e-07 84 -2.38419e-07C82.3431 -2.38419e-07 81 1.34315 81 3H87ZM87 19V3H81V19H87Z"
+              fill="#201600"
+            />
+            <path
+              d="M123 3C123 1.34315 121.657 -2.38419e-07 120 -2.38419e-07C118.343 -2.38419e-07 117 1.34315 117 3H123ZM123 19V3H117V19H123Z"
+              fill="#201600"
+            />
+            <path
+              d="M105 3C105 1.34315 103.657 -2.38419e-07 102 -2.38419e-07C100.343 -2.38419e-07 99 1.34315 99 3H105ZM105 19V3H99V19H105Z"
+              fill="#201600"
+            />
+            <path
+              d="M69 3C69 1.34315 67.6569 -2.38419e-07 66 -2.38419e-07C64.3431 -2.38419e-07 63 1.34315 63 3H69ZM69 19V3H63V19H69Z"
+              fill="#201600"
+            />
+            <path
+              d="M51 3C51 1.34315 49.6569 -2.38419e-07 48 -2.38419e-07C46.3431 -2.38419e-07 45 1.34315 45 3H51ZM51 19V3H45V19H51Z"
+              fill="#201600"
+            />
+            <path
+              d="M3 80C1.34315 80 -2.38419e-07 81.3431 -2.38419e-07 83C-2.38419e-07 84.6569 1.34315 86 3 86V80ZM19 80H3V86H19V80Z"
+              fill="#201600"
+            />
+            <path
+              d="M3 44C1.34315 44 -2.38419e-07 45.3431 -2.38419e-07 47C-2.38419e-07 48.6569 1.34315 50 3 50V44ZM19 44H3V50H19V44Z"
+              fill="#201600"
+            />
+            <path
+              d="M3 62C1.34315 62 -2.38419e-07 63.3431 -2.38419e-07 65C-2.38419e-07 66.6569 1.34315 68 3 68V62ZM19 62H3V68H19V62Z"
+              fill="#201600"
+            />
+            <path
+              d="M3 98C1.34315 98 -2.38419e-07 99.3431 -2.38419e-07 101C-2.38419e-07 102.657 1.34315 104 3 104V98ZM19 98H3V104H19V98Z"
+              fill="#201600"
+            />
+            <path
+              d="M3 116C1.34315 116 -2.38419e-07 117.343 -2.38419e-07 119C-2.38419e-07 120.657 1.34315 122 3 122V116ZM19 116H3V122H19V116Z"
+              fill="#201600"
+            />
+            <path
+              d="M81 165C81 166.657 82.3431 168 84 168C85.6569 168 87 166.657 87 165H81ZM81 149V165H87V149H81Z"
+              fill="#201600"
+            />
+            <path
+              d="M45 165C45 166.657 46.3431 168 48 168C49.6569 168 51 166.657 51 165H45ZM45 149V165H51V149H45Z"
+              fill="#201600"
+            />
+            <path
+              d="M63 165C63 166.657 64.3431 168 66 168C67.6569 168 69 166.657 69 165H63ZM63 149V165H69V149H63Z"
+              fill="#201600"
+            />
+            <path
+              d="M99 165C99 166.657 100.343 168 102 168C103.657 168 105 166.657 105 165H99ZM99 149V165H105V149H99Z"
+              fill="#201600"
+            />
+            <path
+              d="M117 165C117 166.657 118.343 168 120 168C121.657 168 123 166.657 123 165H117ZM117 149V165H123V149H117Z"
+              fill="#201600"
+            />
+            <path
+              d="M165 86C166.657 86 168 84.6569 168 83C168 81.3431 166.657 80 165 80V86ZM149 86H165V80H149V86Z"
+              fill="#201600"
+            />
+            <path
+              d="M165 122C166.657 122 168 120.657 168 119C168 117.343 166.657 116 165 116V122ZM149 122H165V116H149V122Z"
+              fill="#201600"
+            />
+            <path
+              d="M165 104C166.657 104 168 102.657 168 101C168 99.3431 166.657 98 165 98V104ZM149 104H165V98H149V104Z"
+              fill="#201600"
+            />
+            <path
+              d="M165 68C166.657 68 168 66.6569 168 65C168 63.3431 166.657 62 165 62V68ZM149 68H165V62H149V68Z"
+              fill="#201600"
+            />
+            <path
+              d="M165 50C166.657 50 168 48.6569 168 47C168 45.3431 166.657 44 165 44V50ZM149 50H165V44H149V50Z"
+              fill="#201600"
+            />
+          </g>
+          <defs>
+            <filter
+              id="filter0_i_10_4"
+              x="0"
+              y="0"
+              width="168"
+              height="172"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
             >
-              <g filter="url(#filter0_i_10_4)">
-                <rect
-                  x="22"
-                  y="22"
-                  width="124"
-                  height="124"
-                  rx="17"
-                  stroke="#201600"
-                  stroke-width="6"
-                  stroke-linejoin="round"
-                />
-                <mask id="path-2-inside-1_10_4" fill="white">
-                  <rect x="38" y="37" width="92" height="92" rx="4" />
-                </mask>
-                <rect
-                  x="38"
-                  y="37"
-                  width="92"
-                  height="92"
-                  rx="4"
-                  stroke="#201600"
-                  stroke-width="12"
-                  stroke-linejoin="round"
-                  mask="url(#path-2-inside-1_10_4)"
-                />
-                <path
-                  d="M87 3C87 1.34315 85.6569 -2.38419e-07 84 -2.38419e-07C82.3431 -2.38419e-07 81 1.34315 81 3H87ZM87 19V3H81V19H87Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M123 3C123 1.34315 121.657 -2.38419e-07 120 -2.38419e-07C118.343 -2.38419e-07 117 1.34315 117 3H123ZM123 19V3H117V19H123Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M105 3C105 1.34315 103.657 -2.38419e-07 102 -2.38419e-07C100.343 -2.38419e-07 99 1.34315 99 3H105ZM105 19V3H99V19H105Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M69 3C69 1.34315 67.6569 -2.38419e-07 66 -2.38419e-07C64.3431 -2.38419e-07 63 1.34315 63 3H69ZM69 19V3H63V19H69Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M51 3C51 1.34315 49.6569 -2.38419e-07 48 -2.38419e-07C46.3431 -2.38419e-07 45 1.34315 45 3H51ZM51 19V3H45V19H51Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M3 80C1.34315 80 -2.38419e-07 81.3431 -2.38419e-07 83C-2.38419e-07 84.6569 1.34315 86 3 86V80ZM19 80H3V86H19V80Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M3 44C1.34315 44 -2.38419e-07 45.3431 -2.38419e-07 47C-2.38419e-07 48.6569 1.34315 50 3 50V44ZM19 44H3V50H19V44Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M3 62C1.34315 62 -2.38419e-07 63.3431 -2.38419e-07 65C-2.38419e-07 66.6569 1.34315 68 3 68V62ZM19 62H3V68H19V62Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M3 98C1.34315 98 -2.38419e-07 99.3431 -2.38419e-07 101C-2.38419e-07 102.657 1.34315 104 3 104V98ZM19 98H3V104H19V98Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M3 116C1.34315 116 -2.38419e-07 117.343 -2.38419e-07 119C-2.38419e-07 120.657 1.34315 122 3 122V116ZM19 116H3V122H19V116Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M81 165C81 166.657 82.3431 168 84 168C85.6569 168 87 166.657 87 165H81ZM81 149V165H87V149H81Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M45 165C45 166.657 46.3431 168 48 168C49.6569 168 51 166.657 51 165H45ZM45 149V165H51V149H45Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M63 165C63 166.657 64.3431 168 66 168C67.6569 168 69 166.657 69 165H63ZM63 149V165H69V149H63Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M99 165C99 166.657 100.343 168 102 168C103.657 168 105 166.657 105 165H99ZM99 149V165H105V149H99Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M117 165C117 166.657 118.343 168 120 168C121.657 168 123 166.657 123 165H117ZM117 149V165H123V149H117Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M165 86C166.657 86 168 84.6569 168 83C168 81.3431 166.657 80 165 80V86ZM149 86H165V80H149V86Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M165 122C166.657 122 168 120.657 168 119C168 117.343 166.657 116 165 116V122ZM149 122H165V116H149V122Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M165 104C166.657 104 168 102.657 168 101C168 99.3431 166.657 98 165 98V104ZM149 104H165V98H149V104Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M165 68C166.657 68 168 66.6569 168 65C168 63.3431 166.657 62 165 62V68ZM149 68H165V62H149V68Z"
-                  fill="#201600"
-                />
-                <path
-                  d="M165 50C166.657 50 168 48.6569 168 47C168 45.3431 166.657 44 165 44V50ZM149 50H165V44H149V50Z"
-                  fill="#201600"
-                />
-              </g>
-              <defs>
-                <filter
-                  id="filter0_i_10_4"
-                  x="0"
-                  y="0"
-                  width="168"
-                  height="172"
-                  filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
-                >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                  <feBlend
-                    mode="normal"
-                    in="SourceGraphic"
-                    in2="BackgroundImageFix"
-                    result="shape"
-                  />
-                  <feColorMatrix
-                    in="SourceAlpha"
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                    result="hardAlpha"
-                  />
-                  <feOffset dy="4" />
-                  <feGaussianBlur stdDeviation="2" />
-                  <feComposite
-                    in2="hardAlpha"
-                    operator="arithmetic"
-                    k2="-1"
-                    k3="1"
-                  />
-                  <feColorMatrix
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in2="shape"
-                    result="effect1_innerShadow_10_4"
-                  />
-                </filter>
-              </defs>
-            </svg>
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha"
+              />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="2" />
+              <feComposite
+                in2="hardAlpha"
+                operator="arithmetic"
+                k2="-1"
+                k3="1"
+              />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+              />
+              <feBlend
+                mode="normal"
+                in2="shape"
+                result="effect1_innerShadow_10_4"
+              />
+            </filter>
+          </defs>
+        </svg>
 
-            <p>
-              Rizzotronic S.A.
-              <br />
-              Brindando lo ultimo en tecnologia desde 2004
-            </p>
-          </aside>
-          <nav>
-            <h6 class="footer-title">Services</h6>
-            <a class="link link-hover">Branding</a>
-            <a class="link link-hover">Design</a>
-            <a class="link link-hover">Marketing</a>
-            <a class="link link-hover">Advertisement</a>
-          </nav>
-          <nav>
-            <h6 class="footer-title">Company</h6>
-            <a class="link link-hover">About us</a>
-            <a class="link link-hover">Contact</a>
-            <a class="link link-hover">Jobs</a>
-            <a class="link link-hover">Press kit</a>
-          </nav>
-          <nav>
-            <h6 class="footer-title">Legal</h6>
-            <a class="link link-hover">Terms of use</a>
-            <a class="link link-hover">Privacy policy</a>
-            <a class="link link-hover">Cookie policy</a>
-          </nav>
-        </footer>
-      </div>
-      <div class="drawer-side">
-        <label
-          for="my-drawer-3"
-          aria-label="close sidebar"
-          class="drawer-overlay"
-        ></label>
-        <ul class="menu bg-base-200 min-h-full w-80 p-4">
-          <!-- Sidebar content here -->
-          <li><a href="../src/views/login.html">Iniciar Sesión</a></li>
-          <li><a href="../src/views/register.html">Crear Cuenta</a></li>
-        </ul>
-      </div>
+        <p>
+          Rizzotronic S.A.
+          <br />
+          Brindando lo ultimo en tecnologia desde 2004
+        </p>
+      </aside>
+      <nav>
+        <h6 class="footer-title">Services</h6>
+        <a class="link link-hover">Branding</a>
+        <a class="link link-hover">Design</a>
+        <a class="link link-hover">Marketing</a>
+        <a class="link link-hover">Advertisement</a>
+      </nav>
+      <nav>
+        <h6 class="footer-title">Company</h6>
+        <a class="link link-hover">About us</a>
+        <a class="link link-hover">Contact</a>
+        <a class="link link-hover">Jobs</a>
+        <a class="link link-hover">Press kit</a>
+      </nav>
+      <nav>
+        <h6 class="footer-title">Legal</h6>
+        <a class="link link-hover">Terms of use</a>
+        <a class="link link-hover">Privacy policy</a>
+        <a class="link link-hover">Cookie policy</a>
+      </nav>
+    </footer>
+    <!--sidebar de menu responsive-->
+    <div class="drawer-side">
+      <label
+        for="my-drawer-3"
+        aria-label="close sidebar"
+        class="drawer-overlay"
+      ></label>
+      <ul class="menu bg-base-200 min-h-full w-80 p-4">
+        <!-- Sidebar content here -->
+        <li><a href="../src/views/login.html">Iniciar Sesión</a></li>
+        <li><a href="../src/views/register.html">Crear Cuenta</a></li>
+      </ul>
     </div>
 
     <script

@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
           }
 
           const userCard = `
-            <div class="card max-w-sm rounded overflow-hidden shadow-lg my-4 " data-user-id="${user.id}">
-              <div class="px-6 ${cardColor} py-4">
+            <div class="card max-w-sm rounded overflow-hidden shadow-lg my-4 ${cardColor} " data-user-id="${user.id}">
+              <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2 card-title">${user.nombre}</div>
                 <p class="text-gray-900 text-lg font-semibold card-text-email">Email: ${user.email}</p>
                 <p class="text-gray-900 text-lg font-semibold card-text-rol">Rol ID: ${user.rol_id}</p>
