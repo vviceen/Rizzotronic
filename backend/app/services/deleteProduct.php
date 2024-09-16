@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 include '../../app/connection/connection.php';
 
 //Verificar si el usuario es vendedor
-if ($_SESSION['rol'] != '3') {
+if ($_SESSION['rol'] != '2') {
     echo json_encode(['success' => false, 'message' => 'No tienes permiso para realizar esta acción.']);
     exit;
 }

@@ -2,8 +2,7 @@
 module.exports = {
   content: [
     "./public/**/*.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./src/**/*.{html,js}",
+    "./src/**/*.{js,ts,jsx,tsx,html}",
     "../backend/app/**/*.{html,js}"
   ],
   daisyui: {
@@ -19,10 +18,11 @@ module.exports = {
           "success": "#00d573",
           "warning": "#d64c00",
           "error": "#da003d",
-          },
+          "red":"#fa0000"
         },
-      ],
-    },
+      },
+    ],
+  },
   theme: {
     colors: {
       "primary": "#FAA916",

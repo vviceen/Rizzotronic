@@ -1,13 +1,13 @@
 import { editProduct, saveProduct, cancelEdit, proximo } from './editProduct.js';
 import { deleteProduct } from './deleteProduct.js';
+import { agregarProducto } from '../carrito/agregarProducto.js';
 
 window.editProduct = editProduct;
 window.saveProduct = saveProduct;
 window.cancelEdit = cancelEdit;
 window.deleteProduct = deleteProduct;
 window.proximo = proximo;
-
-
+window.agregarProducto = agregarProducto;
 
 
 document.addEventListener("DOMContentLoaded", function () {

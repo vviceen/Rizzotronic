@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de Compras</title>
+  <link href="../../public/css/output.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Vistas del cliente</h1>
-    <p id="nombreUser"></p>
-    <p id="infoUser"></p>
+  <h1>Carrito de Compras</h1>
+  <div id="carrito-container"></div>
 
-    <button id="closeSession" class="btn">Cerrar Sesión</button>
-    <script src="../../../backend/app/controllers/sessions/logout.js"></script>
+  <script type="module" src="../../../backend/app/controllers/carrito/mostrarCarrito.js"></script>
+  <script type="module" src="../../../backend/app/controllers/carrito/eliminarProducto.js"></script>
 </body>
 </html>

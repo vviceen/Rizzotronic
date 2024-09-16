@@ -4,10 +4,8 @@ document.getElementById('registerForm').addEventListener('submit', function(even
     const nombre = document.getElementById('nombre').value.trim();
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
-    const nacionalidad = document.getElementById('nacionalidad').value.trim();
-    const nacimiento = document.getElementById('nacimiento').value.trim();
 
-    if (!nombre || !email || !password || !nacionalidad || !nacimiento) {
+    if (!nombre || !email || !password) {
         alert('Por favor, complete todos los campos.');
         return;
     }
@@ -16,8 +14,6 @@ document.getElementById('registerForm').addEventListener('submit', function(even
         nombre: nombre,
         email: email,
         password: password,
-        nacionalidad: nacionalidad,
-        nacimiento: nacimiento
     };
 
     fetch('/Rizzotronic/backend/app/services/register.php', {
@@ -29,7 +25,11 @@ document.getElementById('registerForm').addEventListener('submit', function(even
     })
     .then(response => response.text())
     .then(result => {
-        alert(result);
+        if (result.includes("Registro exitoso.")) { // Verifica si el registro fue exitoso
+            document.getElementById('nombre').value = "";
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+        }
     })
     .catch(error => {
         console.error('Error:', error);
