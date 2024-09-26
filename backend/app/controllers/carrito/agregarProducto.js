@@ -1,10 +1,20 @@
-
-// agregarProducto.js
 export function agregarProducto(productoId) {
-  console.log("producto " + productoId);
+  const email = localStorage.getItem('userEmail');
+  if (!email) {
+    alert('No se ha encontrado el email del usuario.');
+    return;
+  }
 
-  // Obtener el carrito actual de localStorage
-  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  console.log("producto " + productoId + " email " + email);
+
+  // Verificar si localStorage está disponible
+  if (typeof localStorage === 'undefined') {
+    console.error("localStorage no está disponible.");
+    return;
+  }
+
+  // Obtener el carrito actual del usuario de localStorage
+  let carrito = JSON.parse(localStorage.getItem(`carrito_${email}`)) || [];
 
   // Verificar si el producto ya está en el carrito
   const productoExistente = carrito.find(producto => producto.id === productoId);
@@ -18,7 +28,7 @@ export function agregarProducto(productoId) {
   }
 
   // Guardar el carrito actualizado en localStorage
-  localStorage.setItem('carrito', JSON.stringify(carrito));
+  localStorage.setItem(`carrito_${email}`, JSON.stringify(carrito));
 
-  console.log("Producto agregado al carrito:", carrito);
+  console.log("Producto agregado al carrito:", email, carrito);
 }

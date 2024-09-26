@@ -1,7 +1,15 @@
 // eliminarProducto.js
 
-function eliminarProducto(productId) {
-  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+import { mostrarCarrito } from './mostrarCarrito.js';
+
+export function eliminarProducto(productId) {
+  const email = localStorage.getItem('userEmail');
+  if (!email) {
+    alert('No se ha encontrado el email del usuario.');
+    return;
+  }
+
+  let carrito = JSON.parse(localStorage.getItem(`carrito_${email}`)) || [];
   const productoIndex = carrito.findIndex(producto => producto.id === productId);
 
   if (productoIndex !== -1) {
@@ -10,9 +18,7 @@ function eliminarProducto(productId) {
     } else {
       carrito = carrito.filter(producto => producto.id !== productId);
     }
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    mostrarCarrito(); // Asegúrate de que mostrarCarrito esté disponible en el ámbito global
+    localStorage.setItem(`carrito_${email}`, JSON.stringify(carrito));
+    mostrarCarrito(); 
   }
-}
-
-export { eliminarProducto };
+} 

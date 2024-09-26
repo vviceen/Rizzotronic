@@ -1,23 +1,22 @@
 // mostrarCarrito.js
 
-//hay que manejar el stock de los productos y modificar la base de datos
-//tambien hay que modificar el precio total del carrito
-
-
 import { eliminarProducto } from './eliminarProducto.js';
+import { getUserInfo } from '../sessions/userInfo.js';
 
 window.eliminarProducto = eliminarProducto;
-document.addEventListener('DOMContentLoaded', mostrarCarrito);
+window.getUserInfo = getUserInfo;
 
-function mostrarCarrito() {
-  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-  const carritoContainer = document.getElementById('carrito-container');
-  carritoContainer.innerHTML = '';
-
-  if (carrito.length === 0) {
-    carritoContainer.innerHTML = '<p>El carrito está vacío.</p>';
+export function mostrarCarrito() { // Asegúrate de exportar la función
+  const email = localStorage.getItem('userEmail');
+  if (!email) {
+    alert('No se ha encontrado el email del usuario.');
     return;
   }
+
+  const carrito = JSON.parse(localStorage.getItem(`carrito_${email}`)) || [];
+  console.log('Carrito enviado:', carrito); // Verificar el contenido del carrito
+  const carritoContainer = document.getElementById('carrito-container');
+  carritoContainer.innerHTML = '';
 
   fetch("/Rizzotronic/backend/app/services/carrito/getProduct.php", {
     method: "POST",
@@ -26,10 +25,18 @@ function mostrarCarrito() {
     },
     body: JSON.stringify(carrito),
   })
-    .then((response) => response.text())
-    .then((data) => {
-      console.log(data);
-      const productos = JSON.parse(data);
+    .then((response) => response.json())
+    .then((productos) => {
+      if (productos.error) {
+        console.error('Error al obtener los productos:', productos.error);
+        return;
+      }
+
+      if (productos.length === 0) {
+        carritoContainer.innerHTML = '<p>El carrito está vacío.</p>';
+        return;
+      }
+
       productos.forEach((producto) => {
         const productoElement = document.createElement("div");
         productoElement.classList.add("producto");
@@ -53,3 +60,11 @@ function mostrarCarrito() {
 }
 
 window.mostrarCarrito = mostrarCarrito;
+
+document.addEventListener('DOMContentLoaded', mostrarCarrito);
+
+const userData = getUserInfo();
+userData.then((data) => {
+  const email = data.email;
+  localStorage.setItem('userEmail', email);
+});

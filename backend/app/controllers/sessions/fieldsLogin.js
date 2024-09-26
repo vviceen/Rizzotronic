@@ -21,14 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('/Rizzotronic/backend/app/services/login.php', {
             method: 'POST',
             body: formData
-        })  
-        .then(response => response.text())
-        .then(data => {
-            console.log(data);
-            // Puedes manejar la respuesta del servidor aquí
-            alert(data); // Muestra la respuesta del servidor en una alerta (puedes cambiar esto según tus necesidades)
-            window.location.href = '/Rizzotronic/frontend/public/index.html';
-        })
-        .catch(error => console.error('Error:', error));
-    });
-});
+          })  
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+                alert('Inicio de sesión exitoso');
+              localStorage.setItem('userEmail', data.email); // Guardar el email en localStorage
+              window.location.href = '/Rizzotronic/frontend/public/index.html';
+            } else {
+              alert('Error al iniciar sesión');
+            }
+          })
+          .catch(error => console.error('Error:', error));
+        });
+      });

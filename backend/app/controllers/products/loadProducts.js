@@ -1,6 +1,8 @@
 import { editProduct, saveProduct, cancelEdit, proximo } from './editProduct.js';
 import { deleteProduct } from './deleteProduct.js';
 import { agregarProducto } from '../carrito/agregarProducto.js';
+import { getUserInfo } from '../sessions/userInfo.js';
+
 
 window.editProduct = editProduct;
 window.saveProduct = saveProduct;
@@ -9,8 +11,8 @@ window.deleteProduct = deleteProduct;
 window.proximo = proximo;
 window.agregarProducto = agregarProducto;
 
-
 document.addEventListener("DOMContentLoaded", function () {
+
   fetch("/Rizzotronic/backend/app/services/getProducts.php")
     .then((response) => response.json())
     .then((data) => {
@@ -39,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="proximo(${product.id})">Editar Producto</button>
                   ` : `
                     <a class="btn btn-primary mr-4 mb-3" href="../../frontend/src/views/productView.html?id=${product.id}">Ver Más</a>
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded" onclick="agregarProducto(${product.id})">Agregar al carrito</button>
                   `}
               </div>
             </div>

@@ -2,13 +2,15 @@
 session_start();
 include '../connection/connection.php';
 
+header('Content-Type: application/json');
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validar que los campos no estén vacíos
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
     if (empty($username) || empty($password)) {
-        echo "Todos los campos son requeridos.";
+        echo json_encode(['success' => false, 'message' => 'Todos los campos son requeridos.']);
         exit;
     }
 
@@ -28,11 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['rol'] = $user['rol_id'];
             $_SESSION['email'] = $user['email'];
 
-            echo "Login exitoso. Bienvenido, " . $user['rol_id'] . " " . $user['nombre'];
+            echo json_encode(['success' => true, 'email' => $user['email']]);
         } else {
-            echo "Contraseña incorrecta.";
+            echo json_encode(['success' => false, 'message' => 'Contraseña incorrecta.']);
         }
     } else {
-        echo "El usuario no existe.";
+        echo json_encode(['success' => false, 'message' => 'El usuario no existe.']);
     }
 }
+?>
