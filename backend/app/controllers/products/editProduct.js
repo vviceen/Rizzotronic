@@ -10,22 +10,22 @@ export function editProduct(productId) {
 
   // Obtener los valores actuales de la tarjeta
   const nombreElement = productCard.querySelector('.card-title');
-  const precioRealElement = productCard.querySelector('.card-text-precio');
-  const precioPromocionadoElement = productCard.querySelector('.card-text-promocion');
-  const vigenciaPromocionElement = productCard.querySelector('.card-text-vigencia');
+  const precioRealElement = productCard.querySelector('.card-text-precio-real');
+  const precioPromocionadoElement = productCard.querySelector('.card-text-precio-promocionado');
+  const vigenciaPromocionElement = productCard.querySelector('.card-text-vigencia-promocion');
 
   const nombre = nombreElement ? nombreElement.textContent : '';
-  const precio_real = precioRealElement ? precioRealElement.textContent.replace('Precio: $', '') : '';
-  const precio_promocionado = precioPromocionadoElement ? precioPromocionadoElement.textContent.replace('Promoción: $', '') : '';
+  const precio_real = precioRealElement ? parseFloat(precioRealElement.textContent.replace('Precio: $', '')) : '';
+  const precio_promocionado = precioPromocionadoElement ? parseFloat(precioPromocionadoElement.textContent.replace('Promoción: $', '')) : '';
   const vigencia_promocion = vigenciaPromocionElement ? vigenciaPromocionElement.textContent.replace('Vigencia: ', '') : '';
 
   // Reemplazar el contenido de la tarjeta con inputs
   productCard.innerHTML = `
     <div class="card-body">
       <input type="text" class="form-control mb-2" id="edit-nombre-${productId}" value="${nombre}">
-      <input type="text" class="form-control mb-2" id="edit-precio_real-${productId}" value="${precio_real}">
-      <input type="text" class="form-control mb-2" id="edit-precio_promocionado-${productId}" value="${precio_promocionado}">
-      <input type="text" class="form-control mb-2" id="edit-vigencia_promocion-${productId}" value="${vigencia_promocion}">
+      <input type="number" step="0.01" class="form-control mb-2" id="edit-precio_real-${productId}" value="${precio_real}">
+      <input type="number" step="0.01" class="form-control mb-2" id="edit-precio_promocionado-${productId}" value="${precio_promocionado}">
+      <input type="date" class="form-control mb-2" id="edit-vigencia_promocion-${productId}" value="${vigencia_promocion}">
       <button class="btn btn-success" onclick="saveProduct(${productId})">Guardar</button>
       <button class="btn btn-secondary" onclick="cancelEdit(${productId})">Cancelar</button>
     </div>
@@ -70,7 +70,6 @@ export function cancelEdit(productId) {
   // Recargar la página para cancelar la edición
   location.reload();
 }
-
 
 export function proximo(id){
   alert("proximamente");

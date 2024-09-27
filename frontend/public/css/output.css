@@ -523,10 +523,10 @@ html {
   --bc: 19.9343% 0.000883 179.739168;
   --pc: 15.888% 0.032951 73.725911;
   --sc: 90.4325% 0.002617 321.352818;
-  --ac: 88.5139% 0.034073 23.790112;
+  --ac: 89.8336% 0.039682 24.889993;
   --nc: 84.235% 0.00235 285.353211;
   --inc: 15.0703% 0.027798 232.66148;
-  --suc: 15.3082% 0.039352 153.074449;
+  --suc: 88.972% 0.026519 135.664264;
   --wac: 11.9835% 0.037127 40.642706;
   --erc: 91.2538% 0.045118 18.670716;
   --rounded-box: 1rem;
@@ -539,11 +539,15 @@ html {
   --tab-border: 1px;
   --tab-radius: 0.5rem;
   --s: 52.1626% 0.013083 321.352818;
-  --a: 42.5696% 0.170367 23.790112;
+  admin: #2b9999;
+  vendedor: #A8B545;
+  cliente: #C2C0A6;
+  --a: 49.168% 0.19841 24.889993;
   --n: 21.1748% 0.011749 285.353211;
   --b1: 99.6715% 0.004413 179.739168;
+  green: #84B026;
   --in: 75.3513% 0.138989 232.66148;
-  --su: 76.5408% 0.196759 153.074449;
+  --su: 44.8598% 0.132596 135.664264;
   --wa: 59.9177% 0.185635 40.642706;
   --er: 56.2692% 0.22559 18.670716;
   red: #fa0000;
@@ -2786,6 +2790,12 @@ html:has(.drawer-toggle:checked) {
   gap: 2rem;
 }
 
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
 .space-y-6 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -2816,9 +2826,9 @@ html:has(.drawer-toggle:checked) {
   border-width: 1px;
 }
 
-.bg-accent {
+.bg-admin {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-a,oklch(var(--a)/var(--tw-bg-opacity)));
+  background-color: rgb(43 153 153 / var(--tw-bg-opacity));
 }
 
 .bg-base-100 {
@@ -2836,9 +2846,24 @@ html:has(.drawer-toggle:checked) {
   background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
 }
 
+.bg-cliente {
+  --tw-bg-opacity: 1;
+  background-color: rgb(194 192 166 / var(--tw-bg-opacity));
+}
+
+.bg-neutral {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+}
+
 .bg-neutral-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 229 229 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(212 212 212 / var(--tw-bg-opacity));
 }
 
 .bg-neutral-700 {
@@ -2851,9 +2876,9 @@ html:has(.drawer-toggle:checked) {
   background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
 }
 
-.bg-secondary-content {
+.bg-vendedor {
   --tw-bg-opacity: 1;
-  background-color: var(--fallback-sc,oklch(var(--sc)/var(--tw-bg-opacity)));
+  background-color: rgb(168 181 69 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-60 {
@@ -2921,11 +2946,6 @@ html:has(.drawer-toggle:checked) {
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-}
-
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
 }
 
 .py-0 {
