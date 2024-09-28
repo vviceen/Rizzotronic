@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       const productList = document.getElementById("product-list");
       productList.innerHTML = ''; // Limpiar contenido previo
-      
+
       data.products.forEach((product) => {
         const productCard = `
           <div class="card overflow-hidden shadow-lg my-4" data-product-id="${product.id}">

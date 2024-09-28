@@ -65,10 +65,10 @@
           <div class="hidden flex-none lg:block">
             <ul class="menu menu-horizontal">
               <!-- Navbar menu content here -->
-              <li><a href="../src/views/login.html">Iniciar Sesión</a></li>
-              <li><a href="../src/views/register.html">Crear Cuenta</a></li>
+              <li><a id="btnLogin" href="../src/views/login.html">Iniciar Sesión</a></li>
+              <li><a id="btnRegister" href="../src/views/register.html">Crear Cuenta</a></li>
               <li>
-                <a id="btnMyAccount">
+                <a id="btnMyAccount" style="display: none;">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -97,27 +97,88 @@
         </div>
       </div>
     </div>
-
     <!-- Page content here -->
-    <div
-      class="hero min-h-screen"
-      style="
-        background-image: url(https://thotcomputacion.com.uy/wp-content/uploads/2024/05/GygabyteG5_BannerWeb-1.png);
-      "
-    >
-      <div class="hero-overlay bg-opacity-60"></div>
-      <div class="hero-content text-neutral-content text-center">
-        <div class="max-w-md">
-          <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
-          <p class="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          <button class="btn btn-primary">Get Started</button>
+
+    <div class="relative w-full overflow-hidden" id="carousel-container">
+      <!-- Slides -->
+      <div class="flex transition-transform duration-500" id="carousel">
+        <div class="w-full flex-shrink-0">
+          <img src="https://thotcomputacion.com.uy/wp-content/uploads/2024/09/CM_wb_2024_q3_1920x470.jpg" alt="Slide 1" class="w-full h-auto">
+        </div>
+        <div class="w-full flex-shrink-0">
+          <img src="https://thotcomputacion.com.uy/wp-content/uploads/2024/08/banner-web-largo-5.png" alt="Slide 2" class="w-full h-auto">
+        </div>
+          <div class="w-full flex-shrink-0">
+          <img src="https://thotcomputacion.com.uy/wp-content/uploads/2024/09/BANNER-WEB_Logitech-Momo.jpg" alt="Slide 3" class="w-full h-auto">
         </div>
       </div>
+
+      <!-- Controles -->
+      <button id="prev" class="btn btn-circle absolute top-1/2 left-3 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2">
+        &#8592;
+      </button>
+      <button id="next" class="btn btn-circle absolute top-1/2 right-3 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2">
+        &#8594;
+      </button>
     </div>
+
+    <script>
+      const carousel = document.getElementById('carousel');
+      const container = document.getElementById('carousel-container');
+      const slides = carousel.children.length;
+      let currentSlide = 0;
+      const intervalTime = 6000; // 6 segundos
+      let autoSlideInterval;
+
+      // Función para ajustar la altura del contenedor
+      function adjustContainerHeight() {
+        const currentImage = carousel.children[currentSlide].querySelector('img');
+        container.style.height = currentImage.offsetHeight + 'px';
+      }
+
+      // Función para avanzar al siguiente slide
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides; // Avanza al siguiente slide de manera cíclica
+        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        adjustContainerHeight();
+      }
+
+      // Función para ir al slide anterior
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides) % slides; // Retrocede al slide anterior de manera cíclica
+        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        adjustContainerHeight();
+      }
+
+      // Iniciar el intervalo automático
+      function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, intervalTime);
+      }
+
+      // Reiniciar el intervalo manualmente
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval); // Detener el intervalo actual
+        nextSlide(); // Cambiar al siguiente slide inmediatamente
+        startAutoSlide(); // Reiniciar el intervalo
+      }
+
+      // Iniciar el intervalo cuando la página se carga
+      window.addEventListener('load', () => {
+        adjustContainerHeight();
+        startAutoSlide();
+      });
+
+      // Eventos para los botones prev y next
+      document.getElementById('next').addEventListener('click', () => {
+        resetAutoSlide(); // Cambiar slide y reiniciar el intervalo
+      });
+
+      document.getElementById('prev').addEventListener('click', () => {
+        clearInterval(autoSlideInterval); // Detener el intervalo actual
+        prevSlide(); // Cambiar al slide anterior inmediatamente
+        startAutoSlide(); // Reiniciar el intervalo
+      });
+    </script>
 
     <div class="container mx-auto p-4">
       <div class="flex">

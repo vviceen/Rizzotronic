@@ -17,6 +17,7 @@ export function mostrarCarrito() { // Asegúrate de exportar la función
   console.log('Carrito enviado:', carrito); // Verificar el contenido del carrito
   const carritoContainer = document.getElementById('carrito-container');
   carritoContainer.innerHTML = '';
+  // const productsTable = document.getElementById("productsTable")
 
   fetch("/Rizzotronic/backend/app/services/carrito/getProduct.php", {
     method: "POST",
@@ -36,8 +37,23 @@ export function mostrarCarrito() { // Asegúrate de exportar la función
         carritoContainer.innerHTML = '<p>El carrito está vacío.</p>';
         return;
       }
+      // const tabla = document.getElementById('productsTable').getElementsByTagName('tbody')[0];
 
       productos.forEach((producto) => {
+        // const fila = tabla.insertRow();
+
+        // const celdaFoto = fila.insertCell();
+        // const celdaNombre = fila.insertCell();
+        // const celdaDescripcion = fila.insertCell();
+        // const celdaPrecio = fila.insertCell();
+        // const celdaEliminiar = fila.insertCell();
+
+        // celdaFoto.innerHTML = `<img src="/Rizzotronic/frontend/src/imgProduct/${producto.imagen}" alt="${producto.nombre}" style="width:100%;max-width:15rem">`;
+        // celdaNombre.textContent = producto.nombre;
+        // celdaDescripcion.textContent = producto.descripcion;
+        // celdaPrecio.textContent = `$${producto.precio_real}`;
+        // celdaEliminiar.innerHTML = `<button class="btn btn-danger" onclick="eliminarProducto(${producto.id})">Eliminar</button>`;
+
         const productoElement = document.createElement("div");
         productoElement.classList.add("producto");
         productoElement.innerHTML = `

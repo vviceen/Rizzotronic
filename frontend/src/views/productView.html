@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product View</title>
+    <title>Rizzotronic</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="../../public/css/output.css" rel="stylesheet">
 
 </head>
 <body class="bg-gray-100">
-
     <div class="drawer">
         <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col">
           <!-- Navbar -->
-          <div class="navbar bg-base-300 w-full flex items-center justify-between">
+          <div class="navbar bg-primary w-full flex items-center justify-between">
             <div class="flex-none lg:hidden">
               <label
                 for="my-drawer-3"
@@ -36,19 +35,37 @@
                 </svg>
               </label>
             </div>
-            <img src="../assets/rizzotronic.svg" class="object-contain h-11">
+            <img src="../assets/rizzotronic.svg" class="object-contain h-11"/>
             <div class="hidden flex-none lg:block">
               <ul class="menu menu-horizontal">
                 <!-- Navbar menu content here -->
-                <li><a href="../../public/index.html">Home</a></li>
-                <li><a href="../views/login.html">Iniciar Sesión</a></li>
-                <li><a href="../views/register.html">Crear Cuenta</a></li>
-                <li><a href="../src/views/myAccount.html">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
-                    <path d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z" stroke="currentColor" stroke-width="1.5" />
-                </svg> 
-            </a></li>
+                <li><a id="btnLogin" href="../views/login.html">Iniciar Sesión</a></li>
+                <li><a id="btnRegister" href="../views/register.html">Crear Cuenta</a></li>
+                <li>
+                  <a id="btnMyAccount" style="display: none;">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                      color="#ffffff"
+                      fill="none"
+                    >
+                      <path
+                        d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                    </svg>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -79,5 +96,6 @@
     </div>
 
     <script src="../../../backend/app/controllers/products/productView.js"></script>
+    <script type="module" src="../../../backend/app/controllers/sessions/accountLoad.js"></script>
 </body>
 </html>

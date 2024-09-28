@@ -1,12 +1,34 @@
-const btnMyAccount = document.getElementById("btnMyAccount");
+document.addEventListener("DOMContentLoaded", () => {
+  const btnMyAccount = document.getElementById("btnMyAccount");
+  const btnLogin = document.getElementById("btnLogin");
+  const btnRegister = document.getElementById("btnRegister");
+
+  // Verificar si el usuario ha iniciado sesión
+  fetch("http://localhost/Rizzotronic/backend/app/services/sessionData.php")
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.username) { // Si el usuario ha iniciado sesión
+        btnMyAccount.style.display = "block"; // Mostrar el botón
+        btnLogin.style.display = "none";
+        btnRegister.style.display = "none";
+
+      } else {
+        btnLogin.style.display = "block";
+        btnRegister.style.display = "block";
+        btnMyAccount.style.display = "none"; // Asegurarse de que esté oculto si no está logueado
+      }
+    })
+    .catch((error) => {
+      console.error("Error al verificar la sesión:", error);
+    });
+});
 
 btnMyAccount.addEventListener("click", () => {
   // Solicitar los datos de la sesión al archivo PHP
-  fetch("/Rizzotronic/backend/app/services/sessionData.php")
+  fetch("http://localhost/Rizzotronic/backend/app/services/sessionData.php")
     .then((response) => response.json())
     .then((data) => {
       if (data.username) {
-        alert(data.rol);
         switch (data.rol) {
 
           /*
