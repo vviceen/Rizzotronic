@@ -1,71 +1,47 @@
 <?php
-require('../../../fpdf/fpdf.php'); // Asegúrate de que la ruta a FPDF sea correcta
-include('../../app/connection/connection.php'); // Incluye tu archivo de conexión
+require '../../../vendor/autoload.php';
 
-function utf8_to_iso8859_1($text) {
-    return iconv('UTF-8', 'ISO-8859-1//TRANSLIT', $text);
+use Dompdf\Dompdf;
+
+include '../../app/connection/connection.php';
+
+// Obtener los productos de la base de datos
+$stmt = $conn->prepare("SELECT nombre, imagen, precio_real, precio_promocionado, descripcion FROM productos");
+$stmt->execute();
+
+// Crear una instancia de Dompdf
+$dompdf = new Dompdf();
+
+// Generar el contenido HTML del catálogo
+$html = '<h1>Catálogo de Productos</h1>';
+$html .= '<table border="1" cellpadding="10" cellspacing="0" width="100%">';
+$html .= '<tr><th>Imagen</th><th>Nombre</th><th>Precio Real</th><th>Precio Promocionado</th><th>Descripción</th></tr>';
+
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $imagePath = realpath(__DIR__ . '/../../../frontend/src/imgProduct/' . $row['imagen']);
+    $imageData = base64_encode(file_get_contents($imagePath));
+    $imageSrc = 'data:image/' . pathinfo($imagePath, PATHINFO_EXTENSION) . ';base64,' . $imageData;
+
+    $html .= '<tr>';
+    $html .= '<td><img src="' . $imageSrc . '" width="100"></td>';
+    $html .= '<td>' . htmlspecialchars($row['nombre']) . '</td>';
+    $html .= '<td>$' . number_format($row['precio_real'], 2) . '</td>';
+    $html .= '<td>' . ($row['precio_promocionado'] ? '$' . number_format($row['precio_promocionado'], 2) : 'N/A') . '</td>';
+    $html .= '<td>' . htmlspecialchars($row['descripcion']) . '</td>';
+    $html .= '</tr>';
 }
 
-try {
+$html .= '</table>';
 
-    // Consulta para obtener todos los productos
-    $sql = "SELECT nombre, imagen, precio_real, precio_promocionado, descripcion FROM productos";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
+// Cargar el contenido HTML en Dompdf
+$dompdf->loadHtml($html);
 
-    // Crear una instancia de FPDF
-    $pdf = new FPDF();
-    $pdf->AddPage();
-    $pdf->SetFont('Arial', 'B', 16);
+// (Opcional) Configurar el tamaño del papel y la orientación
+$dompdf->setPaper('A4', 'landscape');
 
-    // Título del catálogo
-    $pdf->Cell(0, 10, utf8_to_iso8859_1('Catálogo de Productos'), 0, 1, 'C');
-    $pdf->Ln(10);
+// Renderizar el HTML como PDF
+$dompdf->render();
 
-    // Contador de productos por página
-    $productCount = 0;
-
-    // Iterar sobre los productos y agregarlos al PDF
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        if ($productCount == 2) {
-            $pdf->AddPage();
-            $productCount = 0;
-        }
-
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0, 10, utf8_to_iso8859_1($row['nombre']), 0, 1);
-        
-        // Imagen del producto
-        if (!empty($row['imagen'])) {
-            $imagePath = '../../../frontend/src/imgProduct/' . $row['imagen'];
-            if (file_exists($imagePath)) {
-                $pdf->Image($imagePath, $pdf->GetX(), $pdf->GetY(), 50);
-                $pdf->Ln(50);
-            } else {
-                $pdf->Cell(0, 10, utf8_to_iso8859_1('Imagen no disponible'), 0, 1);
-            }
-        }
-
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->Cell(0, 10, utf8_to_iso8859_1('Precio Real: $') . $row['precio_real'], 0, 1);
-        $pdf->Cell(0, 10, utf8_to_iso8859_1('Precio Promocionado: $') . $row['precio_promocionado'], 0, 1);
-        $pdf->MultiCell(0, 10, utf8_to_iso8859_1('Descripción: ') . $row['descripcion']);
-        $pdf->Ln(10);
-
-        // Dibujar una línea de separación
-        $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
-        $pdf->Ln(10);
-
-        $productCount++;
-    }
-
-    // Salida del PDF
-    $pdf->Output('D', 'catalogo_productos.pdf');
-
-} catch(PDOException $e) {
-    echo 'Error: ' . $e->getMessage();
-}
-// Liberar recursos
-$stmt = null;
-$conn = null;
+// Salida del PDF generado al navegador
+$dompdf->stream();
 ?>

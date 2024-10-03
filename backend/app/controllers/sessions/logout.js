@@ -1,5 +1,5 @@
  // Manejar el cierre de sesión
- document.getElementById('cerrarSession').addEventListener('click', () => {
+ document.getElementById('closeSession').addEventListener('click', () => {
      fetch("http://localhost/Rizzotronic/backend/app/services/logout.php")
          .then(response => response.json())
          .then(data => {
