@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btnMyAccount.style.display = "block"; // Mostrar el botón
         btnLogin.style.display = "none";
         btnRegister.style.display = "none";
-
       } else {
         btnLogin.style.display = "block";
         btnRegister.style.display = "block";
@@ -21,38 +20,31 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((error) => {
       console.error("Error al verificar la sesión:", error);
     });
-});
 
-btnMyAccount.addEventListener("click", () => {
-  // Solicitar los datos de la sesión al archivo PHP
-  fetch("http://localhost/Rizzotronic/backend/app/services/sessionData.php")
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.username) {
-        switch (data.rol) {
+  btnMyAccount.addEventListener("click", () => {
+    const userRol = localStorage.getItem("userRol");
+    console.log("userRol:", userRol, "type:", typeof userRol);
 
-          /*
-          1- admin
-          2- vendedor
-          3- cliente
-          */
+    switch (userRol) {
+      case "1":
+        console.log("Redirigiendo a adminView.html");
+        window.location.href = "/Rizzotronic/frontend/src/views/adminView.html";
+        break;
+      case "2":
+        console.log("Redirigiendo a sellerView.html");
+        window.location.href = "/Rizzotronic/frontend/src/views/sellerView.html";
+        break;
+      case "3":
+        console.log("Redirigiendo a customer.html");
+        window.location.href = "/Rizzotronic/frontend/src/views/customer.html";
+        break;
+      default:
+        console.log("Redirigiendo a index.html");
+        window.location.href = "/Rizzotronic/frontend/public/index.html";
+        break;
+    }
+  });
 
-          case "1":
-            window.location.href =
-              "/Rizzotronic/frontend/src/views/adminView.html";
-            break;
-          case "2":
-            window.location.href =
-              "/Rizzotronic/frontend/src/views/sellerView.html";
-            break;
-          default:
-            window.location.href =
-              "/Rizzotronic/frontend/src/views/customer.html";
-            break;
-        }
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  // Agregar más console.log para rastrear el flujo de ejecución
+  console.log("Script accountLoad.js cargado");
 });

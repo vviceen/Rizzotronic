@@ -1,14 +1,15 @@
 <?php
 session_start();
-
-$response = array();
+header('Content-Type: application/json');
 
 if (isset($_SESSION['username'])) {
-    $response['username'] = $_SESSION['username'];
-    $response['rol'] = $_SESSION['rol'];
-    $response['email'] = $_SESSION['email'];
+    echo json_encode([
+        'username' => $_SESSION['username'],
+        'rol' => $_SESSION['rol'],
+        'email' => $_SESSION['email'],
+        'id' => $_SESSION['id']
+    ]);
 } else {
-    $response['error'] = 'No session data available';
+    echo json_encode([]);
 }
-
-echo json_encode($response);    
+?>

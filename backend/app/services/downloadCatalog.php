@@ -10,7 +10,7 @@ $stmt = $conn->prepare("SELECT nombre, imagen, precio_real, precio_promocionado,
 $stmt->execute();
 
 // Crear una instancia de Dompdf
-$dompdf = new Dompdf();
+$dompdf  = new Dompdf();
 
 // Generar el contenido HTML del catálogo
 $html = '<h1>Catálogo de Productos</h1>';

@@ -5,6 +5,10 @@ window.updateUser = updateUser;
 window.deleteUser = deleteUser;
 
 document.addEventListener("DOMContentLoaded", function () {
+  if(localStorage.getItem('userRol') != 1){
+    window.location.href = "/Rizzotronic/frontend/public/index.html";
+  }
+
   const filterAdmin = document.getElementById("filter-admin");
   const filterVendedor = document.getElementById("filter-vendedor");
   const filterCliente = document.getElementById("filter-cliente");

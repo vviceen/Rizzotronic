@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        // Cerrar sesión antes de proceder con el login
         const username = form.username.value.trim();
         const password = form.password.value.trim();
 
@@ -19,19 +20,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Enviar los datos a PHP usando fetch
         fetch('/Rizzotronic/backend/app/services/login.php', {
-            method: 'POST',
+            method: 'POST', 
             body: formData
-          })  
-          .then(response => response.json())
-          .then(data => {
+        })
+        .then(response => response.json())
+        .then(data => {
             if (data.success) {
-                alert('Inicio de sesión exitoso');
-              localStorage.setItem('userEmail', data.email); // Guardar el email en localStorage
-              window.location.href = '/Rizzotronic/frontend/public/index.html';
+                console.log('Inicio de sesión exitoso');
+                // Guardar toda la información del usuario en localStorage
+                localStorage.setItem('userNombre', data.nombre);
+                localStorage.setItem('userEmail', data.email);
+                localStorage.setItem('userRol', data.rol);
+                console.log("rol en localStorage: "+localStorage.getItem('userRol'));
+                alert("ok?");
+                localStorage.setItem('userId', data.id);
+                window.location.href = '/Rizzotronic/frontend/public/index.html';
             } else {
-              alert('Error al iniciar sesión');
+                alert('Error al iniciar sesión: ' + data.message);
             }
-          })
-          .catch(error => console.error('Error:', error));
-        });
-      });
+        })
+        .catch(error => console.error('Error:', error));
+    });
+});
+``
