@@ -1,17 +1,17 @@
 // mostrarCarrito.js
-
 import { eliminarProducto } from './eliminarProducto.js';
-import { getUserInfo } from '../sessions/userInfo.js';
 
 window.eliminarProducto = eliminarProducto;
-window.getUserInfo = getUserInfo;
 
 export function mostrarCarrito() { // Asegúrate de exportar la función
   const email = localStorage.getItem('userEmail');
+  const mensaje = document.getElementById('mensaje');
   if (!email) {
     alert('No se ha encontrado el email del usuario.');
     return;
   }
+
+  mensaje.innerHTML = email;
 
   const carrito = JSON.parse(localStorage.getItem(`carrito_${email}`)) || [];
   console.log('Carrito enviado:', carrito); // Verificar el contenido del carrito
@@ -78,9 +78,3 @@ export function mostrarCarrito() { // Asegúrate de exportar la función
 window.mostrarCarrito = mostrarCarrito;
 
 document.addEventListener('DOMContentLoaded', mostrarCarrito);
-
-const userData = getUserInfo();
-userData.then((data) => {
-  const email = data.email;
-  localStorage.setItem('userEmail', email);
-});

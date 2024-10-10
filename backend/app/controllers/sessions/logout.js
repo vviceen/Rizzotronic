@@ -5,7 +5,10 @@
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-           localStorage.clear();
+            localStorage.removeItem('userNombre');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userRol');
+            localStorage.removeItem('userId');
            window.location.href = '/Rizzotronic/frontend/public/index.html';
         } else {
             alert('Error al cerrar sesión');

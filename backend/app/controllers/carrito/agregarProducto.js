@@ -7,12 +7,6 @@ export function agregarProducto(productoId) {
 
   console.log("producto " + productoId + " email " + email);
 
-  // Verificar si localStorage está disponible
-  if (typeof localStorage === 'undefined') {
-    console.error("localStorage no está disponible.");
-    return;
-  }
-
   // Obtener el carrito actual del usuario de localStorage
   let carrito = JSON.parse(localStorage.getItem(`carrito_${email}`)) || [];
 
