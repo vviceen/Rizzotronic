@@ -1,3 +1,7 @@
+import { agregarProducto } from '../carrito/agregarProducto.js';
+
+window.agregarProducto = agregarProducto;
+
 document.addEventListener("DOMContentLoaded", function () {
   // Obtener la ID del producto desde la URL
   const params = new URLSearchParams(window.location.search);
@@ -15,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (data.success) {
               // Llenar los elementos HTML con los datos del producto
               document.getElementById('product-image').src = `/Rizzotronic/frontend/src/imgProduct/${data.product.imagen}`;
-              document.getElementById('product-name').textContent = data.product.nombre;
+              document.getElementById('product-name').textContent = data.product.nombre + ' - ' + productId;
               document.getElementById('product-description').textContent = data.product.descripcion;
               document.getElementById('product-price').textContent = `Precio: $${data.product.precio_real}`;
               
@@ -26,6 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
               if (data.product.vigencia_promocion) {
                   document.getElementById('product-promotion-end').textContent = `Vigencia: ${data.product.vigencia_promocion}`;
               }
+
+              // Agregar evento al botón de agregar al carrito
+              document.getElementById('add-to-cart-button').addEventListener('click', () => {
+                  agregarProducto(productId);
+              });
           } else {
               console.error('Error al obtener los detalles del producto:', data.message);
           }

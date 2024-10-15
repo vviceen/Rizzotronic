@@ -18,7 +18,7 @@ try {
         throw new Exception("No se proporcionó un término de búsqueda");
     }
 
-    $stmt = $conn->prepare("SELECT id, nombre, imagen FROM productos WHERE nombre LIKE :searchTerm LIMIT 6");
+    $stmt = $conn->prepare("SELECT * FROM productos WHERE nombre LIKE :searchTerm LIMIT 6");
     $searchTerm = '%' . $searchTerm . '%';
     $stmt->bindParam(':searchTerm', $searchTerm, PDO::PARAM_STR);
     $stmt->execute();
