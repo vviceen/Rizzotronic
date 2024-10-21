@@ -1,8 +1,6 @@
 import { editProduct, saveProduct, cancelEdit, proximo } from './editProduct.js';
 import { deleteProduct } from './deleteProduct.js';
 
-const urlParams = new URLSearchParams(window.location.search);
-const query = urlParams.get('query');
 
 window.editProduct = editProduct;
 window.saveProduct = saveProduct;
@@ -11,17 +9,15 @@ window.deleteProduct = deleteProduct;
 window.proximo = proximo;
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (!query) {
-    const mensajeQuery = document.getElementById('mensajeQuery');
-    document.getElementById('deleteQueryBtn').style.display = 'none';
-    mensajeQuery.innerHTML = ``;
 
-    fetch("/Rizzotronic/backend/app/services/getProducts.php")
-      .then((response) => response.json())
-      .then((data) => {
-        const productList = document.getElementById("product-list");
-        productList.innerHTML = ''; // Limpiar contenido previo
-        data.products.forEach((product) => {
+  fetch("/Rizzotronic/backend/app/services/getProducts.php")
+    .then((response) => response.json())
+    .then((data) => {
+      const productList = document.getElementById("product-list");
+      productList.innerHTML = ''; // Limpiar contenido previo
+
+      data.products.forEach((product) => {
+        if (product.promocionado == 1) {
           const productCard = `
           <div class="card overflow-hidden shadow-lg my-4" data-product-id="${product.id}">
             <figure>
@@ -42,17 +38,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="deleteProduct(${product.id})">Eliminar</button>
                     <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="proximo(${product.id})">Editar Producto</button>
                   ` : `
-                    <a class="btn btn-primary mr-4 mb-3" href="../../../frontend/src/views/productView.html?id=${product.id}">Ver Más</a>
+                    <a class="btn btn-primary mr-4 mb-3" href="../../frontend/src/views/productView.html?id=${product.id}">Ver Más</a>
                   `}
               </div>
             </div>
           </div>
         `;
           productList.innerHTML += productCard;
-        });
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+        }
       });
-  }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 });

@@ -16,10 +16,10 @@ $informacion = $_POST['informacion'];
 $precio_real = $_POST['precio_real'];
 $precio_promocionado = $_POST['precio_promocionado'] ?? null;
 $vigencia_promocion = $_POST['vigencia_promocion'] ?? null;
-$descripcion = $_POST['descripcion'];
 $marca = $_POST['marca'] ?? null;
 $cantidad = $_POST['cantidad'];
-$usuario_id = $_SESSION['username']; // Asumimos que el ID del usuario está en la sesión
+$etiqueta = $_POST['newCategory'] ?: $_POST['category']; // Usar nueva categoría si se proporciona, de lo contrario usar la existente
+$promocionado = $_POST['promocionado'];
 
 // Manejar la subida de la imagen
 $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/Rizzotronic/frontend/src/imgProduct/";
@@ -38,35 +38,34 @@ if (!in_array($imageFileType, $allowedFormats)) {
     exit;
 }
 
-// Verificar el tamaño de la imagen
-if ($_FILES["imagen"]["size"] > 500000) {
-    echo json_encode(['success' => false, 'message' => 'El archivo es demasiado grande.']);
-    exit;
-}
-
-// Mover el archivo subido a la carpeta de destino
+// Mover el archivo subido
 if (!move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file)) {
-    echo json_encode(['success' => false, 'message' => 'Error al subir la imagen.']);
+    echo json_encode(['success' => false, 'message' => 'Hubo un error al subir la imagen.']);
     exit;
 }
 
+// Insertar los datos del producto en la base de datos usando PDO
 try {
-    // Insertar el producto en la base de datos
-    $sql = "INSERT INTO productos (nombre, imagen, informacion, precio_real, precio_promocionado, vigencia_promocion, descripcion, marca, cantidad) VALUES (:nombre, :imagen, :informacion, :precio_real, :precio_promocionado, :vigencia_promocion, :descripcion, :marca, :cantidad)";
+    $sql = "INSERT INTO productos (nombre, imagen, informacion, precio_real, precio_promocionado, vigencia_promocion, marca, cantidad, etiqueta, promocionado) 
+            VALUES (:nombre, :imagen, :informacion, :precio_real, :precio_promocionado, :vigencia_promocion, :marca, :cantidad, :etiqueta, :promocionado)";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':nombre', $nombre);
-    $stmt->bindParam(':imagen', $_FILES["imagen"]["name"]);
-    $stmt->bindParam(':informacion', $informacion);
-    $stmt->bindParam(':precio_real', $precio_real);
-    $stmt->bindParam(':precio_promocionado', $precio_promocionado);
-    $stmt->bindParam(':vigencia_promocion', $vigencia_promocion);
-    $stmt->bindParam(':descripcion', $descripcion);
-    $stmt->bindParam(':marca', $marca);
-    $stmt->bindParam(':cantidad', $cantidad);
-    $stmt->execute();
+    $stmt->execute([
+        ':nombre' => $nombre,
+        ':imagen' => $_FILES["imagen"]["name"],
+        ':informacion' => $informacion,
+        ':precio_real' => $precio_real,
+        ':precio_promocionado' => $precio_promocionado,
+        ':vigencia_promocion' => $vigencia_promocion,
+        ':marca' => $marca,
+        ':cantidad' => $cantidad,
+        ':etiqueta' => $etiqueta,
+        ':promocionado' => $promocionado
+    ]);
 
-    echo json_encode(['success' => true]);
+    echo json_encode(['success' => true, 'message' => 'Producto agregado exitosamente.']);
 } catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'Error de base de datos: ' . $e->getMessage()]);
+    echo json_encode(['success' => false, 'message' => 'Hubo un error al agregar el producto: ' . $e->getMessage()]);
 }
+
+$conn = null;
 ?>

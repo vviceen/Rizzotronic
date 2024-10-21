@@ -6,6 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carrito de Compras</title>
   <link href="../../public/css/output.css" rel="stylesheet" />
+
+  <style>
+    .table-container {
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -36,8 +44,18 @@
   <h1 id="mensaje"></h1>
 
   <h1>Carrito de Compras</h1>
-  <div id="carrito-container">
-    <table id="productsTable">
+  <div id="carrito-container" class="table-container mx-auto w-full px-4">
+    <table id="productsTable" class="table-auto w-full bg-white rounded-lg shadow-lg">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="px-4 py-2">Imagen</th>
+          <th class="px-4 py-2">Nombre</th>
+          <th class="px-4 py-2">Precio Unitario</th>
+          <th class="px-4 py-2">Cantidad</th>
+          <th class="px-4 py-2">Precio Total</th>
+          <th class="px-4 py-2">Acciones</th>
+        </tr>
+      </thead>
       <tbody>
         <!-- Contenido de la tabla de productos -->
       </tbody>

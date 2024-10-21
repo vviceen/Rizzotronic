@@ -3,7 +3,7 @@ import { eliminarProducto } from './eliminarProducto.js';
 
 window.eliminarProducto = eliminarProducto;
 
-export function mostrarCarrito() { // Asegúrate de exportar la función
+export function mostrarCarrito() {
   const email = localStorage.getItem('userEmail');
   const mensaje = document.getElementById('mensaje');
   if (!email) {
@@ -13,11 +13,10 @@ export function mostrarCarrito() { // Asegúrate de exportar la función
 
   mensaje.innerHTML = email;
 
-  const carrito = JSON.parse(localStorage.getItem(`carrito_${email}`)) || [];
+  let carrito = JSON.parse(localStorage.getItem(`carrito_${email}`)) || [];
   console.log('Carrito enviado:', carrito); // Verificar el contenido del carrito
-  const carritoContainer = document.getElementById('carrito-container');
-  carritoContainer.innerHTML = '';
-  // const productsTable = document.getElementById("productsTable")
+  const productsTableBody = document.getElementById('productsTable').querySelector('tbody');
+  productsTableBody.innerHTML = '';
 
   fetch("/Rizzotronic/backend/app/services/carrito/getProduct.php", {
     method: "POST",
@@ -33,48 +32,29 @@ export function mostrarCarrito() { // Asegúrate de exportar la función
         return;
       }
 
-      if (productos.length === 0) {
-        carritoContainer.innerHTML = '<p>El carrito está vacío.</p>';
-        return;
-      }
-      // const tabla = document.getElementById('productsTable').getElementsByTagName('tbody')[0];
-
       productos.forEach((producto) => {
-        // const fila = tabla.insertRow();
+        const precioReal = parseFloat(producto.precio_real);
+        if (isNaN(precioReal)) {
+          console.error(`Precio real no válido para el producto ${producto.nombre}`);
+          return;
+        }
 
-        // const celdaFoto = fila.insertCell();
-        // const celdaNombre = fila.insertCell();
-        // const celdaDescripcion = fila.insertCell();
-        // const celdaPrecio = fila.insertCell();
-        // const celdaEliminiar = fila.insertCell();
-
-        // celdaFoto.innerHTML = `<img src="/Rizzotronic/frontend/src/imgProduct/${producto.imagen}" alt="${producto.nombre}" style="width:100%;max-width:15rem">`;
-        // celdaNombre.textContent = producto.nombre;
-        // celdaDescripcion.textContent = producto.descripcion;
-        // celdaPrecio.textContent = `$${producto.precio_real}`;
-        // celdaEliminiar.innerHTML = `<button class="btn btn-danger" onclick="eliminarProducto(${producto.id})">Eliminar</button>`;
-
-        const productoElement = document.createElement("div");
-        productoElement.classList.add("producto");
-        productoElement.innerHTML = `
-          <div class="card">
-            <img src="/Rizzotronic/frontend/src/imgProduct/${producto.imagen}" alt="${producto.nombre}" class="card-img-top w-60">
-            <div class="card-body">
-              <h5 class="card-title">${producto.nombre}</h5>
-              <p class="card-text">Precio: <span class="precio-real">$${producto.precio_real}</span> <span class="precio-promocionado">$${producto.precio_promocionado}</span></p>
-              <p class="card-text">Cantidad: ${producto.cantidad}</p>
-              <button class="btn btn-danger" onclick="eliminarProducto(${producto.id})">Eliminar</button>
-            </div>
-          </div>
+        const row = document.createElement('tr');
+        const precioTotal = precioReal * producto.cantidad;
+        row.innerHTML = `
+          <td class="px-4 py-2"><img src="/Rizzotronic/frontend/src/imgProduct/${producto.imagen}" alt="${producto.nombre}" class="w-16 h-16 object-cover"></td>
+          <td class="px-4 py-2">${producto.nombre}</td>
+          <td class="px-4 py-2">${precioReal.toFixed(2)}</td>
+          <td class="px-4 py-2">${producto.cantidad}</td>
+          <td class="px-4 py-2">${precioTotal.toFixed(2)}</td>
+          <td class="px-4 py-2"><button class="btn btn-danger bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="eliminarProducto(${producto.id})">Eliminar</button></td>
         `;
-        carritoContainer.appendChild(productoElement);
+        productsTableBody.appendChild(row);
       });
     })
     .catch((error) => {
       console.error("Error al obtener los productos:", error);
     });
 }
-
-window.mostrarCarrito = mostrarCarrito;
 
 document.addEventListener('DOMContentLoaded', mostrarCarrito);

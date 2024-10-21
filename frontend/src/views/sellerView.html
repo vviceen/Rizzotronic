@@ -1,35 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/output.css" />
-    <title>Agregar Producto</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../public/css/output.css" />
+  <title>Agregar Producto</title>
 </head>
-<body class="bg-gray-700">
+
+<body class="bg-base-200">
   <div class="drawer">
     <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
       <!-- Navbar -->
       <div class="navbar bg-base-300 w-full flex items-center justify-between">
         <div class="flex-none lg:hidden">
-          <label
-            for="my-drawer-3"
-            aria-label="open sidebar"
-            class="btn btn-square btn-ghost"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              class="inline-block h-6 w-6 stroke-current"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
+          <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              class="inline-block h-6 w-6 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
           </label>
         </div>
@@ -41,11 +30,16 @@
             <li><a href="../views/login.html">Iniciar Sesión</a></li>
             <li><a href="../views/register.html">Crear Cuenta</a></li>
             <li><a href="../src/views/myAccount.html">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
-                <path d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z" stroke="currentColor" stroke-width="1.5" />
-            </svg> 
-        </a></li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff"
+                  fill="none">
+                  <path
+                    d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path
+                    d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z"
+                    stroke="currentColor" stroke-width="1.5" />
+                </svg>
+              </a></li>
           </ul>
         </div>
       </div>
@@ -54,59 +48,106 @@
 
   <div class="max-w-4xl mx-auto p-8">
     <h1 class="text-3xl font-bold text-white mb-6">Agregar Producto</h1>
-    <form id="addProductForm" class="space-y-6">
-        <div>
-            <label for="nombre" class="block text-sm font-medium text-white">Nombre del producto:</label>
-            <input type="text" id="nombre" name="nombre" class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-        </div>
-
-        <div>
-            <label for="imagen" class="block text-sm font-medium text-white">Imagen del producto:</label>
-            <input type="file" id="imagen" name="imagen" accept="image/*" class="mt-1 block w-full text-white bg-gray-800 rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-        </div>
-
-        <div>
-          <label for="informacion" class="block text-sm font-medium text-white">Informacion</label>
-          <input type="text" id="informacion" name="informacion" step="0.01" class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+    <form id="addProductForm" class="space-y-6" enctype="multipart/form-data">
+      <div>
+        <label for="nombre" class="block text-sm font-medium text-white">Nombre del producto:</label>
+        <input type="text" id="nombre" name="nombre"
+          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          required>
       </div>
 
-        <div>
-            <label for="precio_real" class="block text-sm font-medium text-white">Precio real:</label>
-            <input type="number" id="precio_real" name="precio_real" step="0.01" class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-        </div>
+      <div>
+        <label for="imagen" class="block text-sm font-medium text-white">Imagen del producto:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*"
+          class="mt-1 block w-full text-white bg-gray-800 rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          required>
+      </div>
 
-        <div>
-            <label for="precio_promocionado" class="block text-sm font-medium text-white">Precio promocionado:</label>
-            <input type="number" id="precio_promocionado" name="precio_promocionado" step="0.01" class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-        </div>
+      <div>
+        <label for="informacion" class="block text-sm font-medium text-white">Información:</label>
+        <input type="text" id="informacion" name="informacion"
+          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          required>
+      </div>
 
-        <div>
-            <label for="vigencia_promocion" class="block text-sm font-medium text-white">Vigencia de la promoción:</label>
-            <input type="date" id="vigencia_promocion" name="vigencia_promocion" class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-        </div>
+      <div>
+        <label for="precio_real" class="block text-sm font-medium text-white">Precio Real:</label>
+        <input type="number" id="precio_real" name="precio_real" step="0.01"
+          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          required>
+      </div>
 
-        <div>
-            <label for="descripcion" class="block text-sm font-medium text-white">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
-        </div>
+      <div>
+        <label for="precio_promocionado" class="block text-sm font-medium text-white">Precio Promocionado:</label>
+        <input type="number" id="precio_promocionado" name="precio_promocionado" step="0.01"
+          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      </div>
 
-        <div>
-            <label for="marca" class="block text-sm font-medium text-white">Marca:</label>
-            <input type="text" id="marca" name="marca" class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-        </div>
-        
-        <div>
-          <label for="cantidad" class="block text-sm font-medium text-white">Cantidad:</label>
-          <input type="number" id="cantidad" name="cantidad" class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-        </div>
+      <div>
+        <label for="vigencia_promocion" class="block text-sm font-medium text-white">Vigencia Promoción:</label>
+        <input type="date" id="vigencia_promocion" name="vigencia_promocion"
+          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      </div>
 
-        <button type="submit" class="w-full py-2 px-4 bg-slate-700 text-white font-bold rounded-md">Agregar Producto</button>
+      <div>
+        <label for="descripcion" class="block text-sm font-medium text-white">Descripción:</label>
+        <textarea id="descripcion" name="descripcion"
+          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          required></textarea>
+      </div>
+
+      <div>
+        <label for="marca" class="block text-sm font-medium text-white">Marca:</label>
+        <input type="text" id="marca" name="marca"
+          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      </div>
+
+      <div>
+        <label for="cantidad" class="block text-sm font-medium text-white">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad"
+          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          required>
+      </div>
+
+      <div>
+        <label for="categorySelect" class="block text-sm font-medium text-white">Categoría:</label>
+        <select id="categorySelect" name="category"
+          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <option value="">Seleccione una categoría</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="newCategory" class="block text-sm font-medium text-white">Nueva Categoría:</label>
+        <input type="text" id="newCategory" name="newCategory"
+          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          placeholder="Agregar nueva categoría">
+      </div>
+
+      <div>
+        <label for="promocionado" class="block text-sm font-medium text-white">Promocionado:</label>
+        <select id="promocionado" name="promocionado"
+          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          required>
+          <option value="0">No</option>
+          <option value="1">Sí</option>
+        </select>
+      </div>
+
+      <div>
+        <button type="submit"
+          class="w-full py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          Agregar Producto
+        </button>
+      </div>
     </form>
   </div>
 
   <button id="closeSession" class="btn">Cerrar Sesión</button>
 
-<script src="../../../backend/app/controllers/products/addProducts.js"></script>
-<script src="../../../backend/app/controllers/sessions/logout.js"></script>
+  <script type="module" src="../../../backend/app/controllers/products/addProducts.js"></script>
+  <script type="module" src="../../../backend/app/controllers/products/getCategories.js"></script>
+  <script type="module" src="../../../backend/app/controllers/sessions/logout.js"></script>
 </body>
+
 </html>
