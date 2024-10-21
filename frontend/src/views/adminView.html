@@ -56,9 +56,9 @@
   <div class="containerEditUsers p-4 bg-base-100 m-10 rounded-xl">
     <div class="flex justify-between px-4 py-2">
       <h2 class="text-lg font-bold mb-2">Filtrar Usuarios por Rol</h2>
-      <button id="editUsersArrow" class="text-3xl font-bold">↑</button>
+      <button id="dropdown" class="text-3xl font-bold">↑</button>
     </div>
-    <div id="EditUsersContent" class="grid grid-cols-4 gap-4">
+    <div id="content" class="grid grid-cols-4 gap-4">
       <!-- Filter Section -->
       <div class="col-span-1 p-4 bg-">
         <div class="flex flex-col space-y-2">
@@ -80,7 +80,7 @@
 
   <script type="module" src="../../../backend/app/controllers/adminView/loadUsersCard.js"></script>
   <script src="../../../backend/app/controllers/sessions/logout.js"></script>
-  <script src="../../../backend/app/controllers/adminView/editUsers.js"></script>
+  <script src="../../public/js/dropdown.js"></script>
 </body>
 
 </html>
