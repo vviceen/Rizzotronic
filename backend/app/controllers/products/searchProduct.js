@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const productList = document.getElementById('product-list');
                 productList.innerHTML = ''; // Limpiar contenido previo
 
-                const deleteQueryBtn = document.getElementById('deleteQueryBtn').style.display = 'block';
+                document.getElementById('deleteQueryBtn').style.display = 'block';
                 const mensajeQuery = document.getElementById('mensajeQuery');
                 mensajeQuery.innerHTML = `Resultados de: "${query}"`;
                 if (data.success) {

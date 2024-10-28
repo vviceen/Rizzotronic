@@ -1,9 +1,6 @@
 import { editProduct, saveProduct, cancelEdit, proximo } from './editProduct.js';
 import { deleteProduct } from './deleteProduct.js';
 
-const urlParams = new URLSearchParams(window.location.search);
-const query = urlParams.get('query');
-
 window.editProduct = editProduct;
 window.saveProduct = saveProduct;
 window.cancelEdit = cancelEdit;
@@ -11,6 +8,10 @@ window.deleteProduct = deleteProduct;
 window.proximo = proximo;
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const query = urlParams.get('query');
+
   if (!query) {
     const mensajeQuery = document.getElementById('mensajeQuery');
     document.getElementById('deleteQueryBtn').style.display = 'none';
