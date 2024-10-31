@@ -13,17 +13,15 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('reclamoForm').addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const nombre = document.getElementById('nombre').value.trim();
-        const email = document.getElementById('email').value.trim();
+        const email = localStorage.getItem('userEmail');
         const mensaje = document.getElementById('mensaje').value.trim();
 
-        if (!nombre || !email || !mensaje) {
+        if (!email || !mensaje) {
             alert('Por favor, complete todos los campos.');
             return;
         }
 
         const data = {
-            nombre: nombre,
             email: email,
             mensaje: mensaje,
         };

@@ -14,12 +14,10 @@ try {
         throw new Exception("Datos inválidos");
     }
 
-    $nombre = $data['nombre'];
     $email = $data['email'];
     $mensaje = $data['mensaje'];
 
-    $stmt = $conn->prepare("INSERT INTO reclamos (nombreCliente, emailCliente, mensaje_reclamo) VALUES (:nombreCliente, :emailCliente, :mensaje_reclamo)");
-    $stmt->bindParam(':nombreCliente', $nombre);
+    $stmt = $conn->prepare("INSERT INTO reclamos (emailCliente, mensaje_reclamo) VALUES (:emailCliente, :mensaje_reclamo)");
     $stmt->bindParam(':emailCliente', $email);
     $stmt->bindParam(':mensaje_reclamo', $mensaje);
 
