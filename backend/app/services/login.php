@@ -4,12 +4,18 @@ include '../connection/connection.php';
 header('Content-Type: application/json');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $data = json_decode(file_get_contents('php://input'), true);
-    $username = $data['username'] ?? '';
-    $password = $data['password'] ?? '';
-
+    // Verificar si los datos vienen en formato JSON o FormData
+    $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+    if ($contentType === "application/json") {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $username = $data['username'] ?? '';
+        $password = $data['password'] ?? '';
+    } else {
+        $username = $_POST['username'] ?? '';
+        $password = $_POST['password'] ?? '';
+    }
     if (empty($username) || empty($password)) {
-        echo json_encode(['success' => false, 'message' => 'Todos los campos son requeridos.']);
+        echo json_encode(['success' => false, 'message' => 'Todos los campos sonnn requeridos.']);
         exit;
     }
 
