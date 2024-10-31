@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('userEmail', data.email);
                 localStorage.setItem('userRol', data.rol);
                 console.log("rol en localStorage: "+localStorage.getItem('userRol'));
-                alert("ok?");
                 localStorage.setItem('userId', data.id);
                 window.location.href = '/Rizzotronic/frontend/public/index.html';
             } else {

@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  alert("rol en localStorage: " + localStorage.getItem('userRol'));
   if(localStorage.getItem('userRol') != '2'){
     console.log("No es vendedor");
   }

@@ -28,6 +28,16 @@
         <div class="hidden flex-none lg:block">
           <ul class="menu menu-horizontal">
             <!-- Navbar menu content here -->
+            <div class="relative mr-4">
+              <input type="text" id="productSearch" class="input input-bordered input-secondary w-80 max-w-lg" placeholder="Buscar productos...">
+                <button id="searchButton" class="absolute right-0 top-0 mt-3 mr-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stro ke-width="2" d="M10 18l6-6m0 0l-6-6m6 6H4" />
+                  </svg>
+                </button>
+              <ul id="searchResults" class="absolute w-full bg-base-100 mt-1 rounded-xl hidden shadow-lg"></ul>
+            </div>
+
             <li><a id="btnLogin" href="../views/login.html">Iniciar Sesión</a></li>
             <li><a id="btnRegister" href="../views/register.html">Crear Cuenta</a></li>
             <li>
