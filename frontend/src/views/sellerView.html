@@ -8,7 +8,7 @@
   <title>Agregar Producto</title>
 </head>
 
-<body class="bg-base-200">
+<body id="body" class="bg-base-200" style="display: none;">
   <div class="drawer">
     <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
@@ -63,6 +63,7 @@
           required>
       </div>
 
+      <div class="flex space-x-4">
       <div>
         <label for="precio_promocionado" class="block text-sm font-medium text-white">Precio Promocionado:</label>
         <input type="number" id="precio_promocionado" name="precio_promocionado" step="0.01"
@@ -74,18 +75,22 @@
         <input type="date" id="vigencia_promocion" name="vigencia_promocion"
           class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
       </div>
+    </div>
 
-      <div>
-        <label for="descripcion" class="block text-sm font-medium text-white">Descripción:</label>
-        <textarea id="descripcion" name="descripcion"
-          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          required></textarea>
-      </div>
-
-      <div>
-        <label for="marca" class="block text-sm font-medium text-white">Marca:</label>
-        <input type="text" id="marca" name="marca"
-          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <div class="flex space-x-4">
+        <div>
+          <label for="marca" class="block text-sm font-medium text-white">Marca:</label>
+          <select id="marca" name="marca"
+            class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <option value="">Seleccione una marca</option>
+          </select>
+        </div>
+        <div>
+          <label for="newMarca" class="block text-sm font-medium text-white">Nueva Marca:</label>
+          <input type="text" id="newMarca" name="newMarca"
+            class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            placeholder="Agregar nueva marca">
+        </div>
       </div>
 
       <div>
@@ -95,19 +100,21 @@
           required>
       </div>
 
+      <div class="flex space-x-4">
       <div>
-        <label for="categorySelect" class="block text-sm font-medium text-white">Categoría:</label>
-        <select id="categorySelect" name="category"
+        <label for="etiqueta" class="block text-sm font-medium text-white">Etiqueta:</label>
+        <select id="etiqueta" name="etiqueta"
           class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-          <option value="">Seleccione una categoría</option>
+          <option value="">Seleccione una etiqueta</option>
         </select>
       </div>
 
       <div>
-        <label for="newCategory" class="block text-sm font-medium text-white">Nueva Categoría:</label>
+        <label for="newCategory" class="block text-sm font-medium text-white">Nueva Etiqueta:</label>
         <input type="text" id="newCategory" name="newCategory"
           class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           placeholder="Agregar nueva categoría">
+        </div>
       </div>
 
       <div>

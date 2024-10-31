@@ -6,7 +6,7 @@ use Dompdf\Dompdf;
 include '../../app/connection/connection.php';
 
 // Obtener los productos de la base de datos
-$stmt = $conn->prepare("SELECT nombre, imagen, precio_real, precio_promocionado, descripcion FROM productos");
+$stmt = $conn->prepare("SELECT nombre, imagen, precio_real, precio_promocionado, informacion FROM productos");
 $stmt->execute();
 
 // Crear una instancia de Dompdf
@@ -27,7 +27,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $html .= '<td>' . htmlspecialchars($row['nombre']) . '</td>';
     $html .= '<td>$' . number_format($row['precio_real'], 2) . '</td>';
     $html .= '<td>' . ($row['precio_promocionado'] ? '$' . number_format($row['precio_promocionado'], 2) : 'N/A') . '</td>';
-    $html .= '<td>' . htmlspecialchars($row['descripcion']) . '</td>';
+    $html .= '<td>' . htmlspecialchars($row['informacion']) . '</td>';
     $html .= '</tr>';
 }
 

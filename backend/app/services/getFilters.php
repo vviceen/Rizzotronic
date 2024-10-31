@@ -6,19 +6,19 @@ try {
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $marcas = [];
-    $etiquetas = [];
+    $marca = [];
+    $etiqueta = [];
 
     foreach ($result as $row) {
         if (!empty($row['marca'])) {
-            $marcas[] = $row['marca'];
+            $marca[] = $row['marca'];
         }
         if (!empty($row['etiqueta'])) {
-            $etiquetas[] = $row['etiqueta'];
+            $etiqueta[] = $row['etiqueta'];
         }
     }
 
-    echo json_encode(['marcas' => $marcas, 'etiquetas' => $etiquetas]);
+    echo json_encode(['marca' => $marca, 'etiqueta' => $etiqueta]);
 } catch (PDOException $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }

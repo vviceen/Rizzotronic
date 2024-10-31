@@ -9,12 +9,11 @@
 </head>
 
 <style>
-  
-
   #EditUsersContent {
     transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
     overflow: hidden;
-    max-height: 1000px; /* Ajusta este valor según el contenido */
+    max-height: 1000px;
+    /* Ajusta este valor según el contenido */
     opacity: 1;
   }
 
@@ -51,23 +50,25 @@
 
   <div class="containerEditUsers p-4 bg-base-100 m-10 rounded-xl">
     <div class="flex justify-between px-4 py-2">
-      <h2 class="text-lg font-bold mb-2">Filtrar Usuarios por Rol</h2>
+      <h2 class="text-2xl font-bold mb-2">Editar Usuarios por Rol</h2>
       <button id="dropdown" class="text-3xl font-bold">↑</button>
     </div>
-    <div id="content" class="grid grid-cols-4 gap-4">
+    <div id="content">
       <!-- Filter Section -->
-      <div class="col-span-1 p-4 bg-">
-        <div class="flex flex-col space-y-2">
-          <label><input type="checkbox" id="filter-admin" value="1"> Admin</label>
-          <label><input type="checkbox" id="filter-vendedor" value="2"> Vendedor</label>
-          <label><input type="checkbox" id="filter-cliente" value="3"> Cliente</label>
-        </div>
+      <div class="p-4 space-x-2">
+        <p class="font-semibold">Filtrar</p>
+        <label><input type="checkbox" id="filter-admin" value="1"> Admin</label>
+        <label><input type="checkbox" id="filter-vendedor" value="2"> Vendedor</label>
+        <label><input type="checkbox" id="filter-cliente" value="3"> Cliente</label>
       </div>
 
-      <div class="col-span-3">
-        <div class="container mx-auto p-4">
-          <div id="users-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <!-- Aquí se insertarán las cards de los productos -->
+      <div class="grid grid-cols-4 gap-4">
+
+        <div class="col-span-4">
+          <div class="container mx-auto p-4">
+            <div id="users-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <!-- Aquí se insertarán las cards de los productos -->
+            </div>
           </div>
         </div>
       </div>

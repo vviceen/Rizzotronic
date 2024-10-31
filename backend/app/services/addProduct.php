@@ -16,10 +16,10 @@ $informacion = $_POST['informacion'];
 $precio_real = $_POST['precio_real'];
 $precio_promocionado = $_POST['precio_promocionado'] ?? null;
 $vigencia_promocion = $_POST['vigencia_promocion'] ?? null;
-$marca = $_POST['marca'] ?? null;
+$marca = $_POST['newMarca'] ?: $_POST['marca']; // Usar nueva marca si se proporciona, de lo contrario usar la existente
 $cantidad = $_POST['cantidad'];
-$etiqueta = $_POST['newCategory'] ?: $_POST['category']; // Usar nueva categoría si se proporciona, de lo contrario usar la existente
-$promocionado = $_POST['promocionado'];
+$etiqueta = $_POST['newCategory'] ?: $_POST['etiqueta']; // Usar nueva categoría si se proporciona, de lo contrario usar la existente
+$promocionado = $_POST['promocionado']; 
 
 // Manejar la subida de la imagen
 $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/Rizzotronic/frontend/src/imgProduct/";
