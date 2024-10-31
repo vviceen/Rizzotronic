@@ -46,5 +46,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Agregar más console.log para rastrear el flujo de ejecución
-  console.log("Script accountLoad.js cargado");
 });

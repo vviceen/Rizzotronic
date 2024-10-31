@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-  alert("rol en localStorage: " + localStorage.getItem('userRol'));
   if(localStorage.getItem('userRol') != '2'){
-    console.log("No es vendedor");
+    window.location.href = "/Rizzotronic/frontend/public/index.html";
   }
+  else{
+  document.getElementById("body").style.display = "block"; 
 
   const addProductForm = document.getElementById("addProductForm");
 
@@ -59,4 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.error("Formulario no encontrado");
   }
+}
+
 });
