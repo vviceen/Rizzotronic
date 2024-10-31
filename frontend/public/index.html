@@ -91,13 +91,13 @@
           <div class="hidden flex-none lg:block">
             <ul class="menu menu-horizontal">
               <!-- Navbar menu content here -->
-              <div class="relative">
-                <input type="text" id="productSearch" class="border p-2 w-80" placeholder="Buscar productos...">
-                <button id="searchButton" class="absolute right-0 top-0 mt-2 mr-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 18l6-6m0 0l-6-6m6 6H4" />
-                  </svg>
-                </button>
+              <div class="relative mr-4">
+                <input type="text" id="productSearch" class="input input-bordered input-secondary w-80 max-w-lg" placeholder="Buscar productos...">
+                  <button id="searchButton" class="absolute right-0 top-0 mt-3 mr-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stro ke-width="2" d="M10 18l6-6m0 0l-6-6m6 6H4" />
+                    </svg>
+                  </button>
                 <ul id="searchResults" class="absolute w-full bg-base-100 mt-1 rounded-xl hidden shadow-lg"></ul>
               </div>
 
@@ -415,28 +415,38 @@
         <p>
           Rizzotronic S.A.
           <br />
-          Brindando lo ultimo en tecnologia desde 2004
+          Brindando lo ultimo en tecnologia
         </p>
       </aside>
       <nav>
-        <h6 class="footer-title">Services</h6>
+        <h6 class="footer-title">Servicios</h6>
         <a class="link link-hover">Branding</a>
         <a class="link link-hover">Design</a>
         <a class="link link-hover">Marketing</a>
         <a class="link link-hover">Advertisement</a>
       </nav>
       <nav>
-        <h6 class="footer-title">Company</h6>
+        <h6 class="footer-title">Compañia</h6>
         <a class="link link-hover">About us</a>
         <a class="link link-hover">Contact</a>
         <a class="link link-hover">Jobs</a>
-        <a class="link link-hover">Press kit</a>
       </nav>
       <nav>
-        <h6 class="footer-title">Legal</h6>
-        <a class="link link-hover">Terms of use</a>
-        <a class="link link-hover">Privacy policy</a>
-        <a class="link link-hover">Cookie policy</a>
+        <form>
+          <h6 class="footer-title">Newsletter</h6>
+          <fieldset class="form-control w-80">
+            <label class="label">
+              <span class="label-text">Enter your email address</span>
+            </label>
+            <div class="join">
+              <input
+                type="text"
+                placeholder="username@site.com"
+                class="input input-bordered join-item" />
+              <button class="btn btn-primary join-item">Subscribe</button>
+            </div>
+          </fieldset>
+        </form>
         <a id="descargarCatalogo" class="link link-hover font-semibold bg-neutral-700 p-2 rounded-lg text-neutral-50">Descargar Catalogo</a>
       </nav>
     </footer>
