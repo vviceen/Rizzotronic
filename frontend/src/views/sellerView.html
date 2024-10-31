@@ -8,7 +8,7 @@
   <title>Agregar Producto</title>
 </head>
 
-<body id="body" class="bg-base-200" style="display: none;">
+<body id="body" class="bg-base-200">
   <div class="drawer">
     <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
@@ -60,14 +60,16 @@
         <label for="precio_real" class="block text-sm font-medium text-white">Precio Real:</label>
         <input type="number" id="precio_real" name="precio_real" step="0.01"
           class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          required>
+          required
+          min="0">
       </div>
 
       <div class="flex space-x-4">
       <div>
         <label for="precio_promocionado" class="block text-sm font-medium text-white">Precio Promocionado:</label>
         <input type="number" id="precio_promocionado" name="precio_promocionado" step="0.01"
-          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          min="0">
       </div>
 
       <div>
@@ -79,12 +81,14 @@
 
       <div class="flex space-x-4">
         <div>
-          <label for="marca" class="block text-sm font-medium text-white">Marca:</label>
-          <select id="marca" name="marca"
-            class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-            <option value="">Seleccione una marca</option>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Marca</label>
+          <select id="etiqueta" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200">
+              <option value="">Selecciona una marca</option>
+              <option value="1">Dell</option>
+              <option value="2">Samsung</option>
+              <!-- Agrega más opciones según tus categorías -->
           </select>
-        </div>
+      </div>
         <div>
           <label for="newMarca" class="block text-sm font-medium text-white">Nueva Marca:</label>
           <input type="text" id="newMarca" name="newMarca"
@@ -97,7 +101,8 @@
         <label for="cantidad" class="block text-sm font-medium text-white">Cantidad:</label>
         <input type="number" id="cantidad" name="cantidad"
           class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          required>
+          required
+          min="1">
       </div>
 
       <div class="flex space-x-4">
@@ -135,31 +140,36 @@
     </form>
   </div>
 
-  <div class="max-w-4xl mx-auto my-4 p-6 bg-base-100 rounded-lg shadow-md">
-    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Agregar Producto</h2>
+  <div class="max-w-4xl mx-auto my-6 p-6 bg-base-100 rounded-lg shadow-md">
+    <h1 class="text-3xl font-semibold text-gray-800 mb-6">Agregar Producto</h2>
     <form id="addProductForm" class="space-y-6" enctype="multipart/form-data">
     <!-- Nombre e Imagen del Producto -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Producto</label>
-            <input type="text" id="nombre" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. Laptop Gamer">
+            <input type="text" id="nombre" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. Laptop Gamer"
+            required>
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Imagen del Producto</label>
-            <input type="file" id="imagen" class="file-input file-input-bordered file-input-primary w-full"/>
+            <input type="file" id="imagen" class="file-input file-input-bordered file-input-primary w-full"
+            required>
         </div>
       </div> 
 
       <!-- Información del Producto -->
-      <h3 class="text-lg font-semibold text-gray-700 mb-4">Información del Producto</h3>
+      <h2 class="text-xl font-semibold text-gray-700 mb-4">Información del Producto</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">Precio Real</label>
-              <input type="number" id="precio_real" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. 1500">
+              <input type="number" id="precio_real" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. 1500"
+              required
+              min="0">
           </div>
           <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">Precio Promocionado</label>
-              <input type="number" id="precio_promocionado" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. 1200">
+              <input type="number" id="precio_promocionado" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. 1200"
+              min="0">
           </div>
           <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">Vigencia Promoción</label>
@@ -170,18 +180,29 @@
       <!-- Descripción y Otros Detalles -->
       <div class="grid grid-cols-1 gap-6 mb-6">
           <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
-              <textarea rows="4" id="descripcion" class="textarea textarea-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Descripción del producto..."></textarea>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Información</label>
+            <textarea rows="4" id="informacion" class="textarea textarea-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Información adicional sobre el producto..."></textarea>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Marca</label>
-                  <input type="text" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. Dell, Samsung...">
-              </div>
-              <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Cantidad</label>
-                  <input type="number" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. 50">
-              </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Marca</label>
+              <select id="etiqueta" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200">
+                  <option value="">Selecciona una marca</option>
+                  <option value="1">Dell</option>
+                  <option value="2">Samsung</option>
+                  <!-- Agrega más opciones según tus categorías -->
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Nueva Marca</label>
+              <input type="text" id="newMarca" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. Nueva Marca">
+          </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Cantidad</label>
+                <input type="number" id="cantidad" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200 max-w-xs" placeholder="Ej. 50"
+                required
+                min="1">
+            </div>
           </div>
       </div>
 
@@ -189,7 +210,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">Categoría</label>
-              <select class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200">
+              <select id="etiqueta" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200">
                   <option value="">Selecciona una categoría</option>
                   <option value="1">Electrónica</option>
                   <option value="2">Hogar</option>
@@ -198,7 +219,7 @@
           </div>
           <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">Nueva Categoría</label>
-              <input type="text" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. Nueva Categoría">
+              <input type="text" id="newCategory" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. Nueva Categoría">
           </div>
       </div>
 
@@ -210,7 +231,7 @@
 
       <!-- Botón de Enviar -->
       <div class="text-right">
-          <button class="btn btn-primary px-6 py-2 bg-indigo-600 text-white font-medium rounded hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300">
+          <button type="submit" class="btn btn-primary px-6 py-2 bg-indigo-600 text-white font-medium rounded hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300">
               Guardar Producto
           </button>
       </div>
