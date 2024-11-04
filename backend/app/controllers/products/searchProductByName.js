@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <li class="bg-white" onclick="selectProduct(${product.id})">
                             <div class="flex w-full items-center p-2">
                                 <img src="/Rizzotronic/frontend/src/imgProduct/${product.imagen}" alt="${product.nombre}">
-                                <span>${product.nombre}</span>
+                                <span class="text-black">${product.nombre}</span>
                             </div>
                         </li>
                     `).join('');

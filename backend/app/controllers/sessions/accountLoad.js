@@ -1,4 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  const userRol = localStorage.getItem('userRol');
+  const navbar = document.getElementById("navbar");
+
+
+  if (userRol == '1') { // Admin
+    navbar.classList.add('admin');
+  } else if (userRol == '2') { // Vendedor
+    navbar.classList.add('vendedor');
+  }else {// Cliente e invitado
+    navbar.classList.add('cliente');
+  }
+
   const btnMyAccount = document.getElementById("btnMyAccount");
   const btnLogin = document.getElementById("btnLogin");
   const btnRegister = document.getElementById("btnRegister");
@@ -22,8 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   btnMyAccount.addEventListener("click", () => {
-    const userRol = localStorage.getItem("userRol");
-    console.log("userRol:", userRol, "type:", typeof userRol);
 
     switch (userRol) {
       case "1":
@@ -44,6 +55,4 @@ document.addEventListener("DOMContentLoaded", () => {
         break;
     }
   });
-
-  // Agregar más console.log para rastrear el flujo de ejecución
 });

@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../public/css/styles.css" />
   <link rel="stylesheet" href="../../public/css/output.css" />
   <title>Agregar Producto</title>
 </head>
@@ -13,7 +14,7 @@
     <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
       <!-- Navbar -->
-        <div class="navbar bg-primary w-full flex items-center justify-between">
+      <div id="navbar" class="navbar w-full flex items-center justify-between">
         <div class="flex-none lg:hidden">
           <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -33,366 +34,189 @@
     </div>
   </div>
 
-  <div class="max-w-4xl mx-auto p-8">
-    <form id="addProductForm" class="space-y-6" enctype="multipart/form-data">
-      <div>
-        <label for="nombre" class="block text-sm font-medium text-white">Nombre del producto:</label>
-        <input type="text" id="nombre" name="nombre"
-          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          required>
-      </div>
-
-      <div>
-        <label for="imagen" class="block text-sm font-medium text-white">Imagen del producto:</label>
-        <input type="file" id="imagen" name="imagen" accept="image/*"
-          class=" mt-1 block w-full text-white bg-gray-800 rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          required>
-      </div>
-
-      <div>
-        <label for="informacion" class="block text-sm font-medium text-white">Información:</label>
-        <input type="text" id="informacion" name="informacion"
-          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          required>
-      </div>
-
-      <div>
-        <label for="precio_real" class="block text-sm font-medium text-white">Precio Real:</label>
-        <input type="number" id="precio_real" name="precio_real" step="0.01"
-          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          required
-          min="0">
-      </div>
-
-      <div class="flex space-x-4">
-      <div>
-        <label for="precio_promocionado" class="block text-sm font-medium text-white">Precio Promocionado:</label>
-        <input type="number" id="precio_promocionado" name="precio_promocionado" step="0.01"
-          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          min="0">
-      </div>
-
-      <div>
-        <label for="vigencia_promocion" class="block text-sm font-medium text-white">Vigencia Promoción:</label>
-        <input type="date" id="vigencia_promocion" name="vigencia_promocion"
-          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-      </div>
-    </div>
-
-      <div class="flex space-x-4">
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Marca</label>
-          <select id="etiqueta" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200">
-              <option value="">Selecciona una marca</option>
-              <option value="1">Dell</option>
-              <option value="2">Samsung</option>
-              <!-- Agrega más opciones según tus categorías -->
-          </select>
-      </div>
-        <div>
-          <label for="newMarca" class="block text-sm font-medium text-white">Nueva Marca:</label>
-          <input type="text" id="newMarca" name="newMarca"
-            class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            placeholder="Agregar nueva marca">
-        </div>
-      </div>
-
-      <div>
-        <label for="cantidad" class="block text-sm font-medium text-white">Cantidad:</label>
-        <input type="number" id="cantidad" name="cantidad"
-          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          required
-          min="1">
-      </div>
-
-      <div class="flex space-x-4">
-      <div>
-        <label for="etiqueta" class="block text-sm font-medium text-white">Etiqueta:</label>
-        <select id="etiqueta" name="etiqueta"
-          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-          <option value="">Seleccione una etiqueta</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="newCategory" class="block text-sm font-medium text-white">Nueva Etiqueta:</label>
-        <input type="text" id="newCategory" name="newCategory"
-          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          placeholder="Agregar nueva categoría">
-        </div>
-      </div>
-
-      <div>
-        <label for="promocionado" class="block text-sm font-medium text-white">Promocionado:</label>
-        <select id="promocionado" name="promocionado"
-          class="mt-1 block w-full px-3 py-2 bg-gray-800 text-white rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          required>
-          <option value="0">No</option>
-          <option value="1">Sí</option>
-        </select>
-      </div>
-      <div>
-        <button type="submit"
-          class="w-full py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-          Agregar Producto
-        </button>
-      </div>
-    </form>
-  </div>
-
   <div class="max-w-4xl mx-auto my-6 p-6 bg-base-100 rounded-lg shadow-md">
     <h1 class="text-3xl font-semibold text-gray-800 mb-6">Agregar Producto</h2>
-    <form id="addProductForm" class="space-y-6" enctype="multipart/form-data">
-    <!-- Nombre e Imagen del Producto -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Producto</label>
-            <input type="text" id="nombre" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. Laptop Gamer"
-            required>
+      <form id="addProductForm" class="space-y-6" enctype="multipart/form-data">
+        <!-- Nombre e Imagen del Producto -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">Nombre del Producto</label>
+            <input type="text" id="nombre" name="nombre" 
+              class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200"
+              placeholder="Ej. Laptop Gamer" required>
+          </div>
+          <div>
+            <label for="imagen" class="block text-sm font-medium text-gray-700 mb-1">Imagen del Producto</label>
+            <input type="file" id="imagen" name="imagen" class="file-input file-input-bordered file-input-primary w-full" required>
+          </div>
         </div>
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Imagen del Producto</label>
-            <input type="file" id="imagen" class="file-input file-input-bordered file-input-primary w-full"
-            required>
-        </div>
-      </div> 
 
-      <!-- Información del Producto -->
-      <h2 class="text-xl font-semibold text-gray-700 mb-4">Información del Producto</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Precio Real</label>
-              <input type="number" id="precio_real" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. 1500"
-              required
-              min="0">
-          </div>
-          <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Precio Promocionado</label>
-              <input type="number" id="precio_promocionado" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. 1200"
-              min="0">
-          </div>
-          <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Vigencia Promoción</label>
-              <input type="date" id="vigencia_promocion" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200">
-          </div>
-      </div>
-
-      <!-- Descripción y Otros Detalles -->
-      <div class="grid grid-cols-1 gap-6 mb-6">
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Información</label>
-            <textarea rows="4" id="informacion" class="textarea textarea-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Información adicional sobre el producto..."></textarea>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Información del Producto -->
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">Información del Producto</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Marca</label>
-              <select id="etiqueta" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200">
+              <label for="precio_real" class="block text-sm font-medium text-gray-700 mb-1">Precio Real</label>
+              <input type="number" id="precio_real"
+                class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200"
+                placeholder="Ej. 1500" required min="0">
+            </div>
+            <div>
+              <label for="precio_promocionado" class="block text-sm font-medium text-gray-700 mb-1">Precio Promocionado</label>
+              <input type="number" id="precio_promocionado" name="precio_promocionado"
+                class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200"
+                placeholder="Ej. 1200" min="0">
+            </div>
+            <div>
+              <label for="vigencia_promocion" class="block text-sm font-medium text-gray-700 mb-1">Vigencia Promoción</label>
+              <input type="date" id="vigencia_promocion"
+                class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200">
+            </div>
+          </div>
+
+          <!-- Descripción y Otros Detalles -->
+          <div class="grid grid-cols-1 gap-6 mb-6">
+            <div>
+              <label for="informacion" class="block text-sm font-medium text-gray-700 mb-1">Información</label>
+              <textarea rows="4" id="informacion" name="informacion"
+                class="textarea textarea-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200"
+                placeholder="Información adicional sobre el producto..."></textarea>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="marca" class="block text-sm font-medium text-gray-700 mb-1">Marca</label>
+                <select id="marca" name="marca"
+                  class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200">
                   <option value="">Selecciona una marca</option>
-                  <option value="1">Dell</option>
-                  <option value="2">Samsung</option>
                   <!-- Agrega más opciones según tus categorías -->
+                </select>
+              </div>
+              <div>
+                <label for="newMarca" class="block text-sm font-medium text-gray-700 mb-1">Nueva Marca</label>
+                <input type="text" id="newMarca" name="newMarca"
+                  class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200"
+                  placeholder="Ej. Nueva Marca">
+              </div>
+              <div>
+                <label for="cantidad" class="block text-sm font-medium text-gray-700 mb-1">Cantidad</label>
+                <input type="number" id="cantidad" name="cantidad"
+                  class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200 max-w-xs"
+                  placeholder="Ej. 50" required min="1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Categoría y Nueva Categoría -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="etiqueta" class="block text-sm font-medium text-gray-700 mb-1">Categoría</label>
+              <select id="etiqueta" name="etiqueta"
+                class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200">
+                <option value="">Selecciona una categoría</option>
+                <option value="1">Electrónica</option>
+                <option value="2">Hogar</option>
+                <!-- Agrega más opciones según tus categorías -->
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Nueva Marca</label>
-              <input type="text" id="newMarca" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. Nueva Marca">
-          </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Cantidad</label>
-                <input type="number" id="cantidad" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200 max-w-xs" placeholder="Ej. 50"
-                required
-                min="1">
+              <label for="newCategory" class="block text-sm font-medium text-gray-700 mb-1">Nueva Categoría</label>
+              <input type="text" id="newCategory" name="newCategory"
+                class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200"
+                placeholder="Ej. Nueva Categoría">
             </div>
           </div>
-      </div>
 
-      <!-- Categoría y Nueva Categoría -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Categoría</label>
-              <select id="etiqueta" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200">
-                  <option value="">Selecciona una categoría</option>
-                  <option value="1">Electrónica</option>
-                  <option value="2">Hogar</option>
-                  <!-- Agrega más opciones según tus categorías -->
-              </select>
+          <!-- Producto Promocionado -->
+          <div class="flex items-center mb-6">
+            <input type="checkbox" id="promocionado" class="toggle toggle-primary" />
+            <label for="promocionado" class="ml-3 text-sm font-medium text-gray-700">Producto Promocionado</label>
           </div>
-          <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Nueva Categoría</label>
-              <input type="text" id="newCategory" class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200" placeholder="Ej. Nueva Categoría">
-          </div>
-      </div>
 
-      <!-- Producto Promocionado -->
-      <div class="flex items-center mb-6">
-        <input type="checkbox" id="promocionado" class="toggle toggle-primary"/>
-        <label for="promocionado" class="ml-3 text-sm font-medium text-gray-700">Producto Promocionado</label>
-      </div>
-
-      <!-- Botón de Enviar -->
-      <div class="text-right">
-          <button type="submit" class="btn btn-primary px-6 py-2 bg-indigo-600 text-white font-medium rounded hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300">
+          <!-- Botón de Enviar -->
+          <div class="text-right">
+            <button type="submit"
+              class="btn btn-primary px-6 py-2 bg-indigo-600 text-white font-medium rounded hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300">
               Guardar Producto
-          </button>
-      </div>
-    </form>
+            </button>
+          </div>
+      </form>
   </div>
 
-  <footer class="footer bg-info text-base-content p-10">
+  <footer class="footer bg-base-100 text-base-content p-10">
     <aside>
-      <svg
-        width="85"
-        height="85"
-        viewBox="0 0 168 168"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="85" height="85" viewBox="0 0 168 168" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_i_10_4)">
-          <rect
-            x="22"
-            y="22"
-            width="124"
-            height="124"
-            rx="17"
-            stroke="#201600"
-            stroke-width="6"
-            stroke-linejoin="round"
-          />
+          <rect x="22" y="22" width="124" height="124" rx="17" stroke="#201600" stroke-width="6"
+            stroke-linejoin="round" />
           <mask id="path-2-inside-1_10_4" fill="white">
             <rect x="38" y="37" width="92" height="92" rx="4" />
           </mask>
-          <rect
-            x="38"
-            y="37"
-            width="92"
-            height="92"
-            rx="4"
-            stroke="#201600"
-            stroke-width="12"
-            stroke-linejoin="round"
-            mask="url(#path-2-inside-1_10_4)"
-          />
+          <rect x="38" y="37" width="92" height="92" rx="4" stroke="#201600" stroke-width="12" stroke-linejoin="round"
+            mask="url(#path-2-inside-1_10_4)" />
           <path
             d="M87 3C87 1.34315 85.6569 -2.38419e-07 84 -2.38419e-07C82.3431 -2.38419e-07 81 1.34315 81 3H87ZM87 19V3H81V19H87Z"
-            fill="#201600"
-          />
+            fill="#201600" />
           <path
             d="M123 3C123 1.34315 121.657 -2.38419e-07 120 -2.38419e-07C118.343 -2.38419e-07 117 1.34315 117 3H123ZM123 19V3H117V19H123Z"
-            fill="#201600"
-          />
+            fill="#201600" />
           <path
             d="M105 3C105 1.34315 103.657 -2.38419e-07 102 -2.38419e-07C100.343 -2.38419e-07 99 1.34315 99 3H105ZM105 19V3H99V19H105Z"
-            fill="#201600"
-          />
+            fill="#201600" />
           <path
             d="M69 3C69 1.34315 67.6569 -2.38419e-07 66 -2.38419e-07C64.3431 -2.38419e-07 63 1.34315 63 3H69ZM69 19V3H63V19H69Z"
-            fill="#201600"
-          />
+            fill="#201600" />
           <path
             d="M51 3C51 1.34315 49.6569 -2.38419e-07 48 -2.38419e-07C46.3431 -2.38419e-07 45 1.34315 45 3H51ZM51 19V3H45V19H51Z"
-            fill="#201600"
-          />
+            fill="#201600" />
           <path
             d="M3 80C1.34315 80 -2.38419e-07 81.3431 -2.38419e-07 83C-2.38419e-07 84.6569 1.34315 86 3 86V80ZM19 80H3V86H19V80Z"
-            fill="#201600"
-          />
+            fill="#201600" />
           <path
             d="M3 44C1.34315 44 -2.38419e-07 45.3431 -2.38419e-07 47C-2.38419e-07 48.6569 1.34315 50 3 50V44ZM19 44H3V50H19V44Z"
-            fill="#201600"
-          />
+            fill="#201600" />
           <path
             d="M3 62C1.34315 62 -2.38419e-07 63.3431 -2.38419e-07 65C-2.38419e-07 66.6569 1.34315 68 3 68V62ZM19 62H3V68H19V62Z"
-            fill="#201600"
-          />
+            fill="#201600" />
           <path
             d="M3 98C1.34315 98 -2.38419e-07 99.3431 -2.38419e-07 101C-2.38419e-07 102.657 1.34315 104 3 104V98ZM19 98H3V104H19V98Z"
-            fill="#201600"
-          />
+            fill="#201600" />
           <path
             d="M3 116C1.34315 116 -2.38419e-07 117.343 -2.38419e-07 119C-2.38419e-07 120.657 1.34315 122 3 122V116ZM19 116H3V122H19V116Z"
-            fill="#201600"
-          />
-          <path
-            d="M81 165C81 166.657 82.3431 168 84 168C85.6569 168 87 166.657 87 165H81ZM81 149V165H87V149H81Z"
-            fill="#201600"
-          />
-          <path
-            d="M45 165C45 166.657 46.3431 168 48 168C49.6569 168 51 166.657 51 165H45ZM45 149V165H51V149H45Z"
-            fill="#201600"
-          />
-          <path
-            d="M63 165C63 166.657 64.3431 168 66 168C67.6569 168 69 166.657 69 165H63ZM63 149V165H69V149H63Z"
-            fill="#201600"
-          />
-          <path
-            d="M99 165C99 166.657 100.343 168 102 168C103.657 168 105 166.657 105 165H99ZM99 149V165H105V149H99Z"
-            fill="#201600"
-          />
+            fill="#201600" />
+          <path d="M81 165C81 166.657 82.3431 168 84 168C85.6569 168 87 166.657 87 165H81ZM81 149V165H87V149H81Z"
+            fill="#201600" />
+          <path d="M45 165C45 166.657 46.3431 168 48 168C49.6569 168 51 166.657 51 165H45ZM45 149V165H51V149H45Z"
+            fill="#201600" />
+          <path d="M63 165C63 166.657 64.3431 168 66 168C67.6569 168 69 166.657 69 165H63ZM63 149V165H69V149H63Z"
+            fill="#201600" />
+          <path d="M99 165C99 166.657 100.343 168 102 168C103.657 168 105 166.657 105 165H99ZM99 149V165H105V149H99Z"
+            fill="#201600" />
           <path
             d="M117 165C117 166.657 118.343 168 120 168C121.657 168 123 166.657 123 165H117ZM117 149V165H123V149H117Z"
-            fill="#201600"
-          />
-          <path
-            d="M165 86C166.657 86 168 84.6569 168 83C168 81.3431 166.657 80 165 80V86ZM149 86H165V80H149V86Z"
-            fill="#201600"
-          />
+            fill="#201600" />
+          <path d="M165 86C166.657 86 168 84.6569 168 83C168 81.3431 166.657 80 165 80V86ZM149 86H165V80H149V86Z"
+            fill="#201600" />
           <path
             d="M165 122C166.657 122 168 120.657 168 119C168 117.343 166.657 116 165 116V122ZM149 122H165V116H149V122Z"
-            fill="#201600"
-          />
-          <path
-            d="M165 104C166.657 104 168 102.657 168 101C168 99.3431 166.657 98 165 98V104ZM149 104H165V98H149V104Z"
-            fill="#201600"
-          />
-          <path
-            d="M165 68C166.657 68 168 66.6569 168 65C168 63.3431 166.657 62 165 62V68ZM149 68H165V62H149V68Z"
-            fill="#201600"
-          />
-          <path
-            d="M165 50C166.657 50 168 48.6569 168 47C168 45.3431 166.657 44 165 44V50ZM149 50H165V44H149V50Z"
-            fill="#201600"
-          />
+            fill="#201600" />
+          <path d="M165 104C166.657 104 168 102.657 168 101C168 99.3431 166.657 98 165 98V104ZM149 104H165V98H149V104Z"
+            fill="#201600" />
+          <path d="M165 68C166.657 68 168 66.6569 168 65C168 63.3431 166.657 62 165 62V68ZM149 68H165V62H149V68Z"
+            fill="#201600" />
+          <path d="M165 50C166.657 50 168 48.6569 168 47C168 45.3431 166.657 44 165 44V50ZM149 50H165V44H149V50Z"
+            fill="#201600" />
         </g>
         <defs>
-          <filter
-            id="filter0_i_10_4"
-            x="0"
-            y="0"
-            width="168"
-            height="172"
-            filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
-          >
+          <filter id="filter0_i_10_4" x="0" y="0" width="168" height="172" filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
             <feFlood flood-opacity="0" result="BackgroundImageFix" />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha" />
             <feOffset dy="4" />
             <feGaussianBlur stdDeviation="2" />
-            <feComposite
-              in2="hardAlpha"
-              operator="arithmetic"
-              k2="-1"
-              k3="1"
-            />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="shape"
-              result="effect1_innerShadow_10_4"
-            />
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="shape" result="effect1_innerShadow_10_4" />
           </filter>
         </defs>
       </svg>
@@ -424,15 +248,13 @@
             <span class="label-text">Enter your email address</span>
           </label>
           <div class="join">
-            <input
-              type="text"
-              placeholder="username@site.com"
-              class="input input-bordered join-item" />
+            <input type="text" placeholder="username@site.com" class="input input-bordered join-item" />
             <button class="btn btn-primary join-item">Subscribe</button>
           </div>
         </fieldset>
       </form>
-      <a id="descargarCatalogo" class="link link-hover font-semibold bg-neutral-700 p-2 rounded-lg text-neutral-50">Descargar Catalogo</a>
+      <a id="descargarCatalogo"
+        class="link link-hover font-semibold bg-neutral-700 p-2 rounded-lg text-neutral-50">Descargar Catalogo</a>
     </nav>
   </footer>
 
@@ -440,6 +262,9 @@
   <script type="module" src="../../../backend/app/controllers/products/addProducts.js"></script>
   <script type="module" src="../../../backend/app/controllers/products/getCategories.js"></script>
   <script type="module" src="../../../backend/app/controllers/sessions/logout.js"></script>
+  <script type="module" src="../../../backend/app/controllers/sessions/accountLoad.js"></script>
+  <script type="module" src="../../../backend/app/controllers/products/downloadCatalog.js"></script>
+
 </body>
 
 </html>

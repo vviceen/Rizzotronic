@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carrito de Compras</title>
   <link href="../../public/css/output.css" rel="stylesheet" />
+  <link href="../../public/css/styles.css" rel="stylesheet" />
+
 
   <style>
     .table-container {
@@ -22,7 +24,7 @@
     <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
       <!-- Navbar -->
-      <div class="navbar bg-primary w-full flex items-center justify-between">
+      <div id="navbar" class="navbar w-full flex items-center justify-between">
         <div class="flex-none lg:hidden">
           <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -68,6 +70,7 @@
 
   <script type="module" src="../../../backend/app/controllers/sessions/logout.js"></script>
   <script type="module" src="../../../backend/app/controllers/carrito/mostrarCarrito.js"></script>
+  <script type="module" src="../../../backend/app/controllers/sessions/accountLoad.js"></script>
   <script type="module" src="../../../backend/app/controllers/carrito/eliminarProducto.js"></script>
 </body>
 

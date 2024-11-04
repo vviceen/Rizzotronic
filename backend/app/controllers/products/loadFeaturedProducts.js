@@ -9,6 +9,17 @@ window.deleteProduct = deleteProduct;
 window.proximo = proximo;
 
 document.addEventListener("DOMContentLoaded", function () {
+  if(localStorage.getItem('userRol')){
+    const whoIs = document.getElementById("whoIs");
+    if(localStorage.getItem('userRol') == 1){
+      whoIs.innerHTML = 'Admin';
+    }
+    if(localStorage.getItem('userRol') == 2){
+      whoIs.innerHTML = 'Vendedor';
+    }
+  }
+
+
 
   fetch("/Rizzotronic/backend/app/services/getProducts.php")
     .then((response) => response.json())

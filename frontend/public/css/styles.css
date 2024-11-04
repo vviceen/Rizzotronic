@@ -1,0 +1,25 @@
+/* styles.css */
+.admin {
+  background-color: #264ab0 ;/* Azul oscuro */
+  color: white;
+}
+
+.vendedor {
+  --tw-bg-opacity: 1;
+  background-color: rgba(6, 95, 70, var(--tw-bg-opacity)); /* Verde oscuro */
+  --tw-text-opacity: 1;
+  color: white;
+}
+
+.cliente {
+    --tw-bg-opacity: 1;
+    background-color: rgba(250, 169, 22, var(--tw-bg-opacity)); /* Amarillo */
+    --tw-text-opacity: 1;
+    color: white;
+}
+.invitado {
+    --tw-bg-opacity: 1;
+    background-color: rgba(250, 169, 22, var(--tw-bg-opacity)); /* Amarillo */
+    --tw-text-opacity: 1;
+    color: white;
+}

@@ -37,13 +37,13 @@ document.addEventListener("DOMContentLoaded", function () {
             let cardColor;
             switch (user.rol_id) {
               case '1': // Admin
-                cardColor = "bg-admin";
+                cardColor = "bg-blue-300";
                 break;
               case '2': // Vendedor
-                cardColor = "bg-vendedor";
+                cardColor = "bg-green-300";
                 break;
               case '3': // Cliente
-                cardColor = "bg-cliente";
+                cardColor = "bg-gray-300";
                 break;
               default:
                 cardColor = "bg-neutral";
