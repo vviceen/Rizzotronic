@@ -1,4 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    const passwordInput = document.getElementById('password');
+    const passwordCounter = document.getElementById('passwordCounter');
+    const errorMessage = document.getElementById('errorMessage');
+
+    passwordInput.addEventListener('input', function () {
+        const length = passwordInput.value.length;
+        passwordCounter.textContent = `${length}/8`;
+        if (length >= 8) {
+            passwordCounter.style.color = 'green';
+        } else {
+            passwordCounter.style.color = 'rgba(255, 0, 0, 0.721)';
+        }
+    });
+
     document.getElementById("registerForm").addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -8,6 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!nombre || !email || !password) {
             console.error("Todos los campos son requeridos.");
+            return;
+        }
+
+        if (!isValidPassword(password)) {
+            showError("La contraseña debe tener al menos 8 caracteres y contener al menos un símbolo.");
             return;
         }
 
@@ -72,4 +92,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error('Error:', error);
             });
     });
+
+    function isValidPassword(password) {
+        const minLength = 8;
+        const symbolPattern = /[!@#$%^&*(),.?":{}|<>]/;
+
+        return password.length >= minLength && symbolPattern.test(password);
+    }
+
+    function showError(message) {
+        const errorMessage = document.getElementById('errorMessage');
+        errorMessage.textContent = message;
+        errorMessage.style.display = 'block';
+        setTimeout(() => {
+            errorMessage.style.display = 'none';
+        }, 4000);
+    }
 });
