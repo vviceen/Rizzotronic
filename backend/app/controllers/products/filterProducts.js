@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const prevPageBtn = document.getElementById("prevPage");
     const nextPageBtn = document.getElementById("nextPage");
     const pageInfo = document.getElementById("pageInfo");
+    const descuentoVigenteCheckbox = document.getElementById("promocionVigente");
 
     let currentPage = 1;
     const itemsPerPage = 8;
@@ -23,29 +24,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
             paginatedProducts.forEach(product => {
                 const productCard = `
-                    <div class="card overflow-hidden shadow-lg my-4" data-product-id="${product.id}">
-                        <figure>
-                            <img class="w-full" src="/Rizzotronic/frontend/src/imgProduct/${product.imagen}" alt="${product.nombre}">
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="card-title font-bold uppercase">${product.nombre}</h2>
-                        </div>
-                        <div class="flex items-center mt-2 ml-4">
-                            <div class="text-secondary text-lg font-semibold line-through">$${product.precio_real}</div>
-                            ${product.precio_promocionado ? `<div class="text-primary text-lg mr-2">$${product.precio_promocionado}</div>` : ''}
-                            ${product.vigencia_promocion ? `<div class="badge badge-accent badge-outline">${product.vigencia_promocion}</div>` : ''}
-                        </div>
-                        <div class="card-actions justify-end">
-                            <div class="mt-4">
-                                ${product.rol == '2' ? `
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" onclick="editProduct(${product.id})">Editar card</button>
-                                ` : ''}
-                    <a class="btn btn-primary mr-4 mb-3" href="../../../frontend/src/views/productView.html?id=${product.id}">Ver Más</a>
-
-                            </div>
+                <div class="card overflow-hidden shadow-lg my-4" data-product-id="${product.id}">
+                    <figure>
+                        <img class="w-full" src="/Rizzotronic/frontend/src/imgProduct/${product.imagen}" alt="${product.nombre}">
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title font-bold uppercase">${product.nombre}</h2>
+                    </div>
+                    <div class="flex items-center mt-2 ml-4">
+                        <div class="text-secondary text-lg font-semibold ${product.precio_promocionado ? 'line-through' : ''}">$${product.precio_real}</div>
+                        ${product.precio_promocionado ? `<div class="text-primary text-lg mr-2">$${product.precio_promocionado}</div>` : ''}
+                        ${product.vigencia_promocion ? `<div class="badge badge-accent badge-outline">${product.vigencia_promocion}</div>` : ''}
+                    </div>
+                    <div class="card-actions justify-end">
+                        <div class="mt-4">
+                            ${product.rol == '2' ? `
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" onclick="editProduct(${product.id})">Editar card</button>
+                            ` : ''}
+                            <a class="btn btn-primary mr-4 mb-3" href="../../../frontend/src/views/productView.html?id=${product.id}">Ver Más</a>
                         </div>
                     </div>
-                `;
+                </div>
+            `;
                 productList.innerHTML += productCard;
             });
 
@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const ordenFecha = document.getElementById("orden_fecha").value;
             const marca = document.getElementById("marca").value;
             const etiqueta = document.getElementById("etiqueta").value;
+            const descuentoVigente = descuentoVigenteCheckbox.checked;
 
             fetch("/Rizzotronic/backend/app/services/getProducts.php")
                 .then(response => response.json())
@@ -71,7 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             return (precioMin === "" || precioReal >= parseFloat(precioMin)) &&
                                 (precioMax === "" || precioReal <= parseFloat(precioMax)) &&
                                 (marca === "" || product.marca === marca) &&
-                                (etiqueta === "" || product.etiqueta === etiqueta);
+                                (etiqueta === "" || product.etiqueta === etiqueta) &&
+                                (!descuentoVigente || product.precio_promocionado);
                         });
 
                         if (ordenFecha === "asc") {
@@ -98,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("orden_fecha").value = "";
             document.getElementById("marca").value = "";
             document.getElementById("etiqueta").value = "";
+            descuentoVigenteCheckbox.checked = false;
             currentPage = 1;
             filterProducts();
         }

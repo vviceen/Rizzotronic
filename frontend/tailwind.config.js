@@ -14,6 +14,11 @@ module.exports = {
           DEFAULT: '#1E3A8A', // Azul oscuro
           dark: '#1E3A8A', // Azul oscuro
         },
+        amarrillo: {
+          light: '#FBBF24', // Amarillo claro
+          DEFAULT: '#FAA916', // Amarillo oscuro
+          dark: '#FAA916', // Amarillo oscuro
+        },
         secondary: {
           light: '#10B981', // Verde claro
           DEFAULT: '#065F46', // Verde oscuro

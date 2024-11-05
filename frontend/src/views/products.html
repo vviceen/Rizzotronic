@@ -57,72 +57,50 @@
       <!-- Navbar -->
       <div id="navbar" class="navbar w-full flex items-center justify-between">
         <div class="flex-none lg:hidden">
-          <label
-            for="my-drawer-3"
-            aria-label="open sidebar"
-            class="btn btn-square btn-ghost"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              class="inline-block h-6 w-6 stroke-current"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
+          <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              class="inline-block h-6 w-6 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
           </label>
         </div>
-        <a href="../../public/index.html"> 
+        <a href="../../public/index.html">
           <img src="../../src/assets/rizzotronic.svg" class="object-contain h-11" />
         </a>
         <div class="hidden flex-none lg:block">
           <ul class="menu menu-horizontal">
             <!-- Navbar menu content here -->
             <div class="relative mr-4">
-              <input type="text" id="productSearch" class="input input-bordered input-secondary w-80 max-w-lg" placeholder="Buscar productos...">
-                <button id="searchButton" class="absolute right-0 top-0 mt-3 mr-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stro ke-width="2" d="M10 18l6-6m0 0l-6-6m6 6H4" />
-                  </svg>
-                </button>
+              <input type="text" id="productSearch" class="input input-bordered input-secondary w-80 max-w-lg"
+                placeholder="Buscar productos...">
+              <button id="searchButton" class="absolute right-0 top-0 mt-3 mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stro ke-width="2"
+                    d="M10 18l6-6m0 0l-6-6m6 6H4" />
+                </svg>
+              </button>
               <ul id="searchResults" class="absolute w-full bg-base-100 mt-1 rounded-xl hidden shadow-lg"></ul>
             </div>
 
             <li><a id="btnLogin" href="../../src/views/login.html">Iniciar Sesión</a></li>
             <li><a id="btnRegister" href="../../src/views/register.html">Crear Cuenta</a></li>
             <div class="flex flex-col items-center">
-            <li>
-              <a id="btnMyAccount" style="display: none;">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                  color="#ffffff"
-                  fill="none"
-                >
-                  <path
-                    d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                  />
-                </svg>
-              </a>
-            </li>
-            <p id="whoIs"></p>
-          </div>
+              <li>
+                <a id="btnMyAccount" style="display: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff"
+                    fill="none">
+                    <path
+                      d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                      d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z"
+                      stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                </a>
+              </li>
+              <p id="whoIs"></p>
+            </div>
           </ul>
         </div>
       </div>
@@ -130,51 +108,57 @@
   </div>
 
   <!-- Filtrar productos -->
-  <div class="container mx-auto p-4 m-10 bg-base-200 rounded-xl">
-    <div class="flex justify-between">
-    <h1 class="text-3xl font-bold ">Filtrar Productos</h1>
-    <button id="dropdown" class="text-3xl font-bold">↑</button>
+  <div class="container mx-auto p-4 m-10 bg-base-200 rounded-xl shadow-lg">
+    
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl font-bold text-gray-800">Filtrar Productos</h1>
+      <button id="dropdown" class="text-3xl font-bold text-gray-800">↑</button>
     </div>
+    
     <div id="content" class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-      <div class="flex flex-col md:flex-row md:space-x-4">
+      
+      <!-- precios -->
+      <div class="flex flex-col-2 md:flex-row space-x-4">
         <div class="flex-1">
-          <label for="precio_min" class="block text-sm font-medium">Precio Mínimo:</label>
+          <label for="precio_min" class="block text-sm font-medium text-gray-700">Precio Mínimo:</label>
           <input type="number" id="precio_min" name="precio_min" step="0.01"
             class="mt-1 block w-full px-3 py-2 bg-base-300 rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
         </div>
         <div class="flex-1">
-          <label for="precio_max" class="block text-sm font-medium ">Precio Máximo:</label>
+          <label for="precio_max" class="block text-sm font-medium text-gray-700">Precio Máximo:</label>
           <input type="number" id="precio_max" name="precio_max" step="0.01"
             class="mt-1 block w-full px-3 py-2 bg-base-300 rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
         </div>
       </div>
       <div class="flex-1">
-        <label for="orden_fecha" class="block text-sm font-medium ">Ordenar por Fecha:</label>
+        <label for="orden_fecha" class="block text-sm font-medium text-gray-700">Ordenar por Fecha:</label>
         <select id="orden_fecha" name="orden_fecha"
-          class="mt-1 block w-full px-3 py-2 bg-base-300 rounded-md focus:outline-none ">
+          class="mt-1 block w-full px-3 py-2 bg-base-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
           <option value="">Seleccione una opción</option>
           <option value="asc">Más antiguo</option>
           <option value="desc">Más reciente</option>
         </select>
       </div>
       <div class="flex-1">
-        <label for="marca" class="block text-sm font-medium">Marca:</label>
+        <label for="marca" class="block text-sm font-medium text-gray-700">Marca:</label>
         <select id="marca" name="marca"
           class="mt-1 block w-full px-3 py-2 bg-base-300 rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
           <option value="">Seleccione una marca</option>
         </select>
       </div>
       <div class="flex-1">
-        <label for="etiqueta" class="block text-sm font-medium">Etiqueta:</label>
+        <label for="etiqueta" class="block text-sm font-medium text-gray-700">Etiqueta:</label>
         <select id="etiqueta" name="etiqueta"
           class="mt-1 block w-full px-3 py-2 bg-base-300 rounded-md border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
           <option value="">Seleccione una etiqueta</option>
         </select>
       </div>
-      <div class="flex items-end space-x-4">
-        <button id="filtrar" class="btn btn-primary w-full">Filtrar</button>
-        <button id="limpiar" class="btn btn-secondary w-full">Limpiar Filtros</button>
-      </div>
+      <button id="filtrar" class="btn btn-primary w-full">Filtrar</button>
+      <button id="limpiar" class="btn btn-secondary w-full">Limpiar Filtros</button>
+    </div>
+    <div class="flex items-center space-x-2 ">
+      <label for="promocionVigente" class="text-sm font-medium text-gray-700">Descuentos</label>
+      <input type="checkbox" id="promocionVigente" name="promocionVigente" class="checkbox bg-amarrillo">
     </div>
   </div>
 
