@@ -43,11 +43,11 @@
             <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">Nombre del Producto</label>
             <input type="text" id="nombre" name="nombre" 
               class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200"
-              placeholder="Ej. Laptop Gamer" required>
+              placeholder="Ej. Laptop Gamer">
           </div>
           <div>
             <label for="imagen" class="block text-sm font-medium text-gray-700 mb-1">Imagen del Producto</label>
-            <input type="file" id="imagen" name="imagen" class="file-input file-input-bordered file-input-primary w-full" required>
+            <input type="file" id="imagen" name="imagen" class="file-input file-input-bordered file-input-primary w-full">
           </div>
         </div>
 
@@ -58,7 +58,7 @@
               <label for="precio_real" class="block text-sm font-medium text-gray-700 mb-1">Precio Real</label>
               <input type="number" id="precio_real"
                 class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200"
-                placeholder="Ej. 1500" required min="0">
+                placeholder="Ej. 1500" min="0">
             </div>
             <div>
               <label for="precio_promocionado" class="block text-sm font-medium text-gray-700 mb-1">Precio Promocionado</label>
@@ -100,7 +100,7 @@
                 <label for="cantidad" class="block text-sm font-medium text-gray-700 mb-1">Cantidad</label>
                 <input type="number" id="cantidad" name="cantidad"
                   class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200 max-w-xs"
-                  placeholder="Ej. 50" required min="1">
+                  placeholder="Ej. 50" min="1">
               </div>
             </div>
           </div>
@@ -112,8 +112,6 @@
               <select id="etiqueta" name="etiqueta"
                 class="input input-bordered w-full p-2 border border-gray-300 rounded focus:ring focus:ring-indigo-200">
                 <option value="">Selecciona una categoría</option>
-                <option value="1">Electrónica</option>
-                <option value="2">Hogar</option>
                 <!-- Agrega más opciones según tus categorías -->
               </select>
             </div>
@@ -138,6 +136,7 @@
               Guardar Producto
             </button>
           </div>
+          <p id="errorMessage" style="color: red; display: none;"></p>
       </form>
   </div>
 
