@@ -4,6 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 include '../../app/connection/connection.php';
+include '../../app/connection/checkPromotionExpiry.php';
 
 // Verificar si el usuario es vendedor
 if ($_SESSION['rol'] != '2') {

@@ -4,6 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 include '../../app/connection/connection.php';
+include '../../app/connection/checkPromotionExpiry.php';
 
 // Verificar si se pasó una ID válida
 if (!isset($_GET['id']) || empty($_GET['id'])) {

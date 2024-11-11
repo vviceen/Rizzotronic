@@ -4,6 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 include '../../app/connection/connection.php';
+include '../../app/connection/checkPromotionExpiry.php';
 
 try {
     $sql = "SELECT * FROM productos";

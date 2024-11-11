@@ -1,6 +1,7 @@
 <?php
 require '../../../vendor/autoload.php';
 include '../../app/connection/connection.php';
+include '../../app/connection/checkPromotionExpiry.php';
 
 use Dompdf\Dompdf;
 use Dompdf\Options;

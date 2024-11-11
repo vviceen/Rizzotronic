@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../connection/connection.php';
+include '../../app/connection/checkPromotionExpiry.php';
 header('Content-Type: application/json');
 $data = json_decode(file_get_contents('php://input'), true);
 $nombre = $data['nombre'];

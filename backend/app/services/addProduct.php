@@ -1,5 +1,6 @@
 <?php
 include '../../app/connection/connection.php';
+include '../../app/connection/checkPromotionExpiry.php';
 
 // Verificar si el usuario es vendedor
 session_start();

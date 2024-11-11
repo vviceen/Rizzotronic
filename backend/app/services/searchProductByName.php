@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../connection/connection.php';
+include '../../app/connection/checkPromotionExpiry.php';
 
 header('Content-Type: application/json');
 
