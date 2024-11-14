@@ -44,22 +44,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (product.precio_promocionado) {
                     productPromotion.textContent = `Promoción: $${product.precio_promocionado}`;
-                    productPromotion.classList.add('text-4xl', 'font-bold', 'text-amarrillo-dark');
-                    productPrice.classList.add('text-2xl', 'text-gray-300', 'font-bold');
+                    productPromotion.classList.add('text-2xl', 'font-bold', 'text-accent', 'mr-2');
+                    productPrice.classList.add('text-xl', 'text-gray-400', 'font-bold');
                     productPrice.style.textDecoration = 'line-through';
+                    productPrice.textContent = `$${product.precio_real}`;
                 } else {
                     productPromotion.style.display = 'none';
-                    productPrice.classList.add('text-4xl', 'font-bold', 'text-amarrillo-dark');
+                    productPrice.classList.add('text-3xl', 'font-bold', 'text-amarrillo-dark');
                 }
 
                 if (product.vigencia_promocion) {
-                    productPromotionEnd.textContent = `Vigencia: ${product.vigencia_promocion}`;
+                    productPromotionEnd.textContent = `Finaliza el ${product.vigencia_promocion}`;
+                    productPromotionEnd.classList.add('badge', 'badge-accent', 'badge-outline');
                 }
 
                 productBrand.textContent = `${product.marca}`;
-                productQuantity.textContent = `Cantidad: ${product.cantidad}`;
-                productTag.textContent = `Etiqueta: ${product.etiqueta}`;
-                productCreatedAt.textContent = `Fecha de creación: ${product.fecha_creacion}`;
+                productQuantity.textContent = `Cantidad disponible ${product.cantidad}`;
+                productTag.textContent = `${product.etiqueta}`;
+                productCreatedAt.textContent = `Fecha de creación ${product.fecha_creacion}`;
 
                 // Agregar evento al botón de agregar al carrito
                 if (localStorage.getItem('rol') != 3) {

@@ -11,6 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
+
 </head>
 
 <body class="bg-gray-100">
@@ -73,27 +74,35 @@
         <img id="product-image" class="w-full h-full object-cover" src="" alt="Imagen del Producto">
       </div>
       <div class="md:w-2/3 p-10">
-        <div class="">
-          <p id="product-brand" class="text-md font-semibold text-gray-600 mb-4"></p>
-          <h1 id="product-name" class="text-4xl font-bold mb-4"></h1>
+        <div class="flex justify-between  mb-4 ">
+          <p id="product-brand" class="text-lg font-semibold text-gray-600 "></p>
+          <p id="product-promotion-end" class="text-lgp-4"></p>
         </div>
-        <p id="product-description" class="text-gray-700 mb-4"></p>
-        <div class="flex space-x-4 items-end">
-          <p id="product-price" class="mb-4"></p>
-          <p id="product-promotion" class="mb-4"></p>
+        <h1 id="product-name" class="text-4xl font-bold mb-6"></h1>
+        <p id="product-tag" class="text-base font-semibold text-gray-500 mb-2"></p>
+
+        <p id="product-description" class="text-xl text-gray-700 mb-4"></p>
+        <div class="flex items-end mb-4">
+          <p id="product-promotion"></p>
+          <p id="product-price" class=""></p>
         </div>
-        <p id="product-promotion-end" class="text-sm text-gray-500 mb-4"></p>
-        <p id="product-quantity" class="text-sm text-gray-500 mb-4"></p>
-        <p id="product-tag" class="text-sm text-gray-500 mb-4"></p>
-        <p id="product-created-at" class="text-sm text-gray-500 mb-4"></p>
+        <p id="product-quantity" class="text-base font-semibold text-gray-500 mb-4"></p>
+        <p id="product-created-at" class="text-base font-semibold text-gray-500 mb-4"></p>
 
         <button id="add-to-cart-button"
           class="bg-amarrillo text-white font-medium px-6 py-2 rounded hover:bg-amarrillo-light">Agregar al
           Carrito</button>
+
         <button id="edit-product-button"
-          class="bg-blue-500 text-white font-medium px-6 py-2 rounded hover:bg-blue-700">Editar</button>
+          class="bg-green-800 text-white font-medium px-6 py-2 rounded hover:bg-green-700">Editar</button>
+
+        <button id="save-product-button"
+          class="hidden bg-green-800 text-white font-medium px-6 py-2 rounded hover:bg-green-700">Guardar</button>
+
+        <button id="cancel-product-button" class="hidden bg-accent text-white font-medium px-6 py-2 rounded hover:bg-red-800">Cancelar</button>
+
         <button id="delete-product-button"
-          class="bg-error text-white font-medium px-6 py-2 rounded hover:bg-red-700">Eliminar</button>
+          class="bg-amarrillo text-white font-medium px-6 py-2 rounded hover:bg-amarrillo-light">Eliminar</button>
 
 
       </div>
@@ -102,6 +111,9 @@
 
   <script type="module" src="../../../backend/app/controllers/products/productView.js"></script>
   <script type="module" src="../../../backend/app/controllers/sessions/accountLoad.js"></script>
+  <script type="module" src="../../../backend/app/controllers/products/edit_productView.js"></script>
+  <script type="module" src="../../../backend/app/controllers/products/delete_productView.js"></script>
+
 </body>
 
 </html>
