@@ -5,9 +5,13 @@ window.updateUser = updateUser;
 window.deleteUser = deleteUser;
 
 document.addEventListener("DOMContentLoaded", function () {
-  if(localStorage.getItem('userRol') != 1){
+  if (localStorage.getItem('userRol') != 1) {
     window.location.href = "/Rizzotronic/frontend/public/index.html";
   }
+
+  document.getElementById("name").innerHTML = 'Hola '+localStorage.getItem('userNombre');
+  document.getElementById("email").innerHTML = localStorage.getItem('userEmail');
+
 
   const filterAdmin = document.getElementById("filter-admin");
   const filterVendedor = document.getElementById("filter-vendedor");
@@ -32,7 +36,18 @@ document.addEventListener("DOMContentLoaded", function () {
         userList.innerHTML = ''; // Limpiar contenido previo
 
         if (data.success) {
+          // Obtener el email del usuario logueado desde el localStorage
+          const loggedInUserEmail = localStorage.getItem('userEmail');
+
+          // Ordenar usuarios por rol_id
+          data.users.sort((a, b) => a.rol_id - b.rol_id);
+
           data.users.forEach((user) => {
+            // Omitir la tarjeta del usuario logueado
+            if (user.email === loggedInUserEmail) {
+              return;
+            }
+
             // Definir el color según el rol del usuario
             let cardColor;
             switch (user.rol_id) {
@@ -43,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 cardColor = "bg-green-300";
                 break;
               case '3': // Cliente
-                cardColor = "bg-gray-300";
+                cardColor = "bg-amarrillo-light";
                 break;
               default:
                 cardColor = "bg-neutral";

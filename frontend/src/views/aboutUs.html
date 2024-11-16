@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Rizzotronic</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../../public/css/styles.css" rel="stylesheet" />
+    <link href="../../public/css/output.css" rel="stylesheet" />
+</head>
+
+<style>
+    #searchResults {
+      max-height: 300px;
+      /* Altura máxima del contenedor */
+      overflow-y: auto;
+      /* Habilitar scroll vertical */
+      z-index: 1000;
+      /* Asegurarse de que esté por encima de otros elementos */
+    }
+  
+    #searchResults li {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      cursor: pointer;
+    }
+  
+    #searchResults li:hover {
+      background-color: #f0f0f0;
+      /* Color de fondo al pasar el ratón */
+    }
+  
+    #searchResults img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+  </style>
+
+<body class="bg-gray-100">
+    <div class="drawer">
+        <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col">
+          <!-- Navbar -->
+          <div id="navbar" class="navbar w-full flex items-center justify-between">
+            <div class="flex-none lg:hidden">
+              <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  class="inline-block h-6 w-6 stroke-current">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </label>
+            </div>
+            <a href="../../public/index.html">
+              <img src="../../src/assets/rizzotronic.svg" class="object-contain h-11" />
+            </a>
+            <div class="hidden flex-none lg:block">
+              <ul class="menu menu-horizontal">
+                <!-- Navbar menu content here -->
+                <div class="relative mr-4">
+                  <input type="text" id="productSearch" class="input input-bordered text-black w-80 max-w-lg"
+                    placeholder="Buscar productos...">
+                  <button id="searchButton" class="absolute right-0 top-0 mt-3 mr-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stro ke-width="2"
+                        d="M10 18l6-6m0 0l-6-6m6 6H4" />
+                    </svg>
+                  </button>
+                  <ul id="searchResults" class="absolute w-full bg-base-100 mt-1 rounded-xl hidden shadow-lg"></ul>
+                </div>
+    
+                <li><a id="btnLogin" href="../../src/views/login.html">Iniciar Sesión</a></li>
+                <li><a id="btnRegister" href="../../src/views/register.html">Crear Cuenta</a></li>
+                <div class="flex flex-col items-center">
+                  <li>
+                    <a id="btnMyAccount" style="display: none;">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff"
+                        fill="none">
+                        <path
+                          d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                          d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z"
+                          stroke="currentColor" stroke-width="1.5" />
+                      </svg>
+                    </a>
+                  </li>
+                  <p id="whoIs"></p>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<main class="container mx-auto p-6">
+    <!-- Sección del local físico -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-4 text-center">Nuestro Local</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <img id="local-img-1" alt="Imagen del local 1" class="w-full h-auto rounded-lg shadow-lg">
+            <img id="local-img-2" alt="Imagen del local 2" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+        <p id="txt-local" class="mt-4 text-lg text-gray-700 text-center"></p>
+    </section>
+
+    <!-- Sección del equipo -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-4 text-center">Nuestro Equipo</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <img id="team-img-1" alt="Imagen del equipo 1" class="w-full h-auto rounded-lg shadow-lg">
+            <img id="team-img-2" alt="Imagen del equipo 2" class="w-full h-auto rounded-lg shadow-lg">
+            <img id="team-img-3" alt="Imagen del equipo 3" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+        <p id="txt-team" class="mt-4 text-lg text-gray-700 text-center"></p>
+    </section>
+
+    <!-- Sección de Misión y Visión -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-4 text-center">Misión y Visión</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold mb-2">Misión</h3>
+                <p id="mision" class="text-lg text-gray-700"></p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold mb-2">Visión</h3>
+                <p id="vision" class="text-lg text-gray-700"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección opcional -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-4 text-center">Información Adicional</h2>
+        <p id="txt-opcional" class="text-lg text-gray-700 text-center"></p>
+    </section>
+</main>
+
+
+    <footer class="footer bg-base-200 text-base-content p-10">
+        <aside>
+            <svg width="85" height="85" viewBox="0 0 168 168" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g filter="url(#filter0_i_10_4)">
+                    <rect x="22" y="22" width="124" height="124" rx="17" stroke="#201600" stroke-width="6"
+                        stroke-linejoin="round" />
+                    <mask id="path-2-inside-1_10_4" fill="white">
+                        <rect x="38" y="37" width="92" height="92" rx="4" />
+                    </mask>
+                    <rect x="38" y="37" width="92" height="92" rx="4" stroke="#201600" stroke-width="12"
+                        stroke-linejoin="round" mask="url(#path-2-inside-1_10_4)" />
+                    <path
+                        d="M87 3C87 1.34315 85.6569 -2.38419e-07 84 -2.38419e-07C82.3431 -2.38419e-07 81 1.34315 81 3H87ZM87 19V3H81V19H87Z"
+                        fill="#201600" />
+                    <path
+                        d="M123 3C123 1.34315 121.657 -2.38419e-07 120 -2.38419e-07C118.343 -2.38419e-07 117 1.34315 117 3H123ZM123 19V3H117V19H123Z"
+                        fill="#201600" />
+                    <path
+                        d="M105 3C105 1.34315 103.657 -2.38419e-07 102 -2.38419e-07C100.343 -2.38419e-07 99 1.34315 99 3H105ZM105 19V3H99V19H105Z"
+                        fill="#201600" />
+                    <path
+                        d="M69 3C69 1.34315 67.6569 -2.38419e-07 66 -2.38419e-07C64.3431 -2.38419e-07 63 1.34315 63 3H69ZM69 19V3H63V19H69Z"
+                        fill="#201600" />
+                    <path
+                        d="M51 3C51 1.34315 49.6569 -2.38419e-07 48 -2.38419e-07C46.3431 -2.38419e-07 45 1.34315 45 3H51ZM51 19V3H45V19H51Z"
+                        fill="#201600" />
+                    <path
+                        d="M3 80C1.34315 80 -2.38419e-07 81.3431 -2.38419e-07 83C-2.38419e-07 84.6569 1.34315 86 3 86V80ZM19 80H3V86H19V80Z"
+                        fill="#201600" />
+                    <path
+                        d="M3 44C1.34315 44 -2.38419e-07 45.3431 -2.38419e-07 47C-2.38419e-07 48.6569 1.34315 50 3 50V44ZM19 44H3V50H19V44Z"
+                        fill="#201600" />
+                    <path
+                        d="M3 62C1.34315 62 -2.38419e-07 63.3431 -2.38419e-07 65C-2.38419e-07 66.6569 1.34315 68 3 68V62ZM19 62H3V68H19V62Z"
+                        fill="#201600" />
+                    <path
+                        d="M3 98C1.34315 98 -2.38419e-07 99.3431 -2.38419e-07 101C-2.38419e-07 102.657 1.34315 104 3 104V98ZM19 98H3V104H19V98Z"
+                        fill="#201600" />
+                    <path
+                        d="M3 116C1.34315 116 -2.38419e-07 117.343 -2.38419e-07 119C-2.38419e-07 120.657 1.34315 122 3 122V116ZM19 116H3V122H19V116Z"
+                        fill="#201600" />
+                    <path
+                        d="M81 165C81 166.657 82.3431 168 84 168C85.6569 168 87 166.657 87 165H81ZM81 149V165H87V149H81Z"
+                        fill="#201600" />
+                    <path
+                        d="M45 165C45 166.657 46.3431 168 48 168C49.6569 168 51 166.657 51 165H45ZM45 149V165H51V149H45Z"
+                        fill="#201600" />
+                    <path
+                        d="M63 165C63 166.657 64.3431 168 66 168C67.6569 168 69 166.657 69 165H63ZM63 149V165H69V149H63Z"
+                        fill="#201600" />
+                    <path
+                        d="M99 165C99 166.657 100.343 168 102 168C103.657 168 105 166.657 105 165H99ZM99 149V165H105V149H99Z"
+                        fill="#201600" />
+                    <path
+                        d="M117 165C117 166.657 118.343 168 120 168C121.657 168 123 166.657 123 165H117ZM117 149V165H123V149H117Z"
+                        fill="#201600" />
+                    <path
+                        d="M165 86C166.657 86 168 84.6569 168 83C168 81.3431 166.657 80 165 80V86ZM149 86H165V80H149V86Z"
+                        fill="#201600" />
+                    <path
+                        d="M165 122C166.657 122 168 120.657 168 119C168 117.343 166.657 116 165 116V122ZM149 122H165V116H149V122Z"
+                        fill="#201600" />
+                    <path
+                        d="M165 104C166.657 104 168 102.657 168 101C168 99.3431 166.657 98 165 98V104ZM149 104H165V98H149V104Z"
+                        fill="#201600" />
+                    <path
+                        d="M165 68C166.657 68 168 66.6569 168 65C168 63.3431 166.657 62 165 62V68ZM149 68H165V62H149V68Z"
+                        fill="#201600" />
+                    <path
+                        d="M165 50C166.657 50 168 48.6569 168 47C168 45.3431 166.657 44 165 44V50ZM149 50H165V44H149V50Z"
+                        fill="#201600" />
+                </g>
+                <defs>
+                    <filter id="filter0_i_10_4" x="0" y="0" width="168" height="172" filterUnits="userSpaceOnUse"
+                        color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                            result="hardAlpha" />
+                        <feOffset dy="4" />
+                        <feGaussianBlur stdDeviation="2" />
+                        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_10_4" />
+                    </filter>
+                </defs>
+            </svg>
+            <p>
+                Rizzotronic S.A.
+                <br />
+                Brindando lo ultimo en tecnologia
+            </p>
+        </aside>
+        <nav>
+            <h6 class="footer-title">Servicios</h6>
+            <a class="link link-hover">Branding</a>
+            <a class="link link-hover">Design</a>
+            <a class="link link-hover">Marketing</a>
+            <a class="link link-hover">Advertisement</a>
+        </nav>
+        <nav>
+            <h6 class="footer-title">Compañia</h6>
+            <a class="link link-hover">About us</a>
+            <a class="link link-hover">Contact</a>
+            <a class="link link-hover">Jobs</a>
+        </nav>
+        <nav>
+            <form>
+                <h6 class="footer-title">Newsletter</h6>
+                <fieldset class="form-control w-80">
+                    <label class="label">
+                        <span class="label-text">Enter your email address</span>
+                    </label>
+                    <div class="join">
+                        <input type="text" placeholder="username@site.com" class="input input-bordered join-item" />
+                        <button class="btn btn-primary join-item">Subscribe</button>
+                    </div>
+                </fieldset>
+            </form>
+            <a id="descargarCatalogo"
+                class="link link-hover font-semibold bg-neutral-700 p-2 rounded-lg text-neutral-50">Descargar
+                Catalogo</a>
+        </nav>
+    </footer>
+
+    <script type="module" src="../../../backend/app/controllers/sessions/accountLoad.js"></script>
+    <script type="module" src="../../../backend/app/controllers/products/searchProductByName.js"></script>
+    <script type="module" src="../../../backend/app/controllers/aboutUs/loadPage.js"></script>
+    <script type="module" src="../../../backend/app/controllers/products/downloadCatalog.js"></script>
+
+</body>
+
+</html>
