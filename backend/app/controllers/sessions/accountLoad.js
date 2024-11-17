@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
         default:
           console.log("Redirigiendo a clientView.html");
-          window.location.href = "/Rizzotronic/frontend/src/views/clientView.html";
+          window.location.href = "/Rizzotronic/frontend/src/views/customer.html";
           break;
       }
     });

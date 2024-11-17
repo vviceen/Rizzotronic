@@ -240,19 +240,6 @@
 
     <br>
 
-<!-- Formulario de Reclamos y Reseñas -->
-<div id="containerReclamoForm" class="p-6 bg-base-200 rounded-lg shadow-lg max-w-2xl mx-auto mt-10" style="display: none;">
-  <h2 class="text-2xl font-bold mb-4">Envianos un mensaje!</h2>
-  <form id="reclamoForm">
-    <div class="mb-4">
-      <label for="mensaje" class="block text-gray-700 font-bold mb-2">Mensaje:</label>
-      <textarea id="mensaje" name="mensaje" class="w-full p-2 border border-gray-300 rounded-md" rows="4" required></textarea>
-    </div>
-    <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">Enviar</button>
-  </form>
-</div>
-
-
 <br>
 <!-- <button id="closeSession" class="btn">Cerrar Sesión</button>
 <br> -->
@@ -432,7 +419,7 @@
       </nav>
       <nav>
         <h6 class="footer-title">Compañia</h6>
-        <a class="link link-hover">About us</a>
+        <a href="../src/views/aboutUs.html" class="link link-hover">About us</a>
         <a class="link link-hover">Contact</a>
         <a class="link link-hover">Jobs</a>
       </nav>
@@ -477,7 +464,6 @@
     <script type="module" src="../../backend/app/controllers/products/searchProductByName.js"></script>
     <script type="module" src="../../backend/app/controllers/sessions/accountLoad.js"></script>
     <script type="module" src="../../backend/app/controllers/products/downloadCatalog.js"></script>
-    <script type="module" src="../../backend/app/controllers/sessions/formForCustomer.js"></script>
 
 
   </body>

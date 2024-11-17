@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return response.text(); // Cambiar a .text() temporalmente para depuración
         })
         .then(text => {
-            console.log('Respuesta del servidor:', text); // Imprimir la respuesta del servidor
             try {
                 const data = JSON.parse(text); // Intentar parsear la respuesta
                 if (data.success) {

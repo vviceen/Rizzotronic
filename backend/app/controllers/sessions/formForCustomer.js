@@ -17,7 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const mensaje = document.getElementById('mensaje').value.trim();
 
         if (!email || !mensaje) {
-            alert('Por favor, complete todos los campos.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor, complete todos los campos.',
+                confirmButtonText: 'OK'
+            });
             return;
         }
 
@@ -33,18 +38,34 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
-        .then(result => {
-            if (result.success) {
-                alert('Reclamo enviado exitosamente.');
-                document.getElementById('reclamoForm').reset();
-            } else {
-                alert('Error al enviar el reclamo: ' + result.error);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error al enviar el reclamo: ' + error.message);
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: 'Reclamo enviado correctamente.',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        document.getElementById('reclamoForm').reset();
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Error al enviar el reclamo: ' + data.message,
+                        confirmButtonText: 'OK'
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un error al enviar el reclamo. Por favor, inténtelo de nuevo más tarde.',
+                    confirmButtonText: 'OK'
+                });
+            });
     });
 });

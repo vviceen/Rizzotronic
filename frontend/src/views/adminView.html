@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="../../public/css/styles.css" rel="stylesheet" />
   <link href="../../public/css/output.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <title>Document</title>
 </head>
 
@@ -152,16 +154,16 @@
 
   <!-- Formulario para editar About Us -->
   <div class="containerEditAboutUs p-6 bg-white shadow-md rounded-lg m-6">
-      <form id="aboutUsForm" class="space-y-6 p-4 md:p-10">
+      <form id="aboutUsForm" class="space-y-6 p-4 md:p-10" enctype="multipart/form-data">
           <h2 class="text-3xl font-bold mb-6 text-center">Editar About Us</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                   <label for="local_img_1" class="block text-sm font-medium text-gray-700 mb-1">Imagen Local 1</label>
-                  <input type="file" id="local_img_1" name="local_img_1" class="file-input file-input-bordered file-input-primary w-full" required>
+                  <input type="file" id="local_img_1" name="local_img_1" class="file-input file-input-bordered file-input-primary w-full">
               </div>
               <div>
                   <label for="local_img_2" class="block text-sm font-medium text-gray-700 mb-1">Imagen Local 2</label>
-                  <input type="file" id="local_img_2" name="local_img_2" class="file-input file-input-bordered file-input-primary w-full" required>
+                  <input type="file" id="local_img_2" name="local_img_2" class="file-input file-input-bordered file-input-primary w-full">
               </div>
           </div>
   
@@ -175,15 +177,15 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                   <label for="team_img_1" class="block text-sm font-medium text-gray-700 mb-1">Imagen Equipo 1</label>
-                  <input type="file" id="team_img_1" name="team_img_1" class="file-input file-input-bordered file-input-primary w-full" required>
+                  <input type="file" id="team_img_1" name="team_img_1" class="file-input file-input-bordered file-input-primary w-full">
               </div>
               <div>
                   <label for="team_img_2" class="block text-sm font-medium text-gray-700 mb-1">Imagen Equipo 2</label>
-                  <input type="file" id="team_img_2" name="team_img_2" class="file-input file-input-bordered file-input-primary w-full" required>
+                  <input type="file" id="team_img_2" name="team_img_2" class="file-input file-input-bordered file-input-primary w-full">
               </div>
               <div>
                   <label for="team_img_3" class="block text-sm font-medium text-gray-700 mb-1">Imagen Equipo 3</label>
-                  <input type="file" id="team_img_3" name="team_img_3" class="file-input file-input-bordered file-input-primary w-full" required>
+                  <input type="file" id="team_img_3" name="team_img_3" class="file-input file-input-bordered file-input-primary w-full">
               </div>
           </div>
   
