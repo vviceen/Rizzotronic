@@ -6,9 +6,40 @@
     <title>Rizzotronic</title>
     <link href="./css/output.css" rel="stylesheet" />
     <link href="./css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    
+    <style>
+      /* Estilos básicos */
+      .swiper-container {
+        width: 100%;
+        padding: 20px 0;
+      }
+      .swiper-slide {
+        text-align: center;
+        font-size: 16px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .swiper-slide img {
+        width: 100%;
+        height: auto;
+      }
+      .product-card {
+        width: 200px; /* Ancho de la tarjeta */
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin: auto; /* Centrar en su contenedor */
+        font-family: Arial, sans-serif;
+      }
+    </style>
   </head>
   <style>
     body {
@@ -18,31 +49,31 @@
     }
   </style>
 
-<style>
-#searchResults {
-  max-height: 300px; /* Altura máxima del contenedor */
-  overflow-y: auto; /* Habilitar scroll vertical */
-  z-index: 1000; /* Asegurarse de que esté por encima de otros elementos */
-}
+  <style>
+  #searchResults {
+    max-height: 300px; /* Altura máxima del contenedor */
+    overflow-y: auto; /* Habilitar scroll vertical */
+    z-index: 1000; /* Asegurarse de que esté por encima de otros elementos */
+  }
 
-#searchResults li {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  cursor: pointer;
-}
+  #searchResults li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+  }
 
-#searchResults li:hover {
-  background-color: #f0f0f0; /* Color de fondo al pasar el ratón */
-}
+  #searchResults li:hover {
+    background-color: #f0f0f0; /* Color de fondo al pasar el ratón */
+  }
 
-#searchResults img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  margin-right: 10px;
-}
-</style>
+  #searchResults img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  </style>
 
   <style>
     .sidebar {
@@ -89,6 +120,7 @@
             </label>
           </div>
           <img
+            id="logo"
             src="../src/assets/rizzotronic.svg"
             class="object-contain h-11"
           />
@@ -225,17 +257,53 @@
       });
     </script>
 
-    <div class="container mx-auto p-4">
-      <h1>Productos destacados</h1>
+
+    <div class="swiper-container w-full">
+      <div class="swiper-wrapper h-full" id="product-list">
+        <!-- Las diapositivas dinámicas se agregarán aquí -->
+      </div>
+      <!-- Botones de navegación -->
+      <div class="swiper-button-next absolute top-1/2 right-2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md"></div>
+      <div class="swiper-button-prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md"></div>
+      <!-- Paginación -->
+      <div class="swiper-pagination mt-4"></div>
+    </div>
+
+    <!-- Carga de la librería Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Inicialización del carrusel Swiper -->
+    <script>
+      // Inicialización del carrusel Swiper
+      const swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto', // Número de slides visibles al mismo tiempo
+      spaceBetween: 16, // Espaciado entre slides
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true, // Permitir clic en los puntos
+      },
+      breakpoints: {
+        1024: { slidesPerView: 4, spaceBetween: 16 }, // Pantallas grandes
+        768: { slidesPerView: 3, spaceBetween: 12 }, // Pantallas medianas
+        480: { slidesPerView: 2, spaceBetween: 8 }, // Pantallas pequeñas
+      },
+    });
+
+    </script>
+    <div class="container mx-auto flex justify-center mt-4 p-4">
+      <!-- <h1>Productos destacados</h1>
       <div class="flex">
-        <!-- Product List -->
-        <div class="flex-1 p-4 w-full">
+
+        <div class="p-4 w-full">
           <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <!-- Aquí se cargaran las cards de los productos -->
+
           </div>
         </div>
-      </div>
-     <a id="allProducts" href="../src/views/products.html">ver todos los productos</a>
+      </div> -->
+     <a id="allProducts" class="btn btn-primary" href="../src/views/products.html">Ver todos los productos</a>
     </div>
 
     <br>
@@ -411,31 +479,23 @@
         </p>
       </aside>
       <nav>
-        <h6 class="footer-title">Servicios</h6>
-        <a class="link link-hover">Branding</a>
-        <a class="link link-hover">Design</a>
-        <a class="link link-hover">Marketing</a>
-        <a class="link link-hover">Advertisement</a>
-      </nav>
-      <nav>
         <h6 class="footer-title">Compañia</h6>
-        <a href="../src/views/aboutUs.html" class="link link-hover">About us</a>
-        <a class="link link-hover">Contact</a>
-        <a class="link link-hover">Jobs</a>
+        <a class="link link-hover" href="../src/views/aboutUs.html">Sobre Nosotros</a>
+        <a class="link link-hover">Contacto</a>
       </nav>
       <nav>
         <form>
           <h6 class="footer-title">Newsletter</h6>
           <fieldset class="form-control w-80">
             <label class="label">
-              <span class="label-text">Enter your email address</span>
+              <span class="label-text">Ingresa tu correo electronico</span>
             </label>
             <div class="join">
               <input
                 type="text"
                 placeholder="username@site.com"
                 class="input input-bordered join-item" />
-              <button class="btn btn-primary join-item">Subscribe</button>
+              <button class="btn btn-primary join-item">Subscribete</button>
             </div>
           </fieldset>
         </form>

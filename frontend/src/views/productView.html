@@ -14,7 +14,7 @@
 
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 overflow-x-hidden">
   <div class="drawer">
     <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
@@ -28,7 +28,9 @@
             </svg>
           </label>
         </div>
-        <img src="../assets/rizzotronic.svg" class="object-contain h-11" />
+        <a href="../../public/index.html">
+          <img src="../assets/rizzotronic.svg" class="object-contain h-11" />
+        </a>
         <div class="hidden flex-none lg:block">
           <ul class="menu menu-horizontal">
             <!-- Navbar menu content here -->
@@ -68,46 +70,239 @@
 
 
   <!--Product info-->
-  <div class="container">
-    <div class="w-screen flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden p-10 ">
+  <div class="container max-w-full">
+    <div class="w-screen flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden p-6">
+      <!-- Imagen del Producto -->
       <div class="md:w-1/3">
         <img id="product-image" class="w-full h-full object-cover" src="" alt="Imagen del Producto">
       </div>
-      <div class="md:w-2/3 p-10">
-        <div class="flex justify-between  mb-4 ">
-          <p id="product-brand" class="text-lg font-semibold text-gray-600 "></p>
-          <p id="product-promotion-end" class="text-lgp-4"></p>
+      <!-- Información del Producto -->
+      <div class="md:w-2/3 p-6">
+        <!-- Encabezado: Marca y Promoción -->
+        <div class="flex justify-between items-center mb-4">
+          <p id="product-brand" class="text-lg font-semibold text-gray-600"></p>
+          <p id="product-promotion-end" class="text-sm text-gray-500"></p>
         </div>
-        <h1 id="product-name" class="text-4xl font-bold mb-6"></h1>
-        <p id="product-tag" class="text-base font-semibold text-gray-500 mb-2"></p>
-
-        <p id="product-description" class="text-xl text-gray-700 mb-4"></p>
-        <div class="flex items-end mb-4">
-          <p id="product-promotion"></p>
-          <p id="product-price" class=""></p>
+        <!-- Nombre del Producto -->
+        <h1 id="product-name" class="text-3xl font-bold text-gray-800 mb-4"></h1>
+        <!-- Etiqueta -->
+        <p id="product-tag" class="text-sm font-semibold text-gray-500 mb-2"></p>
+        <!-- Descripción -->
+        <p id="product-description" class="text-base text-gray-700 mb-4"></p>
+        <!-- Precio y Promoción -->
+        <div class="flex items-baseline space-x-2 mb-4">
+          <p id="product-promotion" class="text-lg font-semibold text-red-600"></p>
+          <p id="product-price" class="text-2xl font-bold text-gray-800"></p>
         </div>
-        <p id="product-quantity" class="text-base font-semibold text-gray-500 mb-4"></p>
-        <p id="product-created-at" class="text-base font-semibold text-gray-500 mb-4"></p>
-
-        <button id="add-to-cart-button"
-          class="bg-amarrillo text-white font-medium px-6 py-2 rounded hover:bg-amarrillo-light">Agregar al
-          Carrito</button>
-
-        <button id="edit-product-button"
-          class="bg-green-800 text-white font-medium px-6 py-2 rounded hover:bg-green-700">Editar</button>
-
-        <button id="save-product-button"
-          class="hidden bg-green-800 text-white font-medium px-6 py-2 rounded hover:bg-green-700">Guardar</button>
-
-        <button id="cancel-product-button" class="hidden bg-accent text-white font-medium px-6 py-2 rounded hover:bg-red-800">Cancelar</button>
-
-        <button id="delete-product-button"
-          class="bg-amarrillo text-white font-medium px-6 py-2 rounded hover:bg-amarrillo-light">Eliminar</button>
-
-
+        <!-- Cantidad y Fecha de Creación -->
+        <p id="product-quantity" class="text-sm text-gray-500 mb-2"></p>
+        <p id="product-created-at" class="text-sm text-gray-500 mb-4"></p>
+        <!-- Botones de Acción -->
+        <div class="flex space-x-4">
+          <button id="add-to-cart-button"
+            class="bg-yellow-500 text-white font-medium px-4 py-2 rounded hover:bg-yellow-400 transition">Agregar al Carrito</button>
+          <button id="edit-product-button"
+            class="bg-green-600 text-white font-medium px-4 py-2 rounded hover:bg-green-500 transition">Editar</button>
+          <button id="save-product-button"
+            class="hidden bg-green-600 text-white font-medium px-4 py-2 rounded hover:bg-green-500 transition">Guardar</button>
+          <button id="cancel-product-button"
+            class="hidden bg-red-500 text-white font-medium px-4 py-2 rounded hover:bg-red-400 transition">Cancelar</button>
+          <button id="delete-product-button"
+            class="bg-yellow-500 text-white font-medium px-4 py-2 rounded hover:bg-yellow-400 transition">Eliminar</button>
+        </div>
       </div>
     </div>
   </div>
+
+  <footer class="footer bg-base-200 text-base-content p-10">
+    <aside>
+      <svg
+        width="85"
+        height="85"
+        viewBox="0 0 168 168"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g filter="url(#filter0_i_10_4)">
+          <rect
+            x="22"
+            y="22"
+            width="124"
+            height="124"
+            rx="17"
+            stroke="#201600"
+            stroke-width="6"
+            stroke-linejoin="round"
+          />
+          <mask id="path-2-inside-1_10_4" fill="white">
+            <rect x="38" y="37" width="92" height="92" rx="4" />
+          </mask>
+          <rect
+            x="38"
+            y="37"
+            width="92"
+            height="92"
+            rx="4"
+            stroke="#201600"
+            stroke-width="12"
+            stroke-linejoin="round"
+            mask="url(#path-2-inside-1_10_4)"
+          />
+          <path
+            d="M87 3C87 1.34315 85.6569 -2.38419e-07 84 -2.38419e-07C82.3431 -2.38419e-07 81 1.34315 81 3H87ZM87 19V3H81V19H87Z"
+            fill="#201600"
+          />
+          <path
+            d="M123 3C123 1.34315 121.657 -2.38419e-07 120 -2.38419e-07C118.343 -2.38419e-07 117 1.34315 117 3H123ZM123 19V3H117V19H123Z"
+            fill="#201600"
+          />
+          <path
+            d="M105 3C105 1.34315 103.657 -2.38419e-07 102 -2.38419e-07C100.343 -2.38419e-07 99 1.34315 99 3H105ZM105 19V3H99V19H105Z"
+            fill="#201600"
+          />
+          <path
+            d="M69 3C69 1.34315 67.6569 -2.38419e-07 66 -2.38419e-07C64.3431 -2.38419e-07 63 1.34315 63 3H69ZM69 19V3H63V19H69Z"
+            fill="#201600"
+          />
+          <path
+            d="M51 3C51 1.34315 49.6569 -2.38419e-07 48 -2.38419e-07C46.3431 -2.38419e-07 45 1.34315 45 3H51ZM51 19V3H45V19H51Z"
+            fill="#201600"
+          />
+          <path
+            d="M3 80C1.34315 80 -2.38419e-07 81.3431 -2.38419e-07 83C-2.38419e-07 84.6569 1.34315 86 3 86V80ZM19 80H3V86H19V80Z"
+            fill="#201600"
+          />
+          <path
+            d="M3 44C1.34315 44 -2.38419e-07 45.3431 -2.38419e-07 47C-2.38419e-07 48.6569 1.34315 50 3 50V44ZM19 44H3V50H19V44Z"
+            fill="#201600"
+          />
+          <path
+            d="M3 62C1.34315 62 -2.38419e-07 63.3431 -2.38419e-07 65C-2.38419e-07 66.6569 1.34315 68 3 68V62ZM19 62H3V68H19V62Z"
+            fill="#201600"
+          />
+          <path
+            d="M3 98C1.34315 98 -2.38419e-07 99.3431 -2.38419e-07 101C-2.38419e-07 102.657 1.34315 104 3 104V98ZM19 98H3V104H19V98Z"
+            fill="#201600"
+          />
+          <path
+            d="M3 116C1.34315 116 -2.38419e-07 117.343 -2.38419e-07 119C-2.38419e-07 120.657 1.34315 122 3 122V116ZM19 116H3V122H19V116Z"
+            fill="#201600"
+          />
+          <path
+            d="M81 165C81 166.657 82.3431 168 84 168C85.6569 168 87 166.657 87 165H81ZM81 149V165H87V149H81Z"
+            fill="#201600"
+          />
+          <path
+            d="M45 165C45 166.657 46.3431 168 48 168C49.6569 168 51 166.657 51 165H45ZM45 149V165H51V149H45Z"
+            fill="#201600"
+          />
+          <path
+            d="M63 165C63 166.657 64.3431 168 66 168C67.6569 168 69 166.657 69 165H63ZM63 149V165H69V149H63Z"
+            fill="#201600"
+          />
+          <path
+            d="M99 165C99 166.657 100.343 168 102 168C103.657 168 105 166.657 105 165H99ZM99 149V165H105V149H99Z"
+            fill="#201600"
+          />
+          <path
+            d="M117 165C117 166.657 118.343 168 120 168C121.657 168 123 166.657 123 165H117ZM117 149V165H123V149H117Z"
+            fill="#201600"
+          />
+          <path
+            d="M165 86C166.657 86 168 84.6569 168 83C168 81.3431 166.657 80 165 80V86ZM149 86H165V80H149V86Z"
+            fill="#201600"
+          />
+          <path
+            d="M165 122C166.657 122 168 120.657 168 119C168 117.343 166.657 116 165 116V122ZM149 122H165V116H149V122Z"
+            fill="#201600"
+          />
+          <path
+            d="M165 104C166.657 104 168 102.657 168 101C168 99.3431 166.657 98 165 98V104ZM149 104H165V98H149V104Z"
+            fill="#201600"
+          />
+          <path
+            d="M165 68C166.657 68 168 66.6569 168 65C168 63.3431 166.657 62 165 62V68ZM149 68H165V62H149V68Z"
+            fill="#201600"
+          />
+          <path
+            d="M165 50C166.657 50 168 48.6569 168 47C168 45.3431 166.657 44 165 44V50ZM149 50H165V44H149V50Z"
+            fill="#201600"
+          />
+        </g>
+        <defs>
+          <filter
+            id="filter0_i_10_4"
+            x="0"
+            y="0"
+            width="168"
+            height="172"
+            filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB"
+          >
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="BackgroundImageFix"
+              result="shape"
+            />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
+            <feOffset dy="4" />
+            <feGaussianBlur stdDeviation="2" />
+            <feComposite
+              in2="hardAlpha"
+              operator="arithmetic"
+              k2="-1"
+              k3="1"
+            />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="shape"
+              result="effect1_innerShadow_10_4"
+            />
+          </filter>
+        </defs>
+      </svg>
+
+      <p>
+        Rizzotronic S.A.
+        <br />
+        Brindando lo ultimo en tecnologia
+      </p>
+    </aside>
+    <nav>
+      <h6 class="footer-title">Compañia</h6>
+      <a class="link link-hover" href="./aboutUs.html">Sobre Nosotros</a>
+      <a class="link link-hover">Contacto</a>
+    </nav>
+    <nav>
+      <form>
+        <h6 class="footer-title">Newsletter</h6>
+        <fieldset class="form-control w-80">
+          <label class="label">
+            <span class="label-text">Ingresa tu correo electronico</span>
+          </label>
+          <div class="join">
+            <input
+              type="text"
+              placeholder="username@site.com"
+              class="input input-bordered join-item" />
+            <button class="btn btn-primary join-item">Subscribete</button>
+          </div>
+        </fieldset>
+      </form>
+      <a id="descargarCatalogo" class="link link-hover font-semibold bg-neutral-700 p-2 rounded-lg text-neutral-50">Descargar Catalogo</a>
+    </nav>  
+  </footer>
 
   <script type="module" src="../../../backend/app/controllers/products/productView.js"></script>
   <script type="module" src="../../../backend/app/controllers/sessions/accountLoad.js"></script>
