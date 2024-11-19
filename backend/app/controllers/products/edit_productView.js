@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById('product-promotion').textContent = product.precio_promocionado ? `Promoción: $${product.precio_promocionado}` : '';
                 document.getElementById('product-promotion-end').textContent = product.vigencia_promocion ? `Vigencia: ${product.vigencia_promocion}` : '';
                 document.getElementById('product-brand').textContent = `Marca: ${product.marca}`;
-                document.getElementById('product-quantity').textContent = `Cantidad: ${product.cantidad}`;
+                document.getElementById('product-quantity').textContent = `Cantidad Disponible: ${product.stock}`;
                 document.getElementById('product-tag').textContent = `Etiqueta: ${product.etiqueta}`;
 
                 // Manejar el clic en el botón "Editar Producto"
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             <div class="mb-6">
                                 <label for="product-quantity-input" class="block text-sm font-medium text-gray-700 mb-1">Cantidad</label>
-                                <input type="number" id="product-quantity-input" class="swal2-input" value="${product.cantidad}">
+                                <input type="number" id="product-quantity-input" class="swal2-input" value="${product.stock}">
                             </div>
 
                             <div class="mb-6">
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             formData.append('vigencia_promocion', vigenciaPromocion !== '' ? vigenciaPromocion : null);
 
                             formData.append('marca', document.getElementById('product-brand-input').value || product.marca);
-                            formData.append('cantidad', document.getElementById('product-quantity-input').value || product.cantidad);
+                            formData.append('stock', document.getElementById('product-quantity-input').value || product.stock);
                             formData.append('etiqueta', document.getElementById('product-tag-input').value || product.etiqueta);
                             formData.append('promocionado', document.getElementById('product-promotion-checkbox').checked ? 1 : 0);
 

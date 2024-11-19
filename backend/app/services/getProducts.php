@@ -7,7 +7,7 @@ include '../../app/connection/connection.php';
 include '../../app/connection/checkPromotionExpiry.php';
 
 try {
-    $sql = "SELECT * FROM productos";
+    $sql = "SELECT id, nombre, imagen, informacion, precio_real, precio_promocionado, vigencia_promocion, marca, stock, promocionado, etiqueta FROM productos where stock != 0";
     $result = $conn->query($sql);
 
     $products = [];

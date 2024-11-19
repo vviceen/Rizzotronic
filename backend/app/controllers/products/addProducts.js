@@ -22,12 +22,20 @@ document.addEventListener("DOMContentLoaded", function () {
             try {
               const data = JSON.parse(text); // Intenta parsear la respuesta
               if (data.success) {
-                alert("Producto agregado exitosamente");
-                // Limpiar el formulario
-                document.getElementById('addProductForm').reset();
-              } else {
-                alert("Error al agregar el producto: " + data.message);
-              }
+                Swal.fire(
+                    'Agregado',
+                    'se agrego el producto exitosamente.',
+                    'success'
+                ).then(() => {
+                    location.reload(); // Recargar la página si el usuario fue actualizado
+                });
+            } else {
+                Swal.fire(
+                    'Error',
+                    'Error al agregar producto ' + data.message,
+                    'error'
+                );
+            }
             } catch (error) {
               console.error('Error al parsear JSON:', error, text); // Mostrar el error y el texto recibido
             }

@@ -24,7 +24,7 @@ $productos = [];
 foreach ($carrito as $item) {
     $productoId = $item['id'];
     $cantidad = $item['cantidad'];
-    $sql = "SELECT id, nombre, imagen, precio_real, precio_promocionado FROM productos WHERE id = :productoId";
+    $sql = "SELECT id, nombre, imagen, precio_real, precio_promocionado FROM productos WHERE stock != 0 and id = :productoId";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':productoId', $productoId, PDO::PARAM_INT);
     $stmt->execute();

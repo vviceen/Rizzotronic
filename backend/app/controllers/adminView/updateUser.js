@@ -27,10 +27,20 @@ export function saveUser(userId) {
         try {
           const data = JSON.parse(text); // Intenta parsear la respuesta
           if (data.success) {
-            location.reload(); // Recargar la página si el usuario fue actualizado
-          } else {
-            alert('Error al actualizar el usuario: ' + data.debug);
-          }
+            Swal.fire(
+                'Actualizado',
+                'El usuario ha sido actualizado exitosamente.',
+                'success'
+            ).then(() => {
+                location.reload(); // Recargar la página si el usuario fue actualizado
+            });
+        } else {
+            Swal.fire(
+                'Error',
+                'Error al actualizar el usuario: ' + data.debug,
+                'error'
+            );
+        }
         } catch (error) {
           console.error('Error al parsear JSON:', error, text); // Mostrar el error y el texto recibido
         }

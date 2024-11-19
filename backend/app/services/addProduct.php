@@ -18,7 +18,7 @@ try {
     $vigencia_promocion = $_POST['vigencia_promocion'] ?? null;
     $marca = $_POST['marca'] ?? null;
     $newMarca = $_POST['newMarca'] ?? null;
-    $cantidad = isset($_POST['cantidad']) ? intval($_POST['cantidad']) : null;
+    $stock = isset($_POST['stock']) ? intval($_POST['stock']) : null;
     $etiqueta = $_POST['etiqueta'] ?? null;
     $newCategory = $_POST['newCategory'] ?? null;
     $promocionado = isset($_POST['promocionado']) ? 1 : 0;
@@ -42,13 +42,13 @@ try {
         'precio_promocionado' => $precio_promocionado,
         'vigencia_promocion' => $vigencia_promocion,
         'marca' => $marca,
-        'cantidad' => $cantidad,
+        'stock' => $stock,
         'promocionado' => $promocionado,
         'etiqueta' => $etiqueta
     ];
 
     // Verificar que todos los campos requeridos estén presentes
-    if (!$nombre || !$informacion || !$precio_real || !$cantidad || !$etiqueta || !$marca) {
+    if (!$nombre || !$informacion || !$precio_real || !$stock || !$etiqueta || !$marca) {
         echo json_encode(['success' => false, 'message' => 'Todos los campos son requeridos.', 'producto' => $producto]);
         exit;
     }
@@ -62,7 +62,7 @@ try {
     $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/Rizzotronic/frontend/src/imgProduct/";
     $imageFileType = strtolower(pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION));
     $target_file = $target_dir . $new_id . '.' . $imageFileType;
-    $image_name = $new_id . '.' . $imageFileType;
+    $image_name = $new_id . '.' . $imageFileType; // Generar un nombre único para la imagen
 
     // Verificar que el directorio existe
     if (!file_exists($target_dir)) {
@@ -101,7 +101,7 @@ try {
     }
 
     // Insertar el producto en la base de datos
-    $stmt = $conn->prepare("INSERT INTO productos (nombre, imagen, informacion, precio_real, precio_promocionado, vigencia_promocion, marca, cantidad, promocionado, etiqueta) VALUES (:nombre, :imagen, :informacion, :precio_real, :precio_promocionado, :vigencia_promocion, :marca, :cantidad, :promocionado, :etiqueta)");
+    $stmt = $conn->prepare("INSERT INTO productos (nombre, imagen, informacion, precio_real, precio_promocionado, vigencia_promocion, marca, stock, promocionado, etiqueta) VALUES (:nombre, :imagen, :informacion, :precio_real, :precio_promocionado, :vigencia_promocion, :marca, :stock, :promocionado, :etiqueta)");
     $stmt->bindParam(':nombre', $nombre);
     $stmt->bindParam(':imagen', $image_name); // Solo el nombre de la imagen
     $stmt->bindParam(':informacion', $informacion);
@@ -109,7 +109,7 @@ try {
     $stmt->bindParam(':precio_promocionado', $precio_promocionado);
     $stmt->bindParam(':vigencia_promocion', $vigencia_promocion);
     $stmt->bindParam(':marca', $marca);
-    $stmt->bindParam(':cantidad', $cantidad);
+    $stmt->bindParam(':stock', $stock);
     $stmt->bindParam(':promocionado', $promocionado);
     $stmt->bindParam(':etiqueta', $etiqueta);
 

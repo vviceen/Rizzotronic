@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="../../public/css/styles.css" rel="stylesheet" />
     <link href="../../public/css/output.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <style>
@@ -100,28 +102,28 @@
 
 <main class="container mx-auto p-6">
     <!-- Sección del local físico -->
-    <section class="mb-12">
+    <section class="mb-20 mt-10">
         <h2 class="text-2xl font-bold mb-4 text-center">Nuestro Local</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <img id="local-img-1" alt="Imagen del local 1" class="w-full h-auto rounded-lg shadow-lg">
-            <img id="local-img-2" alt="Imagen del local 2" class="w-full h-auto rounded-lg shadow-lg">
+            <img id="local-img-1" alt="Imagen del local 1" class="w-full h-full rounded-lg shadow-lg">
+            <img id="local-img-2" alt="Imagen del local 2" class="w-full h-full rounded-lg shadow-lg">
         </div>
         <p id="txt-local" class="mt-4 text-lg text-gray-700 text-center"></p>
     </section>
 
     <!-- Sección del equipo -->
-    <section class="mb-12">
+    <section class="mb-20">
         <h2 class="text-2xl font-bold mb-4 text-center">Nuestro Equipo</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <img id="team-img-1" alt="Imagen del equipo 1" class="w-full h-auto rounded-lg shadow-lg">
-            <img id="team-img-2" alt="Imagen del equipo 2" class="w-full h-auto rounded-lg shadow-lg">
-            <img id="team-img-3" alt="Imagen del equipo 3" class="w-full h-auto rounded-lg shadow-lg">
+            <img id="team-img-1" alt="Imagen del equipo 1" class="w-full h-full rounded-lg shadow-lg">
+            <img id="team-img-2" alt="Imagen del equipo 2" class="w-full h-full rounded-lg shadow-lg">
+            <img id="team-img-3" alt="Imagen del equipo 3" class="w-full h-full rounded-lg shadow-lg">
         </div>
         <p id="txt-team" class="mt-4 text-lg text-gray-700 text-center"></p>
     </section>
-
+ 
     <!-- Sección de Misión y Visión -->
-    <section class="mb-12">
+    <section class="mb-20">
         <h2 class="text-2xl font-bold mb-4 text-center">Misión y Visión</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -134,6 +136,19 @@
             </div>
         </div>
     </section>
+
+<!-- Formulario de Reclamos y Reseñas -->
+<div id="containerReclamoForm" class="p-6 mb-20 bg-white p-6 rounded-lg shadow-lg max-w-2xl mx-auto" style="display: none;">
+    <h2 class="text-2xl font-bold mb-4">Envianos un mensaje!</h2>
+    <form id="reclamoForm">
+      <div class="mb-4">
+        <label for="mensaje" class="block text-gray-700 font-bold mb-2">Mensaje:</label>
+        <input id="mensaje" name="mensaje" class="w-full h-40 p-2 border border-gray-300 rounded-md" rows="4" required></input>
+      </div>
+      <button type="submit" class="bg-amarrillo font-semibold py-2 px-4 rounded hover:bg-blue-700">Enviar</button>
+    </form>
+  </div>
+  
 
     <!-- Sección opcional -->
     <section class="mb-12">
@@ -272,6 +287,7 @@
     <script type="module" src="../../../backend/app/controllers/products/searchProductByName.js"></script>
     <script type="module" src="../../../backend/app/controllers/aboutUs/loadPage.js"></script>
     <script type="module" src="../../../backend/app/controllers/products/downloadCatalog.js"></script>
+    <script type="module" src="../../../backend/app/controllers/sessions/formForCustomer.js"></script>
 
 </body>
 

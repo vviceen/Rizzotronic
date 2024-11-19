@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="../../public/css/styles.css" rel="stylesheet" />
   <link href="../../public/css/output.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <title>Document</title>
 </head>
 
@@ -113,14 +116,26 @@
   </div>
 
   <br>
-  <section>
-    <div class="p-4">
-      <p id="name" class="text-lg"></p>
-      <p id="email" class="text-lg"></p>
+  <section >
+    <div class="px-6 flex justify-between items-center">
+      <div class="flex space-x-4">
+        <p id="name" class="font-semibold text-lg"></p>
+        <p id="email" class="text-lg"></p>
+      </div>
       <button id="closeSession" class="btn bg-base-300">Cerrar Sesión</button>
     </div>
   </section>
 
+
+
+
+  <!-- Sección de la gráfica de productos con más remuneración -->
+  <section class="bg-white m-6 rounded-lg shadow-md p-10">
+    <h2 class="text-2xl font-bold mb-4 text-center">Productos con más remuneración generada en el tiempo</h2>
+    <canvas id="productRevenueChart" class="w-full h-96"></canvas>
+  </section>
+
+  <!--editar users por rol-->
   <div class="containerEditUsers p-4 bg-white m-6 rounded-xl">
     <div class="flex justify-between px-4 py-2">
       <h2 class="text-2xl font-bold mb-2">Editar Usuarios por Rol</h2>
@@ -152,65 +167,70 @@
 
   <!-- Formulario para editar About Us -->
   <div class="containerEditAboutUs p-6 bg-white shadow-md rounded-lg m-6">
-      <form id="aboutUsForm" class="space-y-6 p-4 md:p-10">
-          <h2 class="text-3xl font-bold mb-6 text-center">Editar About Us</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                  <label for="local_img_1" class="block text-sm font-medium text-gray-700 mb-1">Imagen Local 1</label>
-                  <input type="file" id="local_img_1" name="local_img_1" class="file-input file-input-bordered file-input-primary w-full" required>
-              </div>
-              <div>
-                  <label for="local_img_2" class="block text-sm font-medium text-gray-700 mb-1">Imagen Local 2</label>
-                  <input type="file" id="local_img_2" name="local_img_2" class="file-input file-input-bordered file-input-primary w-full" required>
-              </div>
-          </div>
-  
-          <div>
-              <label for="txt_local" class="block text-sm font-medium text-gray-700">Texto Local</label>
-              <input id="txt_local" name="txt_local" class="input border-2 border-gray-400 w-full mt-1"></input>
-          </div>
-  
-          <hr class="my-4">
-          <p class="font-semibold text-lg">Nuestro Equipo</p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                  <label for="team_img_1" class="block text-sm font-medium text-gray-700 mb-1">Imagen Equipo 1</label>
-                  <input type="file" id="team_img_1" name="team_img_1" class="file-input file-input-bordered file-input-primary w-full" required>
-              </div>
-              <div>
-                  <label for="team_img_2" class="block text-sm font-medium text-gray-700 mb-1">Imagen Equipo 2</label>
-                  <input type="file" id="team_img_2" name="team_img_2" class="file-input file-input-bordered file-input-primary w-full" required>
-              </div>
-              <div>
-                  <label for="team_img_3" class="block text-sm font-medium text-gray-700 mb-1">Imagen Equipo 3</label>
-                  <input type="file" id="team_img_3" name="team_img_3" class="file-input file-input-bordered file-input-primary w-full" required>
-              </div>
-          </div>
-  
-          <div>
-              <label for="txt_team" class="block text-sm font-medium text-gray-700">Texto Equipo</label>
-              <input id="txt_team" name="txt_team"class="input border-2 border-gray-400 w-full mt-1"></input>
-          </div>
-  
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                  <label for="mision" class="block text-sm font-medium text-gray-700">Misión</label>
-                  <input id="mision" name="mision"class="input border-2 border-gray-400 w-full mt-1"></input>
-              </div>
-              <div>
-                  <label for="vision" class="block text-sm font-medium text-gray-700">Visión</label>
-                  <input id="vision" name="vision"class="input border-2 border-gray-400 w-full mt-1"></input>
-              </div>
-          </div>
-  
-          <div>
-              <label for="txt_opcional" class="block text-sm font-medium text-gray-700">Texto Opcional</label>
-              <input id="txt_opcional" name="txt_opcional"class="input border-2 border-gray-400 w-full mt-1"></input>
-          </div>
-          <div class="flex justify-center">
-              <button type="submit" class="btn btn-primary py-2 mt-4 w-full md:w-auto">Guardar Cambios</button>
-          </div>
-      </form>
+    <form id="aboutUsForm" class="space-y-6 p-4 md:p-10" enctype="multipart/form-data">
+      <h2 class="text-3xl font-bold mb-6 text-center">Editar About Us</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label for="local_img_1" class="block text-sm font-medium text-gray-700 mb-1">Imagen Local 1</label>
+          <input type="file" id="local_img_1" name="local_img_1"
+            class="file-input file-input-bordered file-input-primary w-full">
+        </div>
+        <div>
+          <label for="local_img_2" class="block text-sm font-medium text-gray-700 mb-1">Imagen Local 2</label>
+          <input type="file" id="local_img_2" name="local_img_2"
+            class="file-input file-input-bordered file-input-primary w-full">
+        </div>
+      </div>
+
+      <div>
+        <label for="txt_local" class="block text-sm font-medium text-gray-700">Texto Local</label>
+        <input id="txt_local" name="txt_local" class="input border-2 border-gray-400 w-full mt-1"></input>
+      </div>
+
+      <hr class="my-4">
+      <p class="font-semibold text-lg">Nuestro Equipo</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="team_img_1" class="block text-sm font-medium text-gray-700 mb-1">Imagen Equipo 1</label>
+          <input type="file" id="team_img_1" name="team_img_1"
+            class="file-input file-input-bordered file-input-primary w-full">
+        </div>
+        <div>
+          <label for="team_img_2" class="block text-sm font-medium text-gray-700 mb-1">Imagen Equipo 2</label>
+          <input type="file" id="team_img_2" name="team_img_2"
+            class="file-input file-input-bordered file-input-primary w-full">
+        </div>
+        <div>
+          <label for="team_img_3" class="block text-sm font-medium text-gray-700 mb-1">Imagen Equipo 3</label>
+          <input type="file" id="team_img_3" name="team_img_3"
+            class="file-input file-input-bordered file-input-primary w-full">
+        </div>
+      </div>
+
+      <div>
+        <label for="txt_team" class="block text-sm font-medium text-gray-700">Texto Equipo</label>
+        <input id="txt_team" name="txt_team" class="input border-2 border-gray-400 w-full mt-1"></input>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label for="mision" class="block text-sm font-medium text-gray-700">Misión</label>
+          <input id="mision" name="mision" class="input border-2 border-gray-400 w-full mt-1"></input>
+        </div>
+        <div>
+          <label for="vision" class="block text-sm font-medium text-gray-700">Visión</label>
+          <input id="vision" name="vision" class="input border-2 border-gray-400 w-full mt-1"></input>
+        </div>
+      </div>
+
+      <div>
+        <label for="txt_opcional" class="block text-sm font-medium text-gray-700">Texto Opcional</label>
+        <input id="txt_opcional" name="txt_opcional" class="input border-2 border-gray-400 w-full mt-1"></input>
+      </div>
+      <div class="flex justify-center">
+        <button type="submit" class="btn btn-primary py-2 mt-4 w-full md:w-auto">Guardar Cambios</button>
+      </div>
+    </form>
   </div>
 
 
@@ -339,6 +359,8 @@
   <script type="module" src="../../../backend/app/controllers/sessions/logout.js"></script>
   <script src="../../public/js/dropdown.js"></script>
   <script type="module" src="../../../backend/app/controllers/adminView/updateAboutUs.js"></script>
+  <script type="module" src="../../../backend/app/controllers/adminView/productRevenueChart.js"></script>
+
 </body>
 
 </html>
