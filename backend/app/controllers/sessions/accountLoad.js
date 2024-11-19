@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const userRol = localStorage.getItem('userRol');
   const navbar = document.getElementById("navbar");
+  // const logo = document.getElementById("logo");
 
   if (userRol == "1") { // Admin
     navbar.classList.add('admin');
@@ -44,8 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
           window.location.href = "/Rizzotronic/frontend/src/views/sellerView.html";
           break;
         default:
-          console.log("Redirigiendo a clientView.html");
-          window.location.href = "/Rizzotronic/frontend/src/views/clientView.html";
+          console.log("Redirigiendo a customer.html");
+          window.location.href = "/Rizzotronic/frontend/src/views/customer.html";
           break;
       }
     });

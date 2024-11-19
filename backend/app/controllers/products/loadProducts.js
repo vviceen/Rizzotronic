@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 ${data.rol == '2' ? `
                                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" onclick="editProduct(${product.id})">Editar card</button>
                                 ` : ''}
-                                <a class="btn btn-primary mr-4 mb-3" href="../../../frontend/src/views/productView.html?id=${product.id}">Ver Más</a>
+                                <a class="btn btn-primary mr-4 mb-3" href="../../../Rizzotronic/frontend/src/views/productView.html?id=${product.id}">Ver Más</a>
                             </div>
                         </div>
                     </div>
