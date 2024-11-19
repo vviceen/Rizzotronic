@@ -93,24 +93,25 @@ document.addEventListener("DOMContentLoaded", function () {
                             formData.append('nombre', document.getElementById('product-name-input').value || product.nombre);
                             formData.append('informacion', document.getElementById('product-description-input').value || product.informacion);
                             formData.append('precio_real', document.getElementById('product-price-input').value || product.precio_real);
-
+                
                             // Manejar campos vacíos para precio promocionado y vigencia de promoción
                             const precioPromocionado = document.getElementById('product-promotion-input').value;
                             const vigenciaPromocion = document.getElementById('product-promotion-end-input').value;
-                            formData.append('precio_promocionado', precioPromocionado !== '' ? precioPromocionado : null);
-                            formData.append('vigencia_promocion', vigenciaPromocion !== '' ? vigenciaPromocion : null);
-
+                            formData.append('precio_promocionado', precioPromocionado !== '' ? precioPromocionado : product.precio_promocionado);
+                            formData.append('vigencia_promocion', vigenciaPromocion !== '' ? vigenciaPromocion : product.vigencia_promocion);
+                
                             formData.append('marca', document.getElementById('product-brand-input').value || product.marca);
                             formData.append('stock', document.getElementById('product-quantity-input').value || product.stock);
                             formData.append('etiqueta', document.getElementById('product-tag-input').value || product.etiqueta);
                             formData.append('promocionado', document.getElementById('product-promotion-checkbox').checked ? 1 : 0);
-
+                
                             const imageInput = document.getElementById('product-image-input');
                             if (imageInput.files.length > 0) {
                                 formData.append('imagen', imageInput.files[0]);
                             } else {
                                 formData.append('imagen_actual', product.imagen);
                             }
+                
 
                             fetch('/Rizzotronic/backend/app/services/edit_productView.php', {
                                 method: 'POST',
