@@ -3205,6 +3205,10 @@ html:has(.drawer-toggle:checked) {
   margin-top: 1rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -3721,6 +3725,11 @@ html:has(.drawer-toggle:checked) {
   padding-bottom: 1rem;
 }
 
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .pt-16 {
   padding-top: 4rem;
 }
@@ -3858,6 +3867,11 @@ html:has(.drawer-toggle:checked) {
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.text-green-600 {
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity));
 }
 
 .text-neutral-50 {

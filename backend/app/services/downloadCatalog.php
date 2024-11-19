@@ -13,7 +13,7 @@ $dompdf = new Dompdf($options);
 
 // Obtener los productos de la base de datos
 try {
-    $stmt = $conn->prepare("SELECT nombre, imagen, informacion, precio_real, etiqueta FROM productos ORDER BY etiqueta");
+    $stmt = $conn->prepare("SELECT nombre, imagen, informacion, precio_real, etiqueta FROM productos where stock != 0 ORDER BY etiqueta");
     $stmt->execute();
     $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {

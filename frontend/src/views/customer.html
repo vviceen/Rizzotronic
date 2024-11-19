@@ -7,11 +7,13 @@
   <title>Carrito de Compras</title>
   <link href="../../public/css/output.css" rel="stylesheet" />
   <link href="../../public/css/styles.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 
   <style>
     .table-container {
-      max-height: 70vh;
+     
       overflow-y: auto;
     }
   </style>
@@ -47,24 +49,38 @@
 
   <h1>Carrito de Compras</h1>
   <div id="carrito-container" class="table-container p-10 w-full shadow-lg">
-    <table id="productsTable" class="table-auto w-full rounded-lg ">
+    <table id="productsTable" class="table table-auto text-lg w-full rounded-lg border">
       <thead class="bg-gray-200">
         <tr>
-          <th class="px-4 py-2 text-left">Imagen</th>
-          <th class="px-4 py-2 text-left">Nombre</th>
-          <th class="px-4 py-2 text-left">Precio Unitario</th>
-          <th class="px-4 py-2 text-left">Cantidad</th>
-          <th class="px-4 py-2 text-left">Precio Total</th>
-          <th class="px-4 py-2 text-left">Acciones</th>
+          <th class="px-4 py-2 text-lg font-semibold text-left">Imagen</th>
+          <th class="px-4 py-2 text-lg font-semibold text-left">Nombre</th>
+          <th class="px-4 py-2 text-lg font-semibold text-left">Precio Unitario</th>
+          <th class="px-4 py-2 text-lg font-semibold text-left">Cantidad</th>
+          <th class="px-4 py-2 text-lg font-semibold text-left">Precio Total</th>
+          <th class="px-4 py-2 text-lg font-semibold text-left">Acciones</th>
         </tr>
       </thead>
       <tbody>
         <!-- Contenido de la tabla de productos -->
       </tbody>
     </table>
+
+
+  <!--subtotal y total y boton de finalizar compra-->
+  <div class="flex justify-end ">
+    <div class="object-contain border-2 border-gray-300 px-4 py-6 mt-5 rounded-lg">
+      <div class="block ">
+        <h2 id="subtotal" class="mb-6 text-md font-semibold">Subtotal: $0.00</h2>
+        <hr class="w-full" style="border-color: black;">
+        <h2 id="total" class="mt-6 mb-10 text-2xl font-semibold">Total: $0.00</h2>
+      </div>
+      <button id="finalizarCompra" class="btn btn-primary text-semibold">Finalizar Compra →</button>
+    </div>
   </div>
-  
-  <br>
+</div>
+
+
+
 
   <button id="closeSession" class="btn">Cerrar Sesión</button>
 
@@ -72,6 +88,8 @@
   <script type="module" src="../../../backend/app/controllers/carrito/mostrarCarrito.js"></script>
   <script type="module" src="../../../backend/app/controllers/sessions/accountLoad.js"></script>
   <script type="module" src="../../../backend/app/controllers/carrito/eliminarProducto.js"></script>
+  <script type="module" src="../../../backend/app/controllers/compra/completePurchase.js"></script>
+  
 </body>
 
 </html>

@@ -3,7 +3,7 @@ include '../../app/connection/connection.php';
 include '../../app/connection/checkPromotionExpiry.php';
 
 try {
-    $stmt = $conn->prepare("SELECT DISTINCT marca, etiqueta FROM productos");
+    $stmt = $conn->prepare("SELECT DISTINCT marca, etiqueta FROM productos where stock != 0");
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

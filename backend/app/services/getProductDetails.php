@@ -15,7 +15,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 $product_id = $_GET['id'];
 
 // Obtener los detalles del producto desde la base de datos
-$stmt = $conn->prepare("SELECT * FROM productos WHERE id = :id");
+$stmt = $conn->prepare("SELECT * FROM productos WHERE id = :id and stock != 0");
 $stmt->bindParam(':id', $product_id, PDO::PARAM_STR);
 $stmt->execute();
 
